@@ -5,6 +5,11 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
 
+  // Configure router settings
+  router: {
+    base: process.env.NODE_ENV === "staging" ? "/" : "/sgmcq-vue/"
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "sgmcq-vue",
