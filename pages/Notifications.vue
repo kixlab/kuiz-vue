@@ -1,5 +1,5 @@
 <template>
-  <Tutorial />
+  <div>Notifications Content</div>
 </template>
 
 <script>

@@ -1,0 +1,31 @@
+@import '~/styles/main.scss';
+
+.wrapper {
+  margin: 0;
+  background-color: $white-flat;
+}
+
+@for $i from 1 through 5 {
+    .px-#{$i} {
+        padding-left: $i * 4px;
+        padding-right: $i * 4px;
+    }
+    
+    .py-#{$i} {
+        padding-top: $i * 4px;
+        padding-bottom: $i * 4px;
+    }
+}
+
+.bg-primary {
+  color: $white-flat;
+  background-color: $blue-primary;
+}
+
+.rounded {
+  border-radius: 12px;
+}
+
+.shadow {
+  box-shadow: 0px 4px 8px #00000029;
+}

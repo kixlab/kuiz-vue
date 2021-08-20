@@ -1,0 +1,17 @@
+@import "./Wrapper.scss";
+
+.nuxt-link-exact-active {
+  color: $white-flat !important;
+  background-color: $blue-primary !important;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px #00000029;
+}
+
+.nav-item {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Poppins";
+  width: 256px;
+  margin: 16px 0 !important;
+
+}

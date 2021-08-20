@@ -1,62 +1,5 @@
 @import "./mixins.scss";
 
-/****************** TYPOGRAPHY ******************/
-@font-face {
-  font-family: "Gilroy";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("~assets/fonts/Gilroy-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Gilroy";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("~assets/fonts/Gilroy-Bold.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Gilroy";
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url("~assets/fonts/Gilroy-ExtraBold.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "TT Norms Pro";
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("~assets/fonts/TTNormsPro-Light.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "TT Norms Pro";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("~assets/fonts/TTNormsPro-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "TT Norms Pro";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("~assets/fonts/TTNormsPro-Medium.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "TT Norms Pro";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("~assets/fonts/TTNormsPro-Bold.woff2") format("woff2");
-}
-
 $font-size-base: 16px;
 $h1-font-size: $font-size-base * 3.75; // 60px = 16px * 3.75
 $h2-font-size: $font-size-base * 2.8125; // 45px = 16px * 2.8125
@@ -66,7 +9,7 @@ $h5-font-size: $font-size-base * 1.3125; // 20px = 16px * 1.25
 $h6-font-size: $font-size-base * 1.125; // 18px = 16px * 1.125
 
 %heading {
-  font-family: "Gilroy", "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
   color: inherit;
