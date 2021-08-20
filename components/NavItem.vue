@@ -1,11 +1,11 @@
 <template>
   <router-link :to="to" :class="buildClass">
     <img
-      v-show="$route.path == to"
+      v-if="$route.path == to || $route.path == to + '/'"
       :src="require('~/assets/icons' + to + '-white.svg')"
     >
     <img
-      v-show="$route.path !== to"
+      v-else
       :src="require('~/assets/icons' + to + '-black.svg')"
     >
     <span style="margin-left: 16px;"><slot /></span>
