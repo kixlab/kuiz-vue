@@ -7,41 +7,41 @@
 <script>
 export default {
   props: {
-    px: { type: Number, default: 4 },
-    py: { type: Number, default: 4 },
+    px: { type: String, default: "4" },
+    py: { type: String, default: "4" },
     bg: { type: String, default: null },
     rounded: { type: Boolean, default: false },
-    shadow: { type: Boolean, default: false }
+    shadow: { type: Boolean, default: false },
   },
 
   computed: {
-    buildClass () {
-      let className = "wrapper"
+    buildClass() {
+      let className = "wrapper";
 
       if (this.px) {
-        className += " px-" + this.px
+        className += " px-" + this.px;
       }
 
       if (this.py) {
-        className += " py-" + this.py
+        className += " py-" + this.py;
       }
 
       if (this.bg === "primary") {
-        className += " bg-primary"
+        className += " bg-primary";
       }
 
       if (this.rounded) {
-        className += " rounded"
+        className += " rounded";
       }
 
       if (this.shadow) {
-        className += " shadow"
+        className += " shadow";
       }
 
-      return className
-    }
-  }
-}
+      return className;
+    },
+  },
+};
 </script>
 
 <style src="./Wrapper.scss" lang="scss" scoped></style>

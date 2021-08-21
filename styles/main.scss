@@ -39,9 +39,41 @@ button {
   font-size: 14px !important;
 }
 
+.fw-medium {
+  font-weight: 500 !important;
+}
+
 .keep-word {
   word-break: keep-all;
   word-wrap: break-word;
+}
+
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.row-center {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.column-center {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.w-100 {
+  width: 100% !important;
 }
 
 /****************** SCROLLBAR STYLE OVERRIDE ******************/
@@ -66,4 +98,14 @@ button {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: $blue-primary;
+}
+
+/********************** VUE TRANSITION **********************/
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }

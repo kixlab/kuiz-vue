@@ -3,11 +3,11 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    node: true
+    node: true,
   },
   parserOptions: {
     parser: "@babel/eslint-parser",
-    requireConfigFile: false
+    requireConfigFile: false,
   },
   extends: ["@nuxtjs", "plugin:nuxt/recommended"],
   plugins: [],
@@ -27,6 +27,11 @@ module.exports = {
     "no-console": "off",
     "import/prefer-default-export": "off",
     "no-confusing-arrow": "off",
-    "implicit-arrow-linebreak": "off"
-  }
+    "implicit-arrow-linebreak": "off",
+    semi: [2, "always"],
+    "comma-dangle": ["error", "always-multiline"],
+    "space-before-function-paren": ["error", "never"],
+    "vue/html-self-closing": "off",
+    "vue/singleline-html-element-content-newline": "off",
+  },
 };

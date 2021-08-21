@@ -1,0 +1,18 @@
+@import "./Wrapper.scss";
+
+.button {
+  font-size: 19px;
+  font-weight: 600;
+  font-family: "Poppins";
+  width: 100%;
+  border: none;
+  margin: 0 8px;
+
+  &:not(:first-child) {
+    margin-left: 32px;
+  }
+
+  &.bg-primary {
+    color: $white-flat;
+  }
+}

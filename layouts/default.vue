@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
+    <Modal />
     <Navbar />
     <Nuxt />
   </div>
 </template>
 
 <script>
-
-export default {}
+export default {};
 </script>
 
 <style lang="scss" scoped>

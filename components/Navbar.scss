@@ -1,7 +1,36 @@
+@import "~/styles/colors.scss";
+
 .navbar {
+  position: relative;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
   align-items: center;
   max-width: 320px;
+  padding-top: 64px !important;
+  padding-bottom: 64px !important;
+
+  > :not(:first-child) {
+    margin-top: 48px;
+  }
+
+  .course-select {
+    &:hover {
+      background-color: $grey-silver;
+      cursor: pointer;
+    }
+
+    .course-code {
+      font-size: 15px;
+      font-weight: 500;
+      font-family: "Poppins";
+      color: $grey-primary;
+    }
+
+    .course-title {
+      font-family: "Poppins";
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }

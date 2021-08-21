@@ -1,20 +1,21 @@
-@import '~/styles/main.scss';
+@import "~/styles/main.scss";
 
 .wrapper {
+  width: 100%;
   margin: 0;
   background-color: $white-flat;
 }
 
-@for $i from 1 through 5 {
-    .px-#{$i} {
-        padding-left: $i * 4px;
-        padding-right: $i * 4px;
-    }
-    
-    .py-#{$i} {
-        padding-top: $i * 4px;
-        padding-bottom: $i * 4px;
-    }
+@for $i from 0 through 6 {
+  .px-#{$i} {
+    padding-left: $i * 4px;
+    padding-right: $i * 4px;
+  }
+
+  .py-#{$i} {
+    padding-top: $i * 4px;
+    padding-bottom: $i * 4px;
+  }
 }
 
 .bg-primary {
