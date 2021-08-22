@@ -4,8 +4,8 @@
       <img src="~assets/images/logo.png" style="height: 32px" />
     </Wrapper>
     <Wrapper rounded shadow py="5" style="margin-top: 48px">
-      <Login v-if="!isSignedIn" />
-      <AddCourse v-if="isSignedIn" />
+      <Login v-if="!isLoggedIn" />
+      <AddCourse v-if="isLoggedIn" />
     </Wrapper>
   </div>
 </template>
@@ -15,8 +15,8 @@ export default {
   layout: "login",
 
   computed: {
-    isSignedIn() {
-      return this.$store.state.isSignedIn;
+    isLoggedIn() {
+      return this.$store.state.isLoggedIn;
     },
   },
 };

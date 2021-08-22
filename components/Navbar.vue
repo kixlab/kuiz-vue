@@ -20,6 +20,11 @@
       <NavItem rounded to="/quizzes">Quizzes</NavItem>
       <NavItem rounded to="/notifications">Notifications</NavItem>
       <NavItem rounded to="/settings">Settings</NavItem>
+      <div class="divider"></div>
+      <Wrapper rounded class="logout" @click.native="logOut">
+        <img src="~/assets/icons/logout-black.svg" />
+        <span style="margin-left: 16px">Log Out</span>
+      </Wrapper>
     </Wrapper>
   </Wrapper>
 </template>
@@ -29,9 +34,12 @@ import { mapMutations } from "vuex";
 
 export default {
   methods: {
-    ...mapMutations({
-      toggleModal: "toggleModal",
-    }),
+    logOut() {
+      this.$store.commit("logOut");
+      this.$router.push("/login");
+    },
+
+    ...mapMutations(["toggleModal"]),
   },
 };
 </script>

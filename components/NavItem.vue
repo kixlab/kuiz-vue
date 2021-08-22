@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="to" :class="buildClass">
+  <router-link :to="linkTo" :class="buildClass">
     <img
       v-if="$route.path == to || $route.path == to + '/'"
       :src="require('~/assets/icons' + to + '-white.svg')"
@@ -12,7 +12,7 @@
 <script>
 export default {
   props: {
-    to: { type: String, default: "/" },
+    to: { type: String, default: "#" },
     px: { type: Number, default: 4 },
     py: { type: Number, default: 4 },
     bg: { type: String, default: null },
@@ -21,6 +21,14 @@ export default {
   },
 
   computed: {
+    linkTo() {
+      if (this.to === "/logout") {
+        return "#";
+      } else {
+        return this.to;
+      }
+    },
+
     buildClass() {
       let className = "wrapper nav-item";
 
