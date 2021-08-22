@@ -19,7 +19,10 @@
     <Wrapper class="column">
       <NavItem rounded to="/quizzes">Quizzes</NavItem>
       <NavItem rounded to="/notifications">Notifications</NavItem>
+      <!--
       <NavItem rounded to="/settings">Settings</NavItem>
+      -->
+      <NavItem rounded to="/participants">Participants</NavItem>
       <div class="divider"></div>
       <Wrapper rounded class="logout" @click.native="logOut">
         <img src="~/assets/icons/logout-black.svg" />

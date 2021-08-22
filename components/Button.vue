@@ -1,5 +1,13 @@
 <template>
-  <button class="button" :class="buildClass"><slot /></button>
+  <button :class="buildClass" class="button">
+    <img
+      v-if="icon !== null && bg === 'primary'"
+      :src="require('~/assets/icons/' + icon + '-white.svg')"
+    />
+    <span>
+      <slot />
+    </span>
+  </button>
 </template>
 
 <script>
@@ -8,6 +16,8 @@ export default {
     px: { type: Number, default: 4 },
     py: { type: Number, default: 4 },
     bg: { type: String, default: null },
+    icon: { type: String, default: null },
+    slim: { type: Boolean, default: false },
   },
 
   computed: {
@@ -24,6 +34,10 @@ export default {
 
       if (this.bg === "primary") {
         className += " bg-primary";
+      }
+
+      if (this.slim) {
+        className += " slim";
       }
 
       return className;

@@ -55,8 +55,10 @@
       </div>
     </Wrapper>
     <Wrapper class="row-center">
-      <Button @click.native="closeModal">Cancel</Button>
-      <Button bg="primary" @click.native="enterCourse">Continue</Button>
+      <Button class="w-100" @click.native="closeModal">Cancel</Button>
+      <Button class="w-100" bg="primary" @click.native="enterCourse">
+        Continue
+      </Button>
     </Wrapper>
   </div>
 </template>

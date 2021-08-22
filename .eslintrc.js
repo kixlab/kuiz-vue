@@ -33,5 +33,6 @@ module.exports = {
     "space-before-function-paren": ["error", "never"],
     "vue/html-self-closing": "off",
     "vue/singleline-html-element-content-newline": "off",
+    "vue/html-quotes": "off",
   },
 };

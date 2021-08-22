@@ -1,13 +1,11 @@
 <template>
-  <div class="notifications">
+  <div class="participants">
     <div class="content-wrapper">
-      <div class="title">Notifications</div>
-      <Wrapper rounded shadow px="0" class="notification-list">
+      <div class="title">Participants</div>
+      <Wrapper rounded shadow px="0" class="participant-list">
         <div class="scroll-area">
-          <NotificationItem type="like"></NotificationItem>
-          <NotificationItem type="comment"></NotificationItem>
-          <NotificationItem type="like"></NotificationItem>
-          <NotificationItem type="comment"></NotificationItem>
+          Only instructors can view this page. They will be able to see
+          students' current progress of each objective (TO BE DONE)
         </div>
       </Wrapper>
     </div>
@@ -19,7 +17,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.notifications {
+.participants {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -38,7 +36,7 @@ export default {};
       font-family: "Poppins";
     }
 
-    .notification-list {
+    .participant-list {
       display: flex;
       flex-flow: column nowrap;
       align-items: center;

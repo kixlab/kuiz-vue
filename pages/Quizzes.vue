@@ -1,5 +1,5 @@
 <template>
-  <div>Quizzes Content</div>
+  <div></div>
 </template>
 
 <script>
