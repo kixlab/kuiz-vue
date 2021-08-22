@@ -1,7 +1,7 @@
 <script>
 export default {
   asyncData({ redirect }) {
-    return redirect("/quizzes");
+    return redirect("/login");
   },
 };
 </script>
