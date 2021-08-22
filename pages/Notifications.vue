@@ -4,9 +4,20 @@
       <Wrapper
         rounded
         shadow
-        style="display: flex; flex-flow: column nowrap; align-items: center"
+        px="0"
+        style="
+          display: flex;
+          flex-flow: column nowrap;
+          align-items: center;
+          height: 100%;
+        "
       >
-        <NotificationItem></NotificationItem>
+        <div class="scroll-area">
+          <NotificationItem type="like"></NotificationItem>
+          <NotificationItem type="comment"></NotificationItem>
+          <NotificationItem type="like"></NotificationItem>
+          <NotificationItem type="comment"></NotificationItem>
+        </div>
       </Wrapper>
     </div>
   </div>
@@ -25,9 +36,17 @@ export default {};
 
   .content-wrapper {
     width: 100%;
-    max-width: 1100px;
+    max-width: 900px;
+    height: 100%;
     margin: 0 auto;
     padding: 48px;
+
+    .scroll-area {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      padding: 0 16px;
+    }
   }
 }
 </style>
