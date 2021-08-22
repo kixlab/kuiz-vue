@@ -18,10 +18,6 @@
     position: relative;
     max-width: 480px;
 
-    > :not(:first-child) {
-      margin-top: 8px;
-    }
-
     .badge {
       position: absolute;
       top: -32px;
@@ -40,86 +36,6 @@
         background-color: $grey-silver;
         cursor: pointer;
         border-radius: 50%;
-      }
-    }
-
-    .modal-title {
-      width: 100%;
-      margin-top: 36px;
-      font-size: 25px;
-      font-weight: 600;
-      font-family: "Poppins";
-      text-align: center;
-    }
-
-    .description {
-      color: $grey-primary;
-      text-align: center;
-    }
-
-    .code-input {
-      input {
-        width: 72px;
-        height: 96px;
-        border-radius: 12px;
-        border: 1px solid $grey-ash;
-        font-family: "Poppins";
-        font-size: 58px;
-        font-weight: 600;
-        text-align: center;
-
-        &:focus {
-          border: 2px solid $blue-primary;
-        }
-
-        &:not(:first-child) {
-          margin-left: 16px;
-        }
-      }
-    }
-
-    .course-item {
-      justify-content: space-between;
-
-      &:hover {
-        background-color: $grey-silver;
-        cursor: pointer;
-      }
-
-      .course-metadata span {
-        font-size: 15px;
-        font-weight: 500;
-        font-family: "Poppins";
-        color: $grey-primary;
-      }
-
-      .course-title {
-        font-family: "Poppins";
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-    }
-
-    .add-course {
-      border: 1px solid $grey-primary;
-      font-size: 15px;
-      font-weight: 500;
-      font-family: "Poppins";
-      color: $grey-primary;
-
-      &:hover {
-        background-color: $white-background;
-        border: 1px solid $blue-primary;
-        cursor: pointer;
-
-        #path_69 {
-          fill: $blue-primary;
-        }
-
-        span {
-          color: $blue-primary;
-        }
       }
     }
   }

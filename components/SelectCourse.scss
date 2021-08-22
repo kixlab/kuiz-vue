@@ -1,0 +1,64 @@
+@import "~/styles/colors.scss";
+
+.inner-wrapper {
+  width: 100%;
+  height: 100%;
+
+  > :not(:first-child) {
+    margin-top: 8px;
+  }
+
+  .modal-title {
+    width: 100%;
+    margin-top: 36px;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: "Poppins";
+    text-align: center;
+  }
+
+  .course-item {
+    justify-content: space-between;
+
+    &:hover {
+      background-color: $grey-silver;
+      cursor: pointer;
+    }
+
+    .course-metadata span {
+      font-size: 15px;
+      font-weight: 500;
+      font-family: "Poppins";
+      color: $grey-primary;
+    }
+
+    .course-title {
+      font-family: "Poppins";
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .add-course {
+    border: 1px solid $grey-primary;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: "Poppins";
+    color: $grey-primary;
+
+    &:hover {
+      background-color: $white-background;
+      border: 1px solid $blue-primary;
+      cursor: pointer;
+
+      #path_69 {
+        fill: $blue-primary;
+      }
+
+      span {
+        color: $blue-primary;
+      }
+    }
+  }
+}

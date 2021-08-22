@@ -7,6 +7,7 @@ const state = () => {
     modalVisible: false,
     modalIsSelectCourse: true,
     modalIsAddCourse: false,
+    isSignedIn: false,
   };
 
   return s;
@@ -36,6 +37,10 @@ const mutations = {
     state.modalVisible = false;
     state.modalIsSelectCourse = true;
     state.modalIsAddCourse = false;
+  },
+
+  signIn(state) {
+    state.isSignedIn = true;
   },
 };
 

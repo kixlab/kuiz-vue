@@ -1,0 +1,45 @@
+@import "~/styles/colors.scss";
+
+.inner-wrapper {
+  width: 100%;
+  height: 100%;
+
+  > :not(:first-child) {
+    margin-top: 8px;
+  }
+
+  .modal-title {
+    width: 100%;
+    margin-top: 36px;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: "Poppins";
+    text-align: center;
+  }
+
+  .description {
+    color: $grey-primary;
+    text-align: center;
+  }
+
+  .code-input {
+    input {
+      width: 72px;
+      height: 96px;
+      border-radius: 12px;
+      border: 1px solid $grey-ash;
+      font-family: "Poppins";
+      font-size: 58px;
+      font-weight: 600;
+      text-align: center;
+
+      &:focus {
+        border: 2px solid $blue-primary;
+      }
+
+      &:not(:first-child) {
+        margin-left: 16px;
+      }
+    }
+  }
+}

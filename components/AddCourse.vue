@@ -1,0 +1,115 @@
+<template>
+  <div class="inner-wrapper">
+    <Wrapper class="modal-title">Enter Course Code</Wrapper>
+    <Wrapper px="6" py="0" class="description">
+      You need a 4-digit code to join a course workspace. Check your course
+      website on KLMS for related announcements or ask the instructor for access
+      code.
+    </Wrapper>
+    <Wrapper class="row-center" style="margin: 48px 0">
+      <div class="code-input">
+        <input
+          v-model="code.firstDigit"
+          name="First Digit"
+          autocomplete="off"
+          type="text"
+          maxlength="1"
+          inputmode="numeric"
+          value=""
+          @keyup="onKeyUp"
+          @keydown="onKeyDown"
+        />
+        <input
+          v-model="code.secondDigit"
+          name="Second Digit"
+          autocomplete="off"
+          type="text"
+          maxlength="1"
+          inputmode="numeric"
+          value=""
+          @keyup="onKeyUp"
+          @keydown="onKeyDown"
+        />
+        <input
+          v-model="code.thirdDigit"
+          name="Third Digit"
+          autocomplete="off"
+          type="text"
+          maxlength="1"
+          inputmode="numeric"
+          value=""
+          @keyup="onKeyUp"
+          @keydown="onKeyDown"
+        />
+        <input
+          v-model="code.fourthDigit"
+          name="Fourth Digit"
+          autocomplete="off"
+          type="text"
+          maxlength="1"
+          inputmode="numeric"
+          value=""
+          @keyup="onKeyUp"
+          @keydown="onKeyDown"
+        />
+      </div>
+    </Wrapper>
+    <Wrapper class="row-center">
+      <Button @click.native="closeModal">Cancel</Button>
+      <Button bg="primary" @click.native="enterCourse">Continue</Button>
+    </Wrapper>
+  </div>
+</template>
+
+<script>
+import { mapMutations } from "vuex";
+
+export default {
+  data() {
+    return {
+      code: {
+        firstDigit: null,
+        secondDigit: null,
+        thirdDigit: null,
+        fourthDigit: null,
+      },
+    };
+  },
+
+  methods: {
+    onKeyUp(event) {
+      event.target.value = event.target.value.replace(/[^0-9]/g, "");
+
+      if (
+        (event.keyCode >= 48 && event.keyCode <= 57) ||
+        (event.keyCode >= 96 && event.keyCode <= 105)
+      ) {
+        const next = event.target.nextElementSibling;
+        if (next === null) {
+          return;
+        }
+        next.focus();
+      }
+    },
+
+    onKeyDown(event) {
+      if (event.keyCode === 8 && event.target.value === "") {
+        const prev = event.target.previousElementSibling;
+        if (prev === null) {
+          return;
+        }
+        prev.focus();
+      }
+    },
+
+    enterCourse() {
+      this.closeModal();
+      this.$router.push("/quizzes");
+    },
+
+    ...mapMutations(["closeModal"]),
+  },
+};
+</script>
+
+<style src="./AddCourse.scss" lang="scss" scoped />

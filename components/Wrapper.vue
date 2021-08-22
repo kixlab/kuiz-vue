@@ -30,6 +30,10 @@ export default {
         className += " bg-primary";
       }
 
+      if (this.bg === "transparent") {
+        className += " bg-transparent";
+      }
+
       if (this.rounded) {
         className += " rounded";
       }

@@ -1,0 +1,33 @@
+@import "~/styles/colors.scss";
+
+.title {
+  width: 100%;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: "Poppins";
+  text-align: center;
+}
+
+.description {
+  color: $grey-primary;
+  text-align: center;
+}
+
+.signin {
+  align-items: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $blue-primary;
+    color: $white-flat;
+    cursor: pointer;
+  }
+
+  .text {
+    font-size: 19px;
+    font-weight: 500;
+    font-family: "Poppins";
+    text-align: center;
+    width: 100%;
+  }
+}
