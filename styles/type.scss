@@ -13,7 +13,6 @@ $h6-font-size: $font-size-base * 1.125; // 18px = 16px * 1.125
   font-style: normal;
   font-weight: 400;
   color: inherit;
-  text-align: center;
   line-height: 1.3;
   padding: 0;
   margin: 0;
@@ -57,7 +56,7 @@ h3 {
   @include responsive-heading($h3-font-size);
 
   font-size: $h3-font-size;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.01em;
 }
 

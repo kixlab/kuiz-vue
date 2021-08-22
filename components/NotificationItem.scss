@@ -1,0 +1,8 @@
+@import "~/styles/main.scss";
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  width: 80% !important;
+  border: 1px solid $grey-silver;
+}
