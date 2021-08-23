@@ -1,6 +1,6 @@
 <template>
   <Wrapper rounded shadow class="objective-list">
-    <Wrapper px="3" class="title">
+    <Wrapper px="2" py="2" class="title">
       <img src="~assets/images/objective.png" />
       <span>Objectives</span>
     </Wrapper>

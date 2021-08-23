@@ -7,164 +7,22 @@
           <th>Name</th>
           <th class="text-center">Quizzes created</th>
           <th class="text-center">Quizzes solved</th>
-          <th class="text-center">Quizzes commented on</th>
+          <th class="text-center">Comments</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>
-            <div class="profile-image">
-              <img class="avatar" src="~assets/images/profile-default.png" />
-            </div>
-            <div>
-              <div class="student-id">20150681</div>
-              <div class="student-name">Elliot Dohyun Jung</div>
-            </div>
-          </td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="profile-image">
-              <img class="avatar" src="~assets/images/profile-default.png" />
-            </div>
-            <div>
-              <div class="student-id">20150681</div>
-              <div class="student-name">Elliot Dohyun Jung</div>
-            </div>
-          </td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="profile-image">
-              <img class="avatar" src="~assets/images/profile-default.png" />
-            </div>
-            <div>
-              <div class="student-id">20150681</div>
-              <div class="student-name">Elliot Dohyun Jung</div>
-            </div>
-          </td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="profile-image">
-              <img class="avatar" src="~assets/images/profile-default.png" />
-            </div>
-            <div>
-              <div class="student-id">20150681</div>
-              <div class="student-name">Elliot Dohyun Jung</div>
-            </div>
-          </td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="profile-image">
-              <img class="avatar" src="~assets/images/profile-default.png" />
-            </div>
-            <div>
-              <div class="student-id">20150681</div>
-              <div class="student-name">Elliot Dohyun Jung</div>
-            </div>
-          </td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="profile-image">
-              <img class="avatar" src="~assets/images/profile-default.png" />
-            </div>
-            <div>
-              <div class="student-id">20150681</div>
-              <div class="student-name">Elliot Dohyun Jung</div>
-            </div>
-          </td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="profile-image">
-              <img class="avatar" src="~assets/images/profile-default.png" />
-            </div>
-            <div>
-              <div class="student-id">20150681</div>
-              <div class="student-name">Elliot Dohyun Jung</div>
-            </div>
-          </td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="profile-image">
-              <img class="avatar" src="~assets/images/profile-default.png" />
-            </div>
-            <div>
-              <div class="student-id">20150681</div>
-              <div class="student-name">Elliot Dohyun Jung</div>
-            </div>
-          </td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="profile-image">
-              <img class="avatar" src="~assets/images/profile-default.png" />
-            </div>
-            <div>
-              <div class="student-id">20150681</div>
-              <div class="student-name">Elliot Dohyun Jung</div>
-            </div>
-          </td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="profile-image">
-              <img class="avatar" src="~assets/images/profile-default.png" />
-            </div>
-            <div>
-              <div class="student-id">20150681</div>
-              <div class="student-name">Elliot Dohyun Jung</div>
-            </div>
-          </td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="profile-image">
-              <img class="avatar" src="~assets/images/profile-default.png" />
-            </div>
-            <div>
-              <div class="student-id">20150681</div>
-              <div class="student-name">Elliot Dohyun Jung</div>
-            </div>
-          </td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-          <td class="text-center">5</td>
-        </tr>
+        <ParticipantItem />
+        <ParticipantItem />
+        <ParticipantItem />
+        <ParticipantItem />
+        <ParticipantItem />
+        <ParticipantItem />
+        <ParticipantItem />
+        <ParticipantItem />
+        <ParticipantItem />
+        <ParticipantItem />
+        <ParticipantItem />
+        <ParticipantItem />
       </tbody>
     </table>
   </Wrapper>

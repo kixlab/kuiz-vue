@@ -20,10 +20,10 @@ export default {};
   flex-flow: column nowrap;
   align-items: center;
   width: 100%;
+  overflow: auto;
 
   .content-wrapper {
     width: 100%;
-    height: 100%;
     margin: 0 auto;
     padding: 48px;
 

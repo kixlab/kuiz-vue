@@ -1,5 +1,5 @@
 <template>
-  <Wrapper py="5" class="objective-item">
+  <Wrapper px="2" py="3" class="objective-item">
     <!--<img src="~assets/icons/circle-check.svg" />-->
     <radial-progress-bar
       :diameter="64"
@@ -14,7 +14,7 @@
     >
       <div class="progress-count">{{ completedSteps }}/{{ totalSteps }}</div>
     </radial-progress-bar>
-    <span>Create 8 Quizzes</span>
+    <span>Create 8 quizzes</span>
   </Wrapper>
 </template>
 

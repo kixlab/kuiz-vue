@@ -1,8 +1,10 @@
 @import "~/styles/colors.scss";
 
 .objective-list {
+  position: sticky;
+  top: 109px;
   width: 100%;
-  max-width: 360px;
+  max-width: 280px;
   margin-left: 48px !important;
   height: fit-content;
 
