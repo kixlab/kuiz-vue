@@ -13,7 +13,7 @@
     margin-top: 36px;
     font-size: 25px;
     font-weight: 600;
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
     text-align: center;
   }
 
@@ -28,12 +28,12 @@
     .course-metadata span {
       font-size: 15px;
       font-weight: 500;
-      font-family: "Poppins";
+      font-family: "Poppins", sans-serif;
       color: $grey-primary;
     }
 
     .course-title {
-      font-family: "Poppins";
+      font-family: "Poppins", sans-serif;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -44,7 +44,7 @@
     border: 1px solid $grey-primary;
     font-size: 15px;
     font-weight: 500;
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
     color: $grey-primary;
 
     &:hover {

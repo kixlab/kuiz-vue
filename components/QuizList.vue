@@ -1,11 +1,6 @@
 <template>
   <Wrapper rounded shadow px="0" class="quiz-list">
-    <div class="scroll-area">
-      <NotificationItem type="like"></NotificationItem>
-      <NotificationItem type="comment"></NotificationItem>
-      <NotificationItem type="like"></NotificationItem>
-      <NotificationItem type="comment"></NotificationItem>
-    </div>
+    <div class="scroll-area">TBD</div>
   </Wrapper>
 </template>
 

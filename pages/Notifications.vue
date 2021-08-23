@@ -2,14 +2,7 @@
   <div class="notifications">
     <div class="content-wrapper">
       <div class="title">Notifications</div>
-      <Wrapper rounded shadow px="0" class="notification-list">
-        <div class="scroll-area">
-          <NotificationItem type="like"></NotificationItem>
-          <NotificationItem type="comment"></NotificationItem>
-          <NotificationItem type="like"></NotificationItem>
-          <NotificationItem type="comment"></NotificationItem>
-        </div>
-      </Wrapper>
+      <NotificationList />
     </div>
   </div>
 </template>
@@ -24,33 +17,18 @@ export default {};
   flex-flow: column nowrap;
   align-items: center;
   width: 100%;
+  overflow: auto;
 
   .content-wrapper {
     width: 100%;
     max-width: 900px;
-    height: 100%;
     margin: 0 auto;
     padding: 48px;
 
     .title {
       font-size: 25px;
       font-weight: 600;
-      font-family: "Poppins";
-    }
-
-    .notification-list {
-      display: flex;
-      flex-flow: column nowrap;
-      align-items: center;
-      min-height: 472px;
-      margin-top: 24px;
-
-      .scroll-area {
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        padding: 0 16px;
-      }
+      font-family: "Poppins", sans-serif;
     }
   }
 }

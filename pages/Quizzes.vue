@@ -30,7 +30,7 @@ export default {};
     .title {
       font-size: 25px;
       font-weight: 600;
-      font-family: "Poppins";
+      font-family: "Poppins", sans-serif;
     }
 
     .inner-wrapper {

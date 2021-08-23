@@ -22,12 +22,12 @@
     .course-code {
       font-size: 15px;
       font-weight: 500;
-      font-family: "Poppins";
+      font-family: "Poppins", sans-serif;
       color: $grey-primary;
     }
 
     .course-title {
-      font-family: "Poppins";
+      font-family: "Poppins", sans-serif;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -45,7 +45,7 @@
     align-items: center;
     font-size: 19px;
     font-weight: 600;
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
     width: 100%;
     margin-top: 24px;
 

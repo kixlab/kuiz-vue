@@ -5,7 +5,10 @@
         <div class="overlay">
           <img src="~assets/icons/edit-white.svg" />
         </div>
-        <img class="avatar" src="~assets/images/profile-default.png" />
+        <img
+          class="avatar"
+          src="https://img.freepik.com/free-vector/colorful-palm-silhouettes-background_23-2148541792.jpg?size=626&ext=jpg"
+        />
       </div>
       <div class="profile-info">
         <div class="info-item">
@@ -17,6 +20,14 @@
           <input v-model="info.id" />
         </div>
       </div>
+      <Button
+        slim
+        bg="primary"
+        style="margin-top: 48px"
+        @click.native="saveProfile"
+      >
+        Save Changes
+      </Button>
     </div>
   </div>
 </template>
@@ -30,6 +41,12 @@ export default {
         id: "20150681",
       },
     };
+  },
+
+  methods: {
+    saveProfile() {
+      alert("Changes saved successfully");
+    },
   },
 };
 </script>
@@ -56,6 +73,8 @@ export default {
 
     .profile-image {
       position: relative;
+      width: 200px;
+      height: 200px;
 
       &:hover {
         .overlay {
@@ -83,8 +102,10 @@ export default {
       }
 
       .avatar {
-        width: 200px;
+        width: 100%;
+        height: 100%;
         border-radius: 50%;
+        object-fit: cover;
       }
     }
 
@@ -99,7 +120,7 @@ export default {
 
         .title {
           font-weight: 500;
-          font-family: "Poppins";
+          font-family: "Poppins", sans-serif;
           color: $grey-primary;
         }
 

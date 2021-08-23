@@ -20,7 +20,8 @@
           </div>
         </div>
         <div class="column-center">
-          <img src="~/assets/icons/select-active.svg" />
+          <img v-if="index === 0" src="~/assets/icons/select-active.svg" />
+          <img v-else src="~/assets/icons/select-inactive.svg" />
         </div>
       </Wrapper>
       <Wrapper px="3">

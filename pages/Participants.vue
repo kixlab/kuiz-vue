@@ -17,16 +17,18 @@ export default {};
   flex-flow: column nowrap;
   align-items: center;
   width: 100%;
+  overflow: auto;
 
   .content-wrapper {
-    height: 100%;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 48px;
 
     .title {
       font-size: 25px;
       font-weight: 600;
-      font-family: "Poppins";
+      font-family: "Poppins", sans-serif;
     }
   }
 }

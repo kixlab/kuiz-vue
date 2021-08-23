@@ -4,6 +4,7 @@
   width: 100%;
   max-width: 360px;
   margin-left: 48px !important;
+  height: fit-content;
 
   .title {
     display: flex;
@@ -17,7 +18,7 @@
     span {
       font-size: 25px;
       font-weight: 600;
-      font-family: "Poppins";
+      font-family: "Poppins", sans-serif;
     }
   }
 }
