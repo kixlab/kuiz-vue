@@ -1,0 +1,22 @@
+@import "~/styles/colors.scss";
+
+.objective-item {
+  display: flex;
+  align-items: center;
+
+  .progress-count {
+    font-weight: 500;
+    color: $blue-primary;
+  }
+
+  img {
+    height: 64px;
+  }
+
+  span {
+    font-size: 19px;
+    font-weight: 500;
+    font-family: "Poppins";
+    padding-left: 24px;
+  }
+}

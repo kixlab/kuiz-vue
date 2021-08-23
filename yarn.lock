@@ -10800,6 +10800,11 @@ vue-no-ssr@^1.1.1:
   resolved "https://registry.yarnpkg.com/vue-no-ssr/-/vue-no-ssr-1.1.1.tgz#875f3be6fb0ae41568a837f3ac1a80eaa137b998"
   integrity sha512-ZMjqRpWabMPqPc7gIrG0Nw6vRf1+itwf0Itft7LbMXs2g3Zs/NFmevjZGN1x7K3Q95GmIjWbQZTVerxiBxI+0g==
 
+vue-radial-progress@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/vue-radial-progress/-/vue-radial-progress-0.3.2.tgz#3a13f94435c3a5010935c1ff3d4ee5c93bd46d15"
+  integrity sha512-F4eA9IFqoY5ZPBJNsqIu3C8J6TQ/5aQxUOAy+6wjVOvK+ljjs/8g8gUpy5CE2/THDH68+avwqov3ibaG1AyZSQ==
+
 vue-router@^3.5.1:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.5.2.tgz#5f55e3f251970e36c3e8d88a7cd2d67a350ade5c"

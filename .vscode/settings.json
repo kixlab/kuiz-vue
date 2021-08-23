@@ -25,8 +25,8 @@
   "javascript.format.insertSpaceAfterConstructor": true,
   "javascript.format.semicolons": "insert",
   "typescript.format.semicolons": "insert",
-"sync.gist": "2b321551ebfc1cbbd311869dd3977be3",
-"window.zoomLevel": 0,
+  "sync.gist": "2b321551ebfc1cbbd311869dd3977be3",
+  "window.zoomLevel": 0,
   "python.pythonPath": "C:\\Program Files\\Python38\\python.exe",
   "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
   "verilog.linting.linter": "iverilog",
@@ -53,7 +53,5 @@
     },
     "editor.suggest.insertMode": "replace"
   },
-  "notebook.kernelProviderAssociations": [
-  
-  ]
+  "notebook.kernelProviderAssociations": []
 }

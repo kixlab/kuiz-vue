@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <g id="Circle" transform="translate(-0.055 0.156)">
+    <g id="Circle-2" data-name="Circle" transform="translate(0.055 -0.156)" fill="none" stroke="#06c71f" stroke-width="6">
+      <circle cx="32" cy="32" r="32" stroke="none"/>
+      <circle cx="32" cy="32" r="29" fill="none"/>
+    </g>
+    <g id="check" transform="translate(17.808 17.597)">
+      <rect id="사각형_4" data-name="사각형 4" width="28" height="28" transform="translate(0.247 0.246)" fill="none"/>
+      <path id="check-solid" d="M9.46,85.072.408,76.193a1.348,1.348,0,0,1,0-1.932l1.969-1.932a1.412,1.412,0,0,1,1.969,0l6.1,5.982L23.5,65.5a1.412,1.412,0,0,1,1.969,0l1.969,1.932a1.348,1.348,0,0,1,0,1.932L11.429,85.072a1.412,1.412,0,0,1-1.969,0Z" transform="translate(0.321 -61.039)" fill="#06c71f"/>
+    </g>
+  </g>
+</svg>
