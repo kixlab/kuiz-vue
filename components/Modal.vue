@@ -1,13 +1,25 @@
 <template>
   <transition name="fade">
     <div v-if="modalVisible" class="modal" @click="closeModal">
-      <Wrapper rounded shadow py="5" class="content-wrapper" @click.native.stop>
+      <img
+        v-if="modalIsImage"
+        :src="modalImageURL"
+        style="width: 100%; height: 100%; object-fit: contain"
+      />
+      <Wrapper
+        v-else
+        rounded
+        shadow
+        py="5"
+        class="content-wrapper"
+        @click.native.stop
+      >
         <img src="~/assets/images/modal-badge.png" class="badge" />
         <img
           v-if="modalIsAddCourse"
           src="~/assets/icons/arrow-back-black.svg"
           class="go-back"
-          @click="toggleModal('select')"
+          @click="toggleModal({ mode: 'select-course' })"
         />
         <AddCourse v-if="modalIsAddCourse" />
         <SelectCourse v-if="modalIsSelectCourse" />
@@ -31,6 +43,14 @@ export default {
 
     modalIsAddCourse() {
       return this.$store.state.modalIsAddCourse;
+    },
+
+    modalIsImage() {
+      return this.$store.state.modalIsImage;
+    },
+
+    modalImageURL() {
+      return this.$store.state.modalImageURL;
     },
   },
 

@@ -30,6 +30,10 @@ export default {
         className += " bg-primary";
       }
 
+      if (this.bg === "light") {
+        className += " bg-light";
+      }
+
       if (this.bg === "transparent") {
         className += " bg-transparent";
       }

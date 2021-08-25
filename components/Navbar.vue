@@ -6,7 +6,7 @@
     <Wrapper
       rounded
       class="row w-100 course-select"
-      @click.native="toggleModal('select')"
+      @click.native="toggleModal({ mode: 'select-course' })"
     >
       <div class="column" style="max-width: calc(100% - 18px)">
         <div class="course-code">HSS318</div>

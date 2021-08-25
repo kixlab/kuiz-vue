@@ -11,17 +11,16 @@
         </tr>
       </thead>
       <tbody>
-        <QuizItem />
-        <QuizItem />
-        <QuizItem />
-        <QuizItem />
-        <QuizItem />
-        <QuizItem />
-        <QuizItem />
-        <QuizItem />
-        <QuizItem />
-        <QuizItem />
-        <QuizItem />
+        <QuizItem :quiz-id="123" />
+        <QuizItem :quiz-id="123" />
+        <QuizItem :quiz-id="123" />
+        <QuizItem :quiz-id="123" />
+        <QuizItem :quiz-id="123" />
+        <QuizItem :quiz-id="123" />
+        <QuizItem :quiz-id="123" />
+        <QuizItem :quiz-id="123" />
+        <QuizItem :quiz-id="123" />
+        <QuizItem :quiz-id="123" />
       </tbody>
     </table>
   </Wrapper>

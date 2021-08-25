@@ -8,6 +8,11 @@
         rounded
         px="3"
         class="course-item row"
+        @click.native="
+          () => {
+            selectedCourse = index;
+          }
+        "
       >
         <div class="column" style="max-width: calc(100% - 36px)">
           <div class="course-metadata">
@@ -20,15 +25,14 @@
           </div>
         </div>
         <div class="column-center">
-          <img v-if="index === 0" src="~/assets/icons/select-active.svg" />
-          <img v-else src="~/assets/icons/select-inactive.svg" />
+          <RadioSelect :selected="selectedCourse === index" no-padding />
         </div>
       </Wrapper>
       <Wrapper px="3">
         <Wrapper
           rounded
           class="add-course row-center"
-          @click.native="toggleModal('add')"
+          @click.native="toggleModal({ mode: 'add-course' })"
         >
           <svg
             id="add_black_24dp"
@@ -50,7 +54,6 @@
               fill="#888"
             />
           </svg>
-
           <span style="margin-left: 4px">Add Course</span>
         </Wrapper>
       </Wrapper>
@@ -88,6 +91,7 @@ export default {
           title: "Brains, machines, and societies",
         },
       ],
+      selectedCourse: 0,
     };
   },
 

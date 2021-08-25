@@ -59,6 +59,7 @@ export default {
   flex-flow: column nowrap;
   align-items: center;
   width: 100%;
+  padding: 64px 48px;
 
   .content-wrapper {
     display: flex;
@@ -69,7 +70,6 @@ export default {
     max-width: 480px;
     height: 100%;
     margin: 0 auto;
-    padding: 64px 48px;
 
     .profile-image {
       position: relative;

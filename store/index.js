@@ -4,9 +4,11 @@
 
 const state = () => {
   const s = {
+    modalImageURL: "",
     modalVisible: false,
     modalIsSelectCourse: true,
     modalIsAddCourse: false,
+    modalIsImage: false,
     isLoggedIn: false,
   };
 
@@ -17,26 +19,52 @@ const state = () => {
 // Mutations
 // =================================================
 const mutations = {
-  toggleModal(state, mode) {
+  toggleModal(state, payload) {
     if (state.modalVisible) {
-      if (mode === "select") {
+      if (payload.mode === "select-course") {
         state.modalIsSelectCourse = true;
         state.modalIsAddCourse = false;
-      } else if (mode === "add") {
+        state.modalIsImage = false;
+      } else if (payload.mode === "add-course") {
         state.modalIsSelectCourse = false;
         state.modalIsAddCourse = true;
+        state.modalIsImage = false;
+      } else if (payload.mode === "image") {
+        state.modalIsSelectCourse = false;
+        state.modalIsAddCourse = false;
+        state.modalIsImage = true;
+        state.modalImageURL = payload.imageURL;
       } else {
-        state.modalVisible = !state.modalVisible;
+        state.modalVisible = false;
+        state.modalIsSelectCourse = false;
+        state.modalIsAddCourse = false;
+        state.modalIsImage = false;
       }
     } else {
+      if (payload.mode === "select-course") {
+        state.modalIsSelectCourse = true;
+        state.modalIsAddCourse = false;
+        state.modalIsImage = false;
+      } else if (payload.mode === "add-course") {
+        state.modalIsSelectCourse = false;
+        state.modalIsAddCourse = true;
+        state.modalIsImage = false;
+      } else if (payload.mode === "image") {
+        state.modalIsSelectCourse = false;
+        state.modalIsAddCourse = false;
+        state.modalIsImage = true;
+        state.modalImageURL = payload.imageURL;
+        console.log(payload.imageURL);
+      }
       state.modalVisible = !state.modalVisible;
     }
   },
 
   closeModal(state) {
     state.modalVisible = false;
-    state.modalIsSelectCourse = true;
+    state.modalIsSelectCourse = false;
     state.modalIsAddCourse = false;
+    state.modalIsImage = false;
   },
 
   logIn(state) {

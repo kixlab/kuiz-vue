@@ -1,7 +1,7 @@
 <template>
   <router-link :to="linkTo" :class="buildClass">
     <img
-      v-if="$route.path == to || $route.path == to + '/'"
+      v-if="$route.path.includes(to)"
       :src="require('~/assets/icons' + to + '-white.svg')"
     />
     <img v-else :src="require('~/assets/icons' + to + '-black.svg')" />

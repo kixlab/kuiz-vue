@@ -17,13 +17,13 @@ export default {};
   flex-flow: column nowrap;
   align-items: center;
   width: 100%;
+  padding: 48px;
   overflow: auto;
 
   .content-wrapper {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 48px;
 
     .title {
       font-size: 25px;

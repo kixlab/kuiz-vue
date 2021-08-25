@@ -48,23 +48,30 @@ tr {
         flex-wrap: nowrap;
         align-items: center;
         margin-top: 8px;
-
-        div {
-          padding: 2px 8px;
-          border-radius: 6px;
-          background-color: $orange-light;
-          font-size: 13px;
-
-          &:not(:first-child) {
-            margin-left: 8px;
-          }
-        }
       }
     }
 
     .author {
       div {
         font-size: 14px;
+
+        &.profile-image {
+          display: flex;
+          width: 18px;
+          height: 18px;
+
+          .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+        }
+
+        &.name {
+          display: inline-block;
+          padding-left: 4px;
+        }
 
         &.date {
           font-family: "Roboto", sans-serif;

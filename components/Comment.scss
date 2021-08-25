@@ -1,0 +1,51 @@
+@import "~/styles/colors.scss";
+
+.comment {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+
+  &:not(:first-child) {
+    margin-top: 24px;
+  }
+
+  .profile-image {
+    width: 42px;
+    height: 42px;
+
+    .avatar {
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  .box {
+    border: 1px solid $grey-ash;
+    margin-left: 16px;
+
+    div {
+      font-size: 14px;
+
+      &.head {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        .name {
+          font-weight: 500;
+        }
+
+        .date {
+          font-size: 13px;
+          color: $grey-primary;
+        }
+      }
+
+      &.body {
+        margin-top: 4px;
+      }
+    }
+  }
+}
