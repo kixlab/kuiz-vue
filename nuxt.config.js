@@ -44,7 +44,21 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     "@nuxtjs/eslint-module",
+    '@nuxtjs/auth-next',
+    '@nuxtjs/axios',
+    'cookie-universal-nuxt',
   ],
+  auth: {
+    strategies: {
+      google: {
+        clientId: '898813989783-1n1hqp96aamip41580luiu8r6vvaudc2.apps.googleusercontent.com',
+        clientSecret:"rJIcse9r6uh3LlWkifY5nYGV",
+        scope: ['profile', 'email'],
+        codeChallengeMethod: "",
+        responseType: 'token id_token'
+      },
+    },
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [

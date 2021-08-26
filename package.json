@@ -15,9 +15,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "@nuxtjs/auth": "^4.9.1",
+    "@nuxtjs/auth-next": "5.0.0-1624817847.21691f1",
     "@nuxtjs/axios": "^5.13.6",
+    "cookie-universal-nuxt": "^2.1.5",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
+    "vue-google-signin-button-directive": "^1.0.3",
     "vue-radial-progress": "^0.3.2"
   },
   "devDependencies": {
