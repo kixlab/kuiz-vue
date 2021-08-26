@@ -10,11 +10,7 @@
         bg="primary"
         icon="edit"
         class="create-quiz"
-        @click.native="
-          () => {
-            alert('In development');
-          }
-        "
+        @click.native="yeet"
       >
         Create Quiz
       </Button>
@@ -150,6 +146,14 @@ export default {
         },
       ],
     };
+  },
+
+  methods: {
+    yeet() {
+      alert(
+        "In development --- Donate coffee to Elliot to expedite the process.",
+      );
+    },
   },
 };
 </script>
