@@ -6,7 +6,7 @@
       }
     "
   >
-    <td class="text-center">#123</td>
+    <td class="text-center">#{{ quizId }}</td>
     <td class="question">
       <div class="text">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius mod

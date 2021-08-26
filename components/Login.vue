@@ -4,20 +4,19 @@
     <Wrapper px="6" py="0" class="description">
       You can sign in or register with your Google account.
     </Wrapper>
-    <b-button @click="loginWithGoogle()" icon-left="google">
-      <div style="padding: 0 8px">
-          <img src="~assets/images/brand-google.png" />
-        </div>
-        <div class="text">Sign in with Google</div>
-    </b-button>
-    <!-- <Wrapper px="6" style="margin: 64px 0">
-      <Wrapper rounded shadow class="row login" @click="loginWithGoogle()">
+    <Wrapper px="6" style="margin: 64px 0">
+      <Wrapper
+        rounded
+        shadow
+        class="row login"
+        @click.native="loginWithGoogle()"
+      >
         <div style="padding: 0 8px">
           <img src="~assets/images/brand-google.png" />
         </div>
         <div class="text">Sign in with Google</div>
       </Wrapper>
-    </Wrapper> -->
+    </Wrapper>
   </div>
 </template>
 
@@ -27,20 +26,22 @@ import { mapMutations } from "vuex";
 export default {
   methods: {
     ...mapMutations(["logIn"]),
+
     loginWithGoogle() {
       this.$auth.loginWith("google");
     },
-    signIn: async function () {
+
+    async signIn() {
       try {
         const authCode = await this.$gAuth.getAuthCode();
-        Axios.post("http://localhost:8080/auth/register", {
+        this.$axios.post("http://localhost:8080/auth/register", {
           code: authCode,
           redirect_uri: "http://localhost:3000/quizzes",
         });
       } catch (err) {
         console.log(err);
       }
-    }
+    },
   },
 };
 </script>
