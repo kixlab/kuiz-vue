@@ -1,7 +1,7 @@
 <template>
   <div class="quiz">
     <div class="content-wrapper column-center">
-      <Wrapper rounded shadow px="6" py="5" class="row">
+      <Wrapper rounded shadow px="0" py="0" class="row">
         <section class="leading">
           <div class="title">
             <img
@@ -182,7 +182,7 @@ export default {
 
       &.leading {
         width: 66.666666%;
-        padding-right: 24px;
+        padding: 20px 24px;
         border-right: 1px solid $grey-silver;
 
         .header {
@@ -363,7 +363,7 @@ export default {
 
       &.trailing {
         width: 33.333333%;
-        padding-left: 24px;
+        padding: 20px 24px;
 
         .comment-list {
           width: 100%;

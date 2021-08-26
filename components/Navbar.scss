@@ -27,6 +27,9 @@
       font-weight: 500;
       font-family: "Poppins", sans-serif;
       color: $grey-primary;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .course-title {
