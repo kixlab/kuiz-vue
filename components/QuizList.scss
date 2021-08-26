@@ -5,6 +5,43 @@
   flex-flow: column nowrap;
   padding: 24px 0 0 0 !important;
 
+  .action-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+
+    .search {
+      position: relative;
+      width: 100%;
+      max-width: 450px;
+
+      img {
+        position: absolute;
+        top: 11px;
+        left: 16px;
+        width: 28px;
+      }
+
+      input {
+        width: 100%;
+        border: 1px solid $grey-ash;
+        border-radius: 12px;
+        padding: 12px 16px 12px 60px;
+        font-family: "Poppins", sans-serif;
+
+        &:focus {
+          border: 1px solid $blue-primary;
+        }
+      }
+    }
+
+    .create-quiz {
+      margin: 0 !important;
+    }
+  }
+
   .table {
     margin-top: 24px;
 

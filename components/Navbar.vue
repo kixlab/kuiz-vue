@@ -9,8 +9,8 @@
       @click.native="toggleModal({ mode: 'select-course' })"
     >
       <div class="column" style="max-width: calc(100% - 18px)">
-        <div class="course-code">HSS318</div>
-        <div class="course-title">Special Topics in Environmental Studies</div>
+        <div class="course-code">EE204</div>
+        <div class="course-title">Electromagnetics I</div>
       </div>
       <div class="column-center">
         <img src="~/assets/icons/arrow-dropdown-black.svg" />

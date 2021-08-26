@@ -48,18 +48,17 @@
           </div>
           <div class="body">
             <div class="tags">
-              <Tag>SomeTag</Tag>
-              <Tag>SomeTag</Tag>
-              <Tag>SomeTag</Tag>
+              <Tag>Magnetostatistics</Tag>
+              <Tag>Lorentz force</Tag>
+              <Tag>Newton's 3rd law</Tag>
             </div>
             <div class="question-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum?
+              Shown below is a magnet on the left placed onto an electronic
+              balance that gives a reading of 115g. To the right the same magnet
+              is placed on the electronic balance but a wire carrying current
+              into the page is placed directly in between the north and south
+              ends of the magnet. To the right the balance now reads 100g. What
+              would happen if the current was increased in the wire?
             </div>
             <div
               class="question-image"
@@ -99,10 +98,6 @@
             <Comment />
             <Comment />
             <Comment />
-            <Comment />
-            <Comment />
-            <Comment />
-            <Comment />
           </div>
         </section>
       </Wrapper>
@@ -117,16 +112,15 @@ export default {
   data() {
     return {
       answer: [
-        "Hi, I'm answer 1",
-        "Hi, I'm answer 2",
-        "Hi, I'm answer 3",
-        "Hi, I'm answer 4",
+        "The balance reading would decrease",
+        "The balance reading would increase",
+        "The balance reading would stay the same",
+        "The balance reading would increase for a few seconds and then go back to its original reading",
       ],
       explanation:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "The direction of the force on the wire is given by the right-hand rule. The current is into the page and the magnetic field is to the right. By the right-hand rule, the force on the wire is then downwards. Newton's 3rd law says the force of the wire on the magnet is therefore upwards. Since the magnitude of the Lorentz force is given by F = IL x B, increasing the current will also increase the force of the wire on the magnet, directed upwards, so the balance reading would decrease.",
       selectedAnswer: 0,
-      imageURL:
-        "https://upload.wikimedia.org/wikipedia/commons/6/68/Velocity_vs_time_graph_for_average_acceleration_that_shows_dependence_on_time.jpg",
+      imageURL: "https://i.ibb.co/QDpF9YV/quiz-example.png",
       moreActionsVisible: false,
     };
   },
@@ -288,6 +282,7 @@ export default {
           }
 
           .question-text {
+            font-weight: 500;
             margin-top: 20px;
           }
 

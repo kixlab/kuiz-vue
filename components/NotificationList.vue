@@ -4,7 +4,7 @@
     <NotificationItem type="comment"></NotificationItem>
     <NotificationItem type="like"></NotificationItem>
     <NotificationItem type="comment"></NotificationItem>
-    <NotificationItem type="like"></NotificationItem>
+    <NotificationItem type="comment"></NotificationItem>
     <NotificationItem type="comment"></NotificationItem>
     <NotificationItem type="like"></NotificationItem>
     <NotificationItem type="comment"></NotificationItem>

@@ -9,8 +9,8 @@
         <div class="date">August 24 at 5:41 PM</div>
       </div>
       <div class="body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Does this mean that we will be able to lift up the magnet at some point
+        if we keep increasing the current? Also, is the wire fixed in the air?
       </div>
     </Wrapper>
   </div>

@@ -15,6 +15,8 @@
   }
 
   .course-select {
+    justify-content: space-between;
+
     &:hover {
       background-color: $grey-silver;
       cursor: pointer;

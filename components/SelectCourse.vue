@@ -75,15 +75,15 @@ export default {
     return {
       courses: [
         {
+          code: "EE204",
+          instructor: "Minseok Jang",
+          title: "Electromagnetics I",
+        },
+        {
           code: "HSS318",
           instructor: "Hana Kim",
           title:
             "Special Topics in Environmental Studies <Introduction to circular economy>",
-        },
-        {
-          code: "EE204",
-          instructor: "Minseok Jang",
-          title: "Electromagnetics I",
         },
         {
           code: "EE488",

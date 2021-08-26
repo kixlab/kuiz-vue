@@ -6,34 +6,26 @@
       }
     "
   >
-    <td class="text-center">#123</td>
+    <td class="text-center quiz-id">#{{ quizId }}</td>
     <td class="question">
       <div class="text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius mod
-        tempor incididunt ut labore e dolor sit amet dolore magna? Lorem ipsum
-        dolor sit amet, consectetur adipiscing elit, sed do eius mod tempor
-        incididunt ut labore e dolor sit amet dolore magna?
+        {{ question }}
       </div>
       <div class="tags">
-        <Tag>SomeTag</Tag>
-        <Tag>SomeTag</Tag>
-        <Tag>SomeTag</Tag>
+        <Tag v-for="(tag, index) in tags" :key="index">{{ tag }}</Tag>
       </div>
     </td>
-    <td class="text-center">5</td>
-    <td class="text-center">12</td>
+    <td class="text-center">{{ likes }}</td>
+    <td class="text-center">{{ comments }}</td>
     <td class="text-center">
       <div class="column author">
         <div class="row-center">
           <div class="profile-image">
-            <img
-              class="avatar"
-              src="https://img.freepik.com/free-vector/colorful-palm-silhouettes-background_23-2148541792.jpg?size=626&ext=jpg"
-            />
+            <img class="avatar" :src="avatar" />
           </div>
-          <div class="name">Elliot Jung</div>
+          <div class="name">{{ author }}</div>
         </div>
-        <div class="date">Oct 10, 2021</div>
+        <div class="date">{{ date }}</div>
       </div>
     </td>
   </tr>
@@ -43,6 +35,13 @@
 export default {
   props: {
     quizId: { type: Number, default: null },
+    question: { type: String, default: null },
+    tags: { type: Array, default: null },
+    likes: { type: Number, default: null },
+    comments: { type: Number, default: null },
+    avatar: { type: String, default: null },
+    author: { type: String, default: null },
+    date: { type: String, default: null },
   },
 };
 </script>
