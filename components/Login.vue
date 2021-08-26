@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import GoogleSignInButton from "vue-google-signin-button-directive";
 import { mapMutations } from "vuex";
 
 export default {
