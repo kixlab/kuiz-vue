@@ -9,16 +9,14 @@
       @click.native="toggleModal({ mode: 'select-course' })"
     >
       <div class="column" style="max-width: calc(100% - 18px)">
-        <div class="course-code">
-          EE204&nbsp;&nbsp;|&nbsp;&nbsp;Prof. Minseok Jang
-        </div>
-        <div class="course-title">Electromagnetics I</div>
+        <div class="course-code">EE488&nbsp;|&nbsp;Prof. Daehsik Kim</div>
+        <div class="course-title">Brain, Machines, and Societies</div>
       </div>
       <div class="column-center">
         <img src="~/assets/icons/arrow-dropdown-black.svg" />
       </div>
     </Wrapper>
-    <Wrapper class="column">
+    <Wrapper px="0" py="0" class="column">
       <NavItem rounded to="/quizzes">Quizzes</NavItem>
       <NavItem rounded to="/notifications">Notifications</NavItem>
       <NavItem rounded to="/participants">Participants</NavItem>
@@ -26,7 +24,7 @@
       <div class="divider"></div>
       <Wrapper rounded class="logout" @click.native="logOut">
         <img src="~/assets/icons/logout-black.svg" />
-        <span style="margin-left: 16px">Log Out</span>
+        <span style="margin-left: 12px">Log Out</span>
       </Wrapper>
     </Wrapper>
   </Wrapper>

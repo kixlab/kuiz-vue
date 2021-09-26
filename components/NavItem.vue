@@ -5,7 +5,7 @@
       :src="require('~/assets/icons' + to + '-white.svg')"
     />
     <img v-else :src="require('~/assets/icons' + to + '-black.svg')" />
-    <span style="margin-left: 16px"><slot /></span>
+    <span style="margin-left: 12px"><slot /></span>
   </router-link>
 </template>
 
@@ -13,8 +13,8 @@
 export default {
   props: {
     to: { type: String, default: "#" },
-    px: { type: Number, default: 4 },
-    py: { type: Number, default: 4 },
+    px: { type: Number, default: 3 },
+    py: { type: Number, default: 3 },
     bg: { type: String, default: null },
     rounded: { type: Boolean, default: false },
     shadow: { type: Boolean, default: false },

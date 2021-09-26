@@ -13,12 +13,6 @@ export default {};
 
 .wrapper {
   width: 100vw;
-  height: 100vh;
-  @include mbd(md) {
-    height: calc(100vh - 100px);
-  }
-  @include mbd(xs) {
-    height: calc(100vh - 50px);
-  }
+  height: 100%;
 }
 </style>

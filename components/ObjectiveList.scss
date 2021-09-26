@@ -4,8 +4,8 @@
   position: sticky;
   top: 0;
   width: 100%;
-  max-width: 280px;
-  margin-left: 48px !important;
+  max-width: 250px;
+  margin-left: 36px !important;
   height: fit-content;
 
   .title {
@@ -13,14 +13,15 @@
     align-items: center;
 
     img {
-      height: 32px;
+      height: 28px;
       padding-right: 12px;
     }
 
     span {
-      font-size: 25px;
+      font-size: 1.5rem;
       font-weight: 600;
       font-family: "Poppins", sans-serif;
+      letter-spacing: -0.02em;
     }
   }
 }

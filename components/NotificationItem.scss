@@ -3,7 +3,7 @@
 .notification-item {
   display: flex;
   align-items: center;
-  padding: 8px 16px !important;
+  padding: 12px 16px !important;
   border: 1px solid $grey-silver;
 
   &:hover {
@@ -16,8 +16,8 @@
   }
 
   .image-wrapper {
-    width: 80px;
-    padding: 16px;
+    width: 64px;
+    padding: 12px;
 
     img {
       width: 100%;
@@ -26,8 +26,8 @@
   }
 
   .text-wrapper {
-    width: calc(100% - 80px);
-    padding: 0 16px;
+    width: calc(100% - 64px);
+    padding: 0 12px;
 
     span {
       font-weight: 500;
@@ -39,6 +39,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        letter-spacing: -0.01em;
       }
     }
   }

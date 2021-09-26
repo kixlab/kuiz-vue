@@ -1,17 +1,24 @@
 @import "~/styles/colors.scss";
 
 .navbar {
-  position: relative;
+  position: fixed;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  max-width: 320px;
+  max-width: 260px;
+  height: 100%;
   padding-top: 64px !important;
   padding-bottom: 64px !important;
   border-right: 1px solid $grey-silver;
 
   > :not(:first-child) {
     margin-top: 48px;
+  }
+
+  .logo {
+    img {
+      height: 32px;
+    }
   }
 
   .course-select {
@@ -23,7 +30,7 @@
     }
 
     .course-code {
-      font-size: 15px;
+      font-size: 0.9rem;
       font-weight: 500;
       font-family: "Poppins", sans-serif;
       color: $grey-primary;
@@ -33,6 +40,7 @@
     }
 
     .course-title {
+      font-size: 0.9rem;
       font-family: "Poppins", sans-serif;
       white-space: nowrap;
       overflow: hidden;
@@ -49,15 +57,20 @@
   .logout {
     display: flex;
     align-items: center;
-    font-size: 19px;
+    font-size: 1.2rem;
     font-weight: 600;
     font-family: "Poppins", sans-serif;
+    letter-spacing: -0.02em;
     width: 100%;
     margin-top: 24px;
 
     &:hover {
       background-color: $grey-silver;
       cursor: pointer;
+    }
+
+    img {
+      height: 24px;
     }
   }
 }

@@ -7,8 +7,8 @@
 <script>
 export default {
   props: {
-    px: { type: String, default: "4" },
-    py: { type: String, default: "4" },
+    px: { type: String, default: "3" },
+    py: { type: String, default: "3" },
     bg: { type: String, default: null },
     rounded: { type: Boolean, default: false },
     shadow: { type: Boolean, default: false },

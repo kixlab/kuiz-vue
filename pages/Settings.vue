@@ -7,23 +7,22 @@
         </div>
         <img
           class="avatar"
-          src="https://img.freepik.com/free-vector/colorful-palm-silhouettes-background_23-2148541792.jpg?size=626&ext=jpg"
+          src="https://www.kixlab.org/assets/img/members/ejung.png"
         />
       </div>
       <div class="profile-info">
         <div class="info-item">
           <div class="title">Name</div>
-          <input v-model="info.name" />
+          <input v-model="profile.name" />
         </div>
         <div class="info-item">
           <div class="title">Student ID</div>
-          <input v-model="info.id" />
+          <input v-model="profile.id" />
         </div>
       </div>
       <Button
-        slim
         bg="primary"
-        style="margin-top: 48px"
+        style="margin: 48px 0 0 0 !important"
         @click.native="saveProfile"
       >
         Save Changes
@@ -36,7 +35,7 @@
 export default {
   data() {
     return {
-      info: {
+      profile: {
         name: "Elliot Jung",
         id: "20150681",
       },
@@ -59,7 +58,8 @@ export default {
   flex-flow: column nowrap;
   align-items: center;
   width: 100%;
-  padding: 64px 48px;
+  height: 100%;
+  padding: 60px 36px;
 
   .content-wrapper {
     display: flex;
@@ -97,7 +97,7 @@ export default {
         opacity: 0;
 
         img {
-          height: 32px;
+          height: 28px;
         }
       }
 
@@ -130,7 +130,7 @@ export default {
           border-radius: 12px;
           padding: 8px 16px;
           margin-top: 4px;
-          font-size: 19px;
+          font-size: 1.2rem;
 
           &:focus {
             border: 2px solid $blue-primary;

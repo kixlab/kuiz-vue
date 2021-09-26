@@ -5,13 +5,7 @@
         <img src="~assets/icons/search.svg" />
         <input placeholder="Search keywords" />
       </div>
-      <Button
-        slim
-        bg="primary"
-        icon="edit"
-        class="create-quiz"
-        @click.native="yeet"
-      >
+      <Button bg="primary" icon="edit" class="create-quiz" @click.native="yeet">
         Create Quiz
       </Button>
     </div>

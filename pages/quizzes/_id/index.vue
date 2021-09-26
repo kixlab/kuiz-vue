@@ -219,7 +219,7 @@ export default {
             }
 
             .date {
-              font-size: 14px;
+              font-size: 0.9rem;
               color: $grey-primary;
             }
           }
@@ -252,7 +252,6 @@ export default {
               z-index: 999;
 
               div {
-                font-size: 15px;
                 font-weight: 500;
                 font-family: "Poppins", sans-serif;
                 text-align: center;
@@ -354,7 +353,6 @@ export default {
             }
 
             .exp-text {
-              font-size: 15px;
               margin-top: 8px;
             }
           }

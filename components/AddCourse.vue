@@ -6,7 +6,7 @@
       website on KLMS for related announcements or ask the instructor for access
       code.
     </Wrapper>
-    <Wrapper class="row-center" style="margin: 48px 0">
+    <Wrapper class="row-center" style="margin: 28px 0">
       <div class="code-input">
         <input
           v-model="code.firstDigit"

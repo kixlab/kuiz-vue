@@ -4,32 +4,29 @@
   width: 100%;
   height: 100%;
 
-  > :not(:first-child) {
-    margin-top: 8px;
-  }
-
   .modal-title {
     width: 100%;
-    margin-top: 36px;
-    font-size: 25px;
+    font-size: 1.5rem;
     font-weight: 600;
     font-family: "Poppins", sans-serif;
     text-align: center;
+    letter-spacing: -0.02em;
   }
 
   .description {
     color: $grey-primary;
     text-align: center;
+    margin: 0;
   }
 
   .code-input {
     input {
-      width: 72px;
-      height: 96px;
+      width: 68px;
+      height: 86px;
       border-radius: 12px;
       border: 2px solid $grey-ash;
       font-family: "Poppins", sans-serif;
-      font-size: 58px;
+      font-size: 48px;
       font-weight: 600;
       text-align: center;
 
@@ -38,7 +35,7 @@
       }
 
       &:not(:first-child) {
-        margin-left: 16px;
+        margin-left: 12px;
       }
     }
   }

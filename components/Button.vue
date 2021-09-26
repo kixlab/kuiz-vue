@@ -4,7 +4,7 @@
       v-if="icon !== null && bg === 'primary'"
       :src="require('~/assets/icons/' + icon + '-white.svg')"
     />
-    <span style="padding-left: 8px; padding-right: 8px">
+    <span style="padding-left: 4px; padding-right: 4px">
       <slot />
     </span>
   </button>
@@ -13,8 +13,8 @@
 <script>
 export default {
   props: {
-    px: { type: Number, default: 4 },
-    py: { type: Number, default: 4 },
+    px: { type: Number, default: 3 },
+    py: { type: Number, default: 3 },
     bg: { type: String, default: null },
     icon: { type: String, default: null },
     slim: { type: Boolean, default: false },

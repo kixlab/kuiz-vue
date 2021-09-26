@@ -5,9 +5,9 @@
     </div>
     <radial-progress-bar
       v-else
-      :diameter="64"
-      :stroke-width="6"
-      :inner-stroke-width="6"
+      :diameter="58"
+      :stroke-width="5"
+      :inner-stroke-width="5"
       :completed-steps="completed"
       :total-steps="total"
       :is-clockwise="false"

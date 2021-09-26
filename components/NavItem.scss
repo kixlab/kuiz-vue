@@ -9,10 +9,15 @@
 .nav-item {
   display: flex;
   align-items: center;
-  font-size: 19px;
+  font-size: 1.2rem;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
+  letter-spacing: -0.02em;
   width: 100%;
+
+  img {
+    height: 24px;
+  }
 
   &:not(.nuxt-link-active):hover {
     background-color: $grey-silver;

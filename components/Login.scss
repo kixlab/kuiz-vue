@@ -2,10 +2,11 @@
 
 .title {
   width: 100%;
-  font-size: 25px;
+  font-size: 1.5rem;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
   text-align: center;
+  letter-spacing: -0.02em;
 }
 
 .description {
@@ -24,10 +25,11 @@
   }
 
   .text {
-    font-size: 19px;
+    font-size: 1.2rem;
     font-weight: 500;
     font-family: "Poppins", sans-serif;
     text-align: center;
+    letter-spacing: -0.02em;
     width: 100%;
   }
 }

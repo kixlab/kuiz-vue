@@ -3,7 +3,7 @@
     <Wrapper py="0" bg="transparent">
       <img src="~assets/images/logo.png" style="height: 32px" />
     </Wrapper>
-    <Wrapper rounded shadow py="5" style="margin-top: 48px">
+    <Wrapper rounded shadow py="6" style="margin-top: 28px">
       <Login v-if="!isLoggedIn" />
       <AddCourse v-if="isLoggedIn" />
     </Wrapper>

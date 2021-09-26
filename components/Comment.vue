@@ -1,7 +1,7 @@
 <template>
   <div class="comment">
     <div class="profile-image">
-      <img class="avatar" src="~assets/images/profile-default.png" />
+      <img class="avatar" src="~/assets/images/profile-default.png" />
     </div>
     <Wrapper rounded px="3" py="2" class="box">
       <div class="head">
