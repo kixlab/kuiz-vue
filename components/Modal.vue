@@ -10,7 +10,7 @@
         v-else
         rounded
         shadow
-        py="5"
+        py="6"
         class="content-wrapper"
         @click.native.stop
       >

@@ -14,7 +14,15 @@
         <div class="student-name">{{ name }}</div>
       </div>
     </td>
-    <td class="text-center">{{ taskStatus }}</td>
+    <td v-if="taskStatus === 2" class="text-center status complete">
+      Complete
+    </td>
+    <td v-if="taskStatus === 1" class="text-center status in-progress">
+      In Progress
+    </td>
+    <td v-if="taskStatus === 0" class="text-center status not-started">
+      Not Started
+    </td>
     <td class="text-center">{{ quizCreated }}</td>
     <td class="text-center">{{ quizSolved }}</td>
     <td class="text-center">{{ quizCommented }}</td>
@@ -39,15 +47,15 @@ export default {
         this.quizSolved === 5 &&
         this.quizCommented === 5
       ) {
-        return "Complete";
+        return 2;
       } else if (
         this.quizCreated === 0 &&
         this.quizSolved === 0 &&
         this.quizCommented === 0
       ) {
-        return "Not Started";
+        return 0;
       } else {
-        return "In Progress";
+        return 1;
       }
     },
   },

@@ -36,6 +36,7 @@ tr {
 
     &.question {
       max-width: 480px;
+      letter-spacing: -0.01em;
 
       .text {
         display: -webkit-box;
@@ -51,6 +52,19 @@ tr {
         flex-wrap: nowrap;
         align-items: center;
         margin-top: 8px;
+      }
+    }
+
+    &.like {
+      img {
+        height: 15px;
+        margin-bottom: 1px;
+      }
+    }
+
+    &.comment {
+      img {
+        height: 15px;
       }
     }
 

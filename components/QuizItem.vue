@@ -15,8 +15,14 @@
         <Tag v-for="(tag, index) in tags" :key="index">{{ tag }}</Tag>
       </div>
     </td>
-    <td class="text-center">{{ likes }}</td>
-    <td class="text-center">{{ comments }}</td>
+    <td class="like text-center">
+      <img src="~/assets/icons/like.svg" />
+      {{ likes }}
+    </td>
+    <td class="comment text-center">
+      <img src="~/assets/icons/comment.svg" />
+      {{ comments }}
+    </td>
     <td class="text-center">
       <div class="column author">
         <div class="row-center">

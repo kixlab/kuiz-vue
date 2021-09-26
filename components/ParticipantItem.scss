@@ -27,6 +27,22 @@ tr {
       }
     }
 
+    &.status {
+      font-weight: 600;
+
+      &.complete {
+        color: $green-primary;
+      }
+
+      &.in-progress {
+        color: $blue-primary;
+      }
+
+      &.not-started {
+        color: $grey-primary;
+      }
+    }
+
     .student-id {
       font-family: "Roboto", sans-serif;
       font-size: 0.9rem;

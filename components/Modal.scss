@@ -17,6 +17,7 @@
   .content-wrapper {
     position: relative;
     max-width: 480px;
+    padding-top: 48px !important;
 
     .badge {
       position: absolute;
@@ -31,8 +32,8 @@
       top: 32px;
       left: 32px;
       right: 0;
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       padding: 4px;
 
       &:hover {
