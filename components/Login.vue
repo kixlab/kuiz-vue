@@ -46,14 +46,19 @@ export default {
     ...mapMutations(["logIn"]),
     async handleLogin() {
       try {
-        console.log(process.env);
         const GoogleUser = await this.$gAuth.signIn();
         if (!GoogleUser.isSignedIn()) { throw new Error("로그인에 실패했습니다."); };
         this.signedIn = GoogleUser.isSignedIn();
         this.userName = GoogleUser.getBasicProfile().getName();
         this.userImage = GoogleUser.getBasicProfile().getImageUrl();
         this.userEmail = GoogleUser.getBasicProfile().getEmail();
-        console.log(GoogleUser);
+        let rs = await this.$axios.post('http://localhost:8080/auth/register',{name:this.userName,email:this.userEmail})
+        console.log("class",rs.data.user.classes);
+        if(rs.data.user.classes.length){
+          this.$store.commit('login');
+          this.$router.push("/quizzes");
+        } else{
+        }
       } catch (e) {
         console.log("errr");
         console.error(e);
