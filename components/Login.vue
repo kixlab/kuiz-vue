@@ -12,26 +12,61 @@
         <div class="text">Sign in with Google</div>
       </Wrapper>
     </Wrapper>
+    <div>
+      <p> 로그인 여부: {{signedIn}}</p>
+      <img :src="userImage" width="50" height="50"/>
+      <p> 로그인 사용자 이름: {{ userName }} </p>
+      <p> 로그인 사용자 이메일: {{ userEmail }} </p>
+    </div>
+    <button
+      :disabled="!token"
+      @click.native="handleLogout"
+    >Sign Out</button>
   </div>
 </template>
 
 <script>
 import { mapMutations } from "vuex";
-// import { inject, toRefs } from "vue";
 
 export default {
   data: () => ({
+    signedIn: false,
+    userName: null,
+    userEmail: null,
+    userImage: null,
   }),
   methods: {
+    clear() {
+      this.signedIn = null;
+      this.userName = null;
+      this.userImage = null;
+      this.userEmail = null;
+    },
+
     ...mapMutations(["logIn"]),
     async handleLogin() {
       try {
-        console.log("aaa");
+        console.log(process.env);
         const GoogleUser = await this.$gAuth.signIn();
+        if (!GoogleUser.isSignedIn()) { throw new Error("로그인에 실패했습니다."); };
+        this.signedIn = GoogleUser.isSignedIn();
+        this.userName = GoogleUser.getBasicProfile().getName();
+        this.userImage = GoogleUser.getBasicProfile().getImageUrl();
+        this.userEmail = GoogleUser.getBasicProfile().getEmail();
         console.log(GoogleUser);
       } catch (e) {
         console.log("errr");
         console.error(e);
+      }
+    },
+    async handleLogout() {
+      try {
+        await this.$gAuth.signOut();
+        this.clear();
+      } catch (e) {
+        console.error(e);
+      } finally {
+        this.$router.push("/");
       }
     },
   },
