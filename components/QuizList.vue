@@ -52,7 +52,7 @@ export default {
           avatar:
             "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
           author: "Elliot Jung",
-          date: "Oct 10, 2021",
+          date: "Oct 10 at 8:00 PM",
         },
         {
           quizId: 122,
@@ -64,7 +64,7 @@ export default {
           avatar:
             "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
           author: "Inhwa Song",
-          date: "Oct 10, 2021",
+          date: "Oct 10 at 5:41 PM",
         },
         {
           quizId: 121,
@@ -76,7 +76,7 @@ export default {
           avatar:
             "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
           author: "Haesoo Kim",
-          date: "Oct 10, 2021",
+          date: "Oct 10 at 11:33 AM",
         },
         {
           quizId: 120,
@@ -88,7 +88,7 @@ export default {
           avatar:
             "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
           author: "Jaeryoung Ka",
-          date: "Oct 10, 2021",
+          date: "Oct 10 at 7:25 AM",
         },
         {
           quizId: 119,
@@ -100,7 +100,7 @@ export default {
           avatar:
             "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
           author: "Nicole Lee",
-          date: "Oct 09, 2021",
+          date: "Oct 9 at 9:15 PM",
         },
         {
           quizId: 118,
@@ -112,7 +112,7 @@ export default {
           avatar:
             "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
           author: "Nurlykhan Kopenov",
-          date: "Oct 09, 2021",
+          date: "Oct 9 at 2:56 PM",
         },
         {
           quizId: 117,
@@ -124,7 +124,7 @@ export default {
           avatar:
             "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
           author: "Elliot Jung",
-          date: "Oct 08, 2021",
+          date: "Oct 8 at 7:10 PM",
         },
         {
           quizId: 116,
@@ -136,7 +136,7 @@ export default {
           avatar:
             "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
           author: "Elliot Jung",
-          date: "Oct 08, 2021",
+          date: "Oct 8 at 3:13 PM",
         },
       ],
     };

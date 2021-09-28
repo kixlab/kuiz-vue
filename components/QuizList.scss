@@ -52,10 +52,11 @@
 
     thead th {
       background-color: $white-background;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       font-weight: 500;
       color: $grey-primary;
       text-transform: uppercase;
+      letter-spacing: 0.025em;
       padding: 12px 16px;
 
       &:first-child {

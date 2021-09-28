@@ -31,13 +31,15 @@ export default {
 .radio-select {
   display: flex;
   flex-flow: row nowrap;
+  align-items: center;
 
   &:hover {
     cursor: pointer;
   }
 
   .select {
-    padding: 0 16px;
+    height: 20px;
+    padding: 0 12px;
 
     &.no-padding {
       padding: 0;

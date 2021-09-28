@@ -4,9 +4,7 @@
       v-if="icon !== null && bg === 'primary'"
       :src="require('~/assets/icons/' + icon + '-white.svg')"
     />
-    <span style="padding-left: 4px; padding-right: 4px">
-      <slot />
-    </span>
+    <slot />
   </button>
 </template>
 
