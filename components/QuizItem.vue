@@ -15,13 +15,15 @@
         <Tag v-for="(tag, index) in tags" :key="index">{{ tag }}</Tag>
       </div>
     </td>
-    <td class="like text-center">
-      <img src="~/assets/icons/like.svg" />
-      {{ likes }}
-    </td>
-    <td class="comment text-center">
-      <img src="~/assets/icons/comment.svg" />
-      {{ comments }}
+    <td class="reactions">
+      <div class="like text-center">
+        <img src="~/assets/icons/like.svg" />
+        {{ likes }}
+      </div>
+      <div class="comment text-center">
+        <img src="~/assets/icons/comment.svg" />
+        {{ comments }}
+      </div>
     </td>
     <td class="text-center">
       <div class="column author">
@@ -43,8 +45,8 @@ export default {
     quizId: { type: Number, default: null },
     question: { type: String, default: null },
     tags: { type: Array, default: null },
-    likes: { type: Number, default: null },
-    comments: { type: Number, default: null },
+    likes: { type: Number, default: 0 },
+    comments: { type: Number, default: 0 },
     avatar: { type: String, default: null },
     author: { type: String, default: null },
     date: { type: String, default: null },

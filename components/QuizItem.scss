@@ -36,8 +36,8 @@ tr {
     }
 
     &.question {
-      max-width: 480px;
       letter-spacing: -0.01em;
+      max-width: 720px;
 
       .text {
         display: -webkit-box;
@@ -57,17 +57,18 @@ tr {
       }
     }
 
-    &.like {
-      img {
-        height: 15px;
-        margin-bottom: 1px;
+    &.reactions {
+      .like {
+        img {
+          height: 15px;
+          margin-bottom: 1px;
+        }
       }
-    }
 
-    &.comment {
-      img {
-        height: 15px;
-        margin-right: 1px;
+      .comment {
+        img {
+          height: 15px;
+        }
       }
     }
 

@@ -24,6 +24,12 @@
       @content;
     }
   }
+
+  @if $breakpoint == xl {
+    @media screen and (max-width: 1399.98px) {
+      @content;
+    }
+  }
 }
 
 // media-breakpoint-up

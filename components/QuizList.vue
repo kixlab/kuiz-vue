@@ -14,8 +14,7 @@
         <tr>
           <th class="text-center">No.</th>
           <th class="text-center">Question</th>
-          <th class="text-center">Likes</th>
-          <th class="text-center">Comments</th>
+          <th class="text-center">Reactions</th>
           <th class="text-center">Author</th>
         </tr>
       </thead>
