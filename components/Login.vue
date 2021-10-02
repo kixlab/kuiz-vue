@@ -58,23 +58,14 @@ export default {
           //this.$store.commit('logIn');
           this.$router.push("/quizzes");
         } else{
-          this.$store.commit('logIn');
-          console.log("isloggedin?",this.$store.state.isLoggedIn)
+          console.log("no class!")
+          const userInfo = {userEmail:this.userEmail, userName : this.userName, _id : this._id}
+          console.log("userInfo",this.userEmail, this.userName)
+          this.$store.commit('logIn',userInfo);
           //this.$router.push("/quizzes");
         }
-        // .then(
-        //   res =>{
-        //     console.log("class",res.data.user.classes);
-        //     if(res.data.user.classes.length){
-        //       this.$store.commit('login');
-        //       this.$router.push("/quizzes");
-        //     } else{
-        //       console.log()
-        //     }
-        //   }
-        // )
       } catch (e) {
-        console.log("errr");
+        console.log("error in Login.vue");
         console.error(e);
       }
     },

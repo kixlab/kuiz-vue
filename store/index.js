@@ -10,6 +10,9 @@ const state = () => {
     modalIsAddCourse: false,
     modalIsImage: false,
     isLoggedIn: false,
+    userEmail: "",
+    userName: "",
+    _id:"",
   };
 
   return s;
@@ -67,8 +70,12 @@ const mutations = {
     state.modalIsImage = false;
   },
 
-  logIn(state) {
+  logIn(state, userInfo) {
     state.isLoggedIn = true;
+    // console.log("This is",userInfo)
+    state.userEmail = userInfo.userEmail;
+    state.userName = userInfo.userName;
+    state._id = userInfo._id;
   },
 
   logOut(state) {

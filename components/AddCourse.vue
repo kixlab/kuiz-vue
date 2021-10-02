@@ -80,7 +80,7 @@ export default {
 
   methods: {
     onKeyUp(event) {
-      event.target.value = event.target.value.replace(/[^0-9]/g, "");
+      event.target.value = event.target.value.replace(/[^0-9]/g, "");//replace input which is not from 0-9 to ""(only get 1digit num input)
 
       if (
         (event.keyCode >= 48 && event.keyCode <= 57) ||
@@ -103,9 +103,28 @@ export default {
         prev.focus();
       }
     },
+    
 
-    enterCourse() {
+    async enterCourse() {
+      try {
+        var code = this.code.firstDigit.toString()+this.code.secondDigit.toString()+this.code.thirdDigit.toString()+this.code.fourthDigit.toString()
+      
+        const info = {userEmail: this.$store.state.userEmail, joinCode:code, _id : this.$store.state._id}
+        let rs = await this.$axios.post('http://localhost:8080/class/join',info)
+        console.log("rs.data",rs.data);
+        // if(rs.data.user.classes.length){
+        //   //this.$store.commit('logIn');
+        //   this.$router.push("/quizzes");
+        // } else{
+        //   this.$store.commit('logIn');
+        //   //this.$router.push("/quizzes");
+        // }
+      } catch (e) {
+        console.log("Error in AddCourse.vue");
+        console.error(e);
+      }
       this.closeModal();
+      
       this.$router.push("/quizzes");
     },
 
