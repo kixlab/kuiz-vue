@@ -53,17 +53,26 @@ export default {
         this.userImage = GoogleUser.getBasicProfile().getImageUrl();
         this.userEmail = GoogleUser.getBasicProfile().getEmail();
         let rs = await this.$axios.post('http://localhost:8080/auth/register',{name:this.userName,email:this.userEmail})
-        .then(
-          res =>{
-            if(res.data.user.classes.length){
-              this.$store.commit('login');
-              this.$router.push("/quizzes");
-            } else{
-            }
-          }
-        )
         console.log("class",rs.data.user.classes);
-        
+        if(rs.data.user.classes.length){
+          //this.$store.commit('logIn');
+          this.$router.push("/quizzes");
+        } else{
+          this.$store.commit('logIn');
+          console.log("isloggedin?",this.$store.state.isLoggedIn)
+          //this.$router.push("/quizzes");
+        }
+        // .then(
+        //   res =>{
+        //     console.log("class",res.data.user.classes);
+        //     if(res.data.user.classes.length){
+        //       this.$store.commit('login');
+        //       this.$router.push("/quizzes");
+        //     } else{
+        //       console.log()
+        //     }
+        //   }
+        // )
       } catch (e) {
         console.log("errr");
         console.error(e);
