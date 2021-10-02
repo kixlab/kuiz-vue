@@ -15,6 +15,7 @@
       </div>
     </td>
     <td v-if="taskStatus === 2" class="text-center status complete">
+      <img src="~/assets/icons/circle-check.svg" />
       Complete
     </td>
     <td v-if="taskStatus === 1" class="text-center status in-progress">

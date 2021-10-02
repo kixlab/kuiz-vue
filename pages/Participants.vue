@@ -12,17 +12,22 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+@import "~/styles/mixins.scss";
+
 .participants {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   width: 100%;
   padding: 60px 36px;
+  @include mbd(xl) {
+    padding: 60px 24px;
+  }
   overflow: auto;
 
   .content-wrapper {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
 
     .title {

@@ -52,6 +52,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "~/styles/colors.scss";
+@import "~/styles/mixins.scss";
 
 .settings {
   display: flex;
@@ -60,6 +61,9 @@ export default {
   width: 100%;
   height: 100%;
   padding: 60px 36px;
+  @include mbd(xl) {
+    padding: 60px 24px;
+  }
 
   .content-wrapper {
     display: flex;

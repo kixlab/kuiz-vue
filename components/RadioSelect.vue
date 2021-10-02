@@ -3,18 +3,10 @@
     <img
       v-if="selected"
       class="select"
-      :class="{ 'no-padding': noPadding }"
       src="~/assets/icons/select-active.svg"
     />
-    <img
-      v-else
-      class="select"
-      :class="{ 'no-padding': noPadding }"
-      src="~/assets/icons/select-inactive.svg"
-    />
-    <div class="text">
-      <slot></slot>
-    </div>
+    <img v-else class="select" src="~/assets/icons/select-inactive.svg" />
+    <div class="text"></div>
   </div>
 </template>
 
@@ -31,17 +23,14 @@ export default {
 .radio-select {
   display: flex;
   flex-flow: row nowrap;
+  align-items: center;
 
   &:hover {
     cursor: pointer;
   }
 
   .select {
-    padding: 0 16px;
-
-    &.no-padding {
-      padding: 0;
-    }
+    height: 20px;
   }
 }
 </style>

@@ -59,6 +59,14 @@ export default {
           quizCommented: 5,
         },
         {
+          avatar: "https://www.kixlab.org/assets/img/members/Nurlykhan.jpg",
+          id: 20123456,
+          name: "Nurlykhan Kopenov",
+          quizCreated: 2,
+          quizSolved: 5,
+          quizCommented: 4,
+        },
+        {
           avatar: "https://juhokim.com/images/Me/juhokim-profile-2016-1.jpg",
           id: 20123456,
           name: "Juho Kim",
@@ -73,23 +81,6 @@ export default {
           quizCreated: 4,
           quizSolved: 3,
           quizCommented: 5,
-        },
-        {
-          avatar: "https://www.kixlab.org/assets/img/members/Nurlykhan.jpg",
-          id: 20123456,
-          name: "Nurlykhan Kopenov",
-          quizCreated: 2,
-          quizSolved: 5,
-          quizCommented: 4,
-        },
-        {
-          avatar:
-            "https://koreajoongangdaily.joins.com/data/photo/2021/02/18/a8e65155-e46d-4698-a011-57d99b6bccf4.jpg",
-          id: 20123456,
-          name: "Kwanghyung Lee",
-          quizCreated: 0,
-          quizSolved: 2,
-          quizCommented: 1,
         },
         {
           avatar: "https://www.kixlab.org/assets/img/members/ejung.png",

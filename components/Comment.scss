@@ -6,12 +6,21 @@
   width: 100%;
 
   &:not(:first-child) {
-    margin-top: 24px;
+    margin-top: 20px;
+  }
+
+  &.my {
+    flex-direction: row-reverse;
+
+    .box {
+      background-color: $grey-silver;
+    }
   }
 
   .profile-image {
     width: 42px;
     height: 42px;
+    margin: 0 6px;
 
     .avatar {
       height: 100%;
@@ -22,7 +31,9 @@
 
   .box {
     border: 1px solid $grey-ash;
-    margin-left: 16px;
+    margin: 0px 6px;
+    width: initial !important;
+    max-width: 540px;
 
     div {
       font-size: 0.9rem;
@@ -30,21 +41,24 @@
       &.head {
         display: flex;
         flex-flow: row nowrap;
-        justify-content: space-between;
         align-items: center;
 
         .name {
-          font-weight: 500;
+          font-weight: 600;
+          font-family: "Poppins", sans-serif;
         }
 
         .date {
-          font-size: 13px;
+          font-size: 11px;
           color: $grey-primary;
+          align-self: flex-end;
+          margin-left: 8px;
         }
       }
 
       &.body {
         margin-top: 4px;
+        overflow-wrap: break-word;
       }
     }
   }

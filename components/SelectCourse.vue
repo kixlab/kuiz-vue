@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="column-center">
-          <RadioSelect :selected="selectedCourse === index" no-padding />
+          <RadioSelect :selected="selectedCourse === index" />
         </div>
       </Wrapper>
       <Wrapper px="3">

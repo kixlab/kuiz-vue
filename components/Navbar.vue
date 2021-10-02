@@ -9,7 +9,9 @@
       @click.native="toggleModal({ mode: 'select-course' })"
     >
       <div class="column" style="max-width: calc(100% - 18px)">
-        <div class="course-code">EE488&nbsp;|&nbsp;Prof. Daehsik Kim</div>
+        <div class="course-code">
+          EE488&nbsp;&nbsp;|&nbsp;&nbsp;Prof. Daehsik Kim
+        </div>
         <div class="course-title">Brain, Machines, and Societies</div>
       </div>
       <div class="column-center">

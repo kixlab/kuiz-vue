@@ -112,13 +112,6 @@ export default {
         const info = {userEmail: this.$store.state.userEmail, joinCode:code, _id : this.$store.state._id}
         let rs = await this.$axios.post('http://localhost:8080/class/join',info)
         console.log("rs.data",rs.data);
-        // if(rs.data.user.classes.length){
-        //   //this.$store.commit('logIn');
-        //   this.$router.push("/quizzes");
-        // } else{
-        //   this.$store.commit('logIn');
-        //   //this.$router.push("/quizzes");
-        // }
       } catch (e) {
         console.log("Error in AddCourse.vue");
         console.error(e);

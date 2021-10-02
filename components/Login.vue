@@ -55,7 +55,6 @@ export default {
         let rs = await this.$axios.post('http://localhost:8080/auth/register',{name:this.userName,email:this.userEmail})
         console.log("class",rs.data.user.classes);
         if(rs.data.user.classes.length){
-          //this.$store.commit('logIn');
           this.$router.push("/quizzes");
         } else{
           console.log("no class!")
