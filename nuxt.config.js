@@ -7,12 +7,12 @@ export default {
 
   // Configure router settings
   router: {
-    base: process.env.NODE_ENV === "staging" ? "/" : "/sgmcq-vue/",
+    base: process.env.NODE_ENV === "staging" ? "/" : "/kuiz-vue/",
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "sgmcq-vue",
+    title: "Kuiz",
     htmlAttrs: {
       lang: "en",
     },
@@ -35,7 +35,7 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ["~/plugins/vue2-animate"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

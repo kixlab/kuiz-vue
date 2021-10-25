@@ -1,6 +1,11 @@
 <template>
   <transition name="fade">
-    <div v-if="modalVisible" class="modal" @click="closeModal">
+    <div
+      v-if="modalVisible"
+      style="animation-duration: 0.3s"
+      class="modal"
+      @click="closeModal"
+    >
       <img
         v-if="modalIsImage"
         :src="modalImageURL"

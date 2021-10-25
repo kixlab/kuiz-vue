@@ -142,7 +142,6 @@
 
 <script>
 import { mapMutations } from "vuex";
-import "vue2-animate/dist/vue2-animate.min.css";
 
 export default {
   data() {
@@ -209,7 +208,7 @@ export default {
   flex-flow: column nowrap;
   align-items: center;
   width: 100%;
-  padding: 16px 36px 60px;
+  padding: 48px 36px;
   overflow: auto;
 
   .outer-wrapper {

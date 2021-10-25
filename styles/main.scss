@@ -1,7 +1,7 @@
 /****************** IMPORT DEPENDENCIES ******************/
 @import "./reboot.scss";
 @import "./mixins.scss";
-@import "./type.scss";
+@import "./typography.scss";
 @import "./colors.scss";
 
 /****************** GLOBAL STYLE ******************/
@@ -55,6 +55,29 @@ button {
   color: $grey-ash;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $grey-silver;
+  border-radius: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $blue-primary;
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $blue-primary;
+}
+
 /****************** CUSTOM CLASSES ******************/
 
 .fs-15 {
@@ -104,39 +127,4 @@ button {
 
 .text-center {
   text-align: center !important;
-}
-
-/****************** SCROLLBAR STYLE OVERRIDE ******************/
-
-/* width */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: $grey-silver;
-  border-radius: 2px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: $blue-primary;
-  border-radius: 2px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: $blue-primary;
-}
-
-/********************** VUE TRANSITION **********************/
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
 }

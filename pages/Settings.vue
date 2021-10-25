@@ -60,9 +60,9 @@ export default {
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: 60px 36px;
+  padding: 48px 36px;
   @include mbd(xl) {
-    padding: 60px 24px;
+    padding: 36px 24px;
   }
 
   .content-wrapper {

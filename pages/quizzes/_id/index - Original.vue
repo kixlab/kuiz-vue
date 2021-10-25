@@ -149,7 +149,7 @@ export default {
   flex-flow: column nowrap;
   align-items: center;
   width: 100%;
-  padding: 16px 36px 60px;
+  padding: 48px 36px;
   overflow: auto;
 
   .content-wrapper {
