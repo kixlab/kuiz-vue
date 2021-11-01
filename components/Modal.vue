@@ -59,8 +59,22 @@ export default {
     },
   },
 
+  mounted() {
+    window.addEventListener("keydown", this.keyDownHandler);
+  },
+
+  destroyed() {
+    window.removeEventListener("keydown", this.keyDownHandler);
+  },
+
   methods: {
     ...mapMutations(["closeModal", "toggleModal"]),
+
+    keyDownHandler(e) {
+      if (e.key === "Escape") {
+        this.closeModal();
+      }
+    },
   },
 };
 </script>
