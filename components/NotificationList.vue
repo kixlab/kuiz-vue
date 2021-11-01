@@ -1,12 +1,12 @@
 <template>
   <Wrapper rounded shadow class="notification-list">
-    <NotificationItem type="like"></NotificationItem>
+    <NotificationItem type="create-quiz"></NotificationItem>
     <NotificationItem type="comment"></NotificationItem>
-    <NotificationItem type="like"></NotificationItem>
+    <NotificationItem type="create-quiz"></NotificationItem>
     <NotificationItem type="comment"></NotificationItem>
     <NotificationItem type="comment"></NotificationItem>
     <NotificationItem type="comment"></NotificationItem>
-    <NotificationItem type="like"></NotificationItem>
+    <NotificationItem type="create-quiz"></NotificationItem>
     <NotificationItem type="comment"></NotificationItem>
   </Wrapper>
 </template>

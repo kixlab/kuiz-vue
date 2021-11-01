@@ -1,49 +1,85 @@
 <template>
-  <Wrapper rounded shadow px="6" py="6" class="quiz-list">
-    <div class="action-header">
-      <div></div>
-      <!--
-      <div class="search">
-        <img src="~assets/icons/search.svg" />
-        <input placeholder="Search keywords" />
-      </div>
-      -->
-      <Button bg="primary" icon="edit" class="create-quiz" @click.native="yeet">
-        Create Quiz
-      </Button>
+  <div class="activity">
+    <div class="content-wrapper">
+      <div class="title">My Activity</div>
+      <Wrapper rounded shadow class="quiz-list">
+        <div class="tab-group">
+          <div
+            class="tab"
+            :class="{ active: activeTab === 0 }"
+            @click="activeTab = 0"
+          >
+            Created Quizzes
+          </div>
+          <div
+            class="tab"
+            :class="{ active: activeTab === 1 }"
+            @click="activeTab = 1"
+          >
+            Solved Quizzes
+          </div>
+        </div>
+        <table v-if="activeTab === 0" class="table">
+          <thead>
+            <tr>
+              <th class="text-center">No.</th>
+              <th class="text-center">Question</th>
+              <th class="text-center">Reactions</th>
+              <th class="text-center">Author</th>
+            </tr>
+          </thead>
+          <tbody>
+            <QuizItem
+              v-for="(quiz, index) in quizzes"
+              :key="index"
+              :quiz-id="quiz.quizId"
+              :question="quiz.question"
+              :tags="quiz.tags"
+              :likes="quiz.likes"
+              :comments="quiz.comments"
+              :correct-ratio="quiz.correctRatio"
+              :avatar="quiz.avatar"
+              :author="quiz.author"
+              :date="quiz.date"
+            />
+          </tbody>
+        </table>
+
+        <table v-if="activeTab === 1" class="table">
+          <thead>
+            <tr>
+              <th class="text-center">No.</th>
+              <th class="text-center">Question</th>
+              <th class="text-center">Reactions</th>
+              <th class="text-center">Author</th>
+            </tr>
+          </thead>
+          <tbody>
+            <QuizItem
+              v-for="(quiz, index) in quizzes"
+              :key="index"
+              :quiz-id="quiz.quizId"
+              :question="quiz.question"
+              :tags="quiz.tags"
+              :likes="quiz.likes"
+              :comments="quiz.comments"
+              :correct-ratio="quiz.correctRatio"
+              :avatar="quiz.avatar"
+              :author="quiz.author"
+              :date="quiz.date"
+            />
+          </tbody>
+        </table>
+      </Wrapper>
     </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="text-center">No.</th>
-          <th class="text-center">Question</th>
-          <th class="text-center">Reactions</th>
-          <th class="text-center">Author</th>
-        </tr>
-      </thead>
-      <tbody>
-        <QuizItem
-          v-for="(quiz, index) in quizzes"
-          :key="index"
-          :quiz-id="quiz.quizId"
-          :question="quiz.question"
-          :tags="quiz.tags"
-          :likes="quiz.likes"
-          :comments="quiz.comments"
-          :correct-ratio="quiz.correctRatio"
-          :avatar="quiz.avatar"
-          :author="quiz.author"
-          :date="quiz.date"
-        />
-      </tbody>
-    </table>
-  </Wrapper>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      activeTab: 0,
       quizzes: [
         {
           quizId: 123,
@@ -152,15 +188,109 @@ export default {
       ],
     };
   },
-
-  methods: {
-    yeet() {
-      alert(
-        "In development --- Donate coffee to Elliot to expedite the process.",
-      );
-    },
-  },
 };
 </script>
 
-<style src="./QuizList.scss" lang="scss" scoped />
+<style lang="scss" scoped>
+@import "~/styles/mixins.scss";
+@import "~/styles/colors.scss";
+
+.activity {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 100%;
+  padding: 48px 36px;
+  @include mbd(xl) {
+    padding: 36px 24px;
+  }
+  overflow: auto;
+
+  .content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      font-family: "Poppins", sans-serif;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .quiz-list {
+      display: flex;
+      flex-flow: column nowrap;
+      min-height: 189px;
+      padding: 0 !important;
+      margin-top: 24px !important;
+
+      .tab-group {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+
+        .tab {
+          flex: 0 0 50%;
+          max-width: 50%;
+          padding: 16px 0;
+          font-size: 1.2rem;
+          font-weight: 600;
+          font-family: "Poppins", sans-serif;
+          letter-spacing: -0.02em;
+          text-align: center;
+          cursor: pointer;
+
+          &:not(.active):hover {
+            background-color: $grey-silver;
+          }
+
+          &.active {
+            color: $white-flat;
+            background-color: $blue-primary;
+          }
+
+          &:first-child {
+            border-top-left-radius: 12px;
+          }
+
+          &:last-child {
+            border-top-right-radius: 12px;
+          }
+        }
+      }
+
+      .table {
+        th,
+        td {
+          border-top: 1px solid $grey-silver;
+        }
+
+        thead th {
+          background-color: $white-background;
+          font-size: 0.8rem;
+          font-weight: 500;
+          color: $grey-primary;
+          text-transform: uppercase;
+          letter-spacing: 0.025em;
+          padding: 12px 16px;
+
+          &:first-child {
+            padding-left: 28px;
+            padding-right: 28px;
+          }
+
+          &:nth-child(2) {
+            padding-left: 0;
+          }
+
+          &:last-child {
+            min-width: 130px;
+          }
+        }
+      }
+    }
+  }
+}
+</style>

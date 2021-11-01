@@ -27,6 +27,7 @@
                 <div class="date">August 24 at 5:41 PM</div>
               </div>
             </div>
+            <!--
             <div class="more">
               <img
                 src="~assets/icons/more-horizontal.svg"
@@ -48,13 +49,20 @@
                 <div>Delete</div>
               </Wrapper>
             </div>
+            -->
           </div>
           <div class="body">
-            <div class="tags">
-              <Tag>Magnetostatistics</Tag>
-              <Tag>Lorentz force</Tag>
-              <Tag>Newton's 3rd law</Tag>
+            <div class="metadata">
+              <div class="tags">
+                <Tag>Magnetostatistics</Tag>
+              </div>
+              <div class="correct-ratio text-center">
+                <img src="~assets/icons/circle-check.svg" />
+                {{ correctRatio }}% of students got the correct answer on their
+                first try.
+              </div>
             </div>
+
             <div class="question-text">
               Shown below is a magnet on the left placed onto an electronic
               balance that gives a reading of 115g. To the right the same magnet
@@ -94,6 +102,7 @@
                 @click.native="
                   () => {
                     isSolved = !isSolved;
+                    showComments = !showComments;
                   }
                 "
               >
@@ -113,28 +122,74 @@
                 <div class="exp-text">{{ explanation }}</div>
               </Wrapper>
             </transition>
+            <transition
+              name="custom-classes-transition"
+              enter-active-class="animated flipInX"
+              leave-active-class="animated flipOutX"
+            >
+              <div v-if="isSolved" class="row-center" style="margin-top: 32px">
+                <div class="like-text">Was the quiz helpful?</div>
+                <Button
+                  px="6"
+                  rounded
+                  shadow
+                  class="like"
+                  :class="{ liked: isLiked }"
+                  @click.native="
+                    () => {
+                      isLiked = !isLiked;
+                    }
+                  "
+                >
+                  <img
+                    v-if="isLiked"
+                    src="~/assets/icons/like-solid-outline.svg"
+                  />
+                  <img v-else src="~/assets/icons/like-outline.svg" />
+                  123
+                </Button>
+              </div>
+            </transition>
           </div>
         </section>
-        <!-- <div class="show-comments">Show Comments</div> -->
-        <section v-if="isSolved" class="comments">
-          <div class="title">Comments</div>
-          <div class="comment-list">
-            <Comment
-              v-for="(comment, index) in comments"
-              :key="index"
-              :name="comment.name"
-              :date="comment.date"
-              :body="comment.body"
-              :class="{ 'my': comment.name === 'Elliot Jung' }"
-            />
-          </div>
-          <div class="row reply">
-            <textarea placeholder="Write a comment..." rows="2" />
-            <div class="submit row-center">
-              <img src="~/assets/icons/send-white.svg" />
+        <div
+          class="show-comments"
+          :class="{ open: showComments }"
+          @click="
+            () => {
+              showComments = !showComments;
+            }
+          "
+        >
+          <img src="~/assets/icons/arrow-dropdown-black.svg" />
+          {{ showComments ? "Hide" : "Show" }} Comments
+          <img src="~/assets/icons/arrow-dropdown-black.svg" />
+        </div>
+        <transition
+          name="custom-classes-transition"
+          enter-active-class="animated zoomIn"
+          leave-active-class="animated zoomOut"
+        >
+          <section v-if="showComments" class="comments">
+            <div class="title">Comments</div>
+            <div class="comment-list">
+              <Comment
+                v-for="(comment, index) in comments"
+                :key="index"
+                :name="comment.name"
+                :date="comment.date"
+                :body="comment.body"
+                :class="{ 'my': comment.name === 'Elliot Jung' }"
+              />
             </div>
-          </div>
-        </section>
+            <div class="row reply">
+              <textarea placeholder="Write a comment..." rows="2" />
+              <div class="submit row-center">
+                <img src="~/assets/icons/send-white.svg" />
+              </div>
+            </div>
+          </section>
+        </transition>
       </Wrapper>
     </div>
   </div>
@@ -146,6 +201,7 @@ import { mapMutations } from "vuex";
 export default {
   data() {
     return {
+      correctRatio: 12,
       answers: [
         "The balance reading would decrease",
         "The balance reading would increase",
@@ -176,6 +232,7 @@ export default {
       imageURL: "https://i.ibb.co/QDpF9YV/quiz-example.png",
       moreActionsVisible: false,
       isSolved: false,
+      isLiked: false,
       showComments: false,
     };
   },
@@ -342,10 +399,27 @@ export default {
             > div {
               margin-top: 20px;
 
-              &.tags {
+              &.metadata {
                 display: flex;
                 flex-flow: row nowrap;
                 align-items: center;
+                justify-content: space-between;
+
+                .tags {
+                  display: flex;
+                  flex-flow: row nowrap;
+                  align-items: center;
+                }
+
+                .correct-ratio {
+                  font-size: 0.8rem;
+                  color: $grey-primary;
+
+                  img {
+                    height: 15px;
+                    padding-bottom: 1px;
+                  }
+                }
               }
 
               &.question-text {
@@ -455,13 +529,31 @@ export default {
                 }
               }
             }
+
+            .like-text {
+              font-size: 0.9rem;
+              color: $grey-primary;
+            }
+
+            .like {
+              background-color: $white-flat;
+              margin-left: 24px;
+
+              &:not(.liked):hover {
+                background-color: $grey-silver;
+              }
+
+              &.liked {
+                color: $white-flat;
+                background-color: $blue-primary !important;
+              }
+            }
           }
         }
 
         &.comments {
-          padding-top: 32px;
-          border-top: 1px solid $grey-silver;
-          margin-top: 32px;
+          padding-top: 16px;
+          animation-duration: 0.5s;
 
           .comment-list {
             width: 100%;
@@ -514,14 +606,27 @@ export default {
         text-align: center;
         text-transform: uppercase;
         letter-spacing: 0.025em;
-        padding: 12px 0;
-        border-bottom-left-radius: 12px;
-        border-bottom-right-radius: 12px;
+        padding: 6px 0;
         background-color: #f2f5f8;
+        margin-top: 32px;
 
         &:hover {
           background-color: $grey-silver;
           cursor: pointer;
+        }
+
+        &.open {
+          img {
+            padding-bottom: 0;
+            padding-top: 2px;
+            transform: rotateZ(180deg);
+          }
+        }
+
+        img {
+          height: 17px;
+          opacity: 0.4;
+          padding-bottom: 2px;
         }
       }
     }

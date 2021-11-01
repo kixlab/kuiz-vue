@@ -10,9 +10,7 @@
     "source.fixAll.eslint": true
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.suggest.maxVisibleSuggestions": 3,
   "editor.parameterHints.enabled": false,
-  "prettier.packageManager": "yarn",
   "prettier.useTabs": false,
   "prettier.trailingComma": "all",
   "workbench.activityBar.visible": true,
@@ -28,7 +26,6 @@
   "sync.gist": "2b321551ebfc1cbbd311869dd3977be3",
   "window.zoomLevel": 0,
   "python.pythonPath": "C:\\Program Files\\Python38\\python.exe",
-  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
   "verilog.linting.linter": "iverilog",
   "verilog.linting.iverilog.runAtFileLocation": true,
   "verilog.linting.modelsim.runAtFileLocation": true,

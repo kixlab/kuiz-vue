@@ -24,6 +24,16 @@
         <img src="~/assets/icons/comment.svg" />
         {{ comments }}
       </div>
+      <div
+        v-tooltip.bottom="
+          correctRatio +
+          '% of students got the correct answer on their first try'
+        "
+        class="correct-ratio text-center"
+      >
+        <img src="~assets/icons/circle-check.svg" />
+        {{ correctRatio }}%
+      </div>
     </td>
     <td class="text-center">
       <div class="column author">
@@ -47,6 +57,7 @@ export default {
     tags: { type: Array, default: null },
     likes: { type: Number, default: 0 },
     comments: { type: Number, default: 0 },
+    correctRatio: { type: Number, default: 0 },
     avatar: { type: String, default: null },
     author: { type: String, default: null },
     date: { type: String, default: null },
