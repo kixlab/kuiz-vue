@@ -54,7 +54,7 @@
           </div>
           <div class="body">
             <div class="tags">
-              <Tag>Magnetostatistics</Tag>
+              <Tag>Magnetostatics</Tag>
               <Tag>Lorentz force</Tag>
               <Tag>Newton's 3rd law</Tag>
             </div>

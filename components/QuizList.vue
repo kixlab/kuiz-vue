@@ -39,7 +39,14 @@
           {{ category }}
         </li>
       </ul>
-      <Button bg="primary" icon="edit" class="create-quiz">Create Quiz</Button>
+      <Button
+        bg="primary"
+        icon="edit"
+        class="create-quiz"
+        @click.native="toggleQuizModal"
+      >
+        Create Quiz
+      </Button>
     </div>
     <table class="table">
       <thead>
@@ -71,6 +78,7 @@
 
 <script>
 import vClickOutside from "v-click-outside";
+import { mapMutations } from "vuex";
 
 export default {
   directives: {
@@ -110,7 +118,7 @@ export default {
           quizId: 122,
           question:
             "By how much would the magnetic field change if the current was doubled and the distance r was doubled?",
-          tags: ["Magnetostatistics"],
+          tags: ["Magnetostatics"],
           likes: 6,
           comments: 5,
           correctRatio: 99,
@@ -199,6 +207,10 @@ export default {
         },
       ],
     };
+  },
+
+  methods: {
+    ...mapMutations(["toggleQuizModal"]),
   },
 };
 </script>

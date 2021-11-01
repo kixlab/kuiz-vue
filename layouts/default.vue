@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <Modal />
+    <QuizModal />
     <div class="placeholder"></div>
     <Navbar />
     <Nuxt />

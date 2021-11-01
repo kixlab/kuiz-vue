@@ -9,6 +9,7 @@ const state = () => {
     modalIsSelectCourse: true,
     modalIsAddCourse: false,
     modalIsImage: false,
+    quizModalVisible: false,
     isLoggedIn: false,
   };
 
@@ -60,11 +61,19 @@ const mutations = {
     }
   },
 
+  toggleQuizModal(state) {
+    state.quizModalVisible = !state.quizModalVisible;
+  },
+
   closeModal(state) {
     state.modalVisible = false;
     state.modalIsSelectCourse = false;
     state.modalIsAddCourse = false;
     state.modalIsImage = false;
+  },
+
+  closeQuizModal(state) {
+    state.quizModalVisible = false;
   },
 
   logIn(state) {

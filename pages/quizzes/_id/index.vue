@@ -54,7 +54,7 @@
           <div class="body">
             <div class="metadata">
               <div class="tags">
-                <Tag>Magnetostatistics</Tag>
+                <Tag>Magnetostatics</Tag>
               </div>
               <div class="correct-ratio text-center">
                 <img src="~assets/icons/circle-check.svg" />
@@ -128,7 +128,7 @@
               leave-active-class="animated flipOutX"
             >
               <div v-if="isSolved" class="row-center" style="margin-top: 32px">
-                <div class="like-text">Was the quiz helpful?</div>
+                <div class="like-text">Was this quiz helpful to you?</div>
                 <Button
                   px="6"
                   rounded
@@ -553,7 +553,7 @@ export default {
 
         &.comments {
           padding-top: 16px;
-          animation-duration: 0.5s;
+          animation-duration: 0.4s;
 
           .comment-list {
             width: 100%;

@@ -98,7 +98,7 @@ export default {
           quizId: 122,
           question:
             "By how much would the magnetic field change if the current was doubled and the distance r was doubled?",
-          tags: ["Magnetostatistics"],
+          tags: ["Magnetostatics"],
           likes: 6,
           comments: 5,
           correctRatio: 99,
