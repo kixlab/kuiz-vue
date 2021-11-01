@@ -208,7 +208,7 @@ export default {
 
   .content-wrapper {
     width: 100%;
-    max-width: 1200px;
+    max-width: 960px;
     margin: 0 auto;
 
     .title {

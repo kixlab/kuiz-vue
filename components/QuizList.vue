@@ -1,16 +1,37 @@
 <template>
   <Wrapper rounded shadow px="6" py="6" class="quiz-list">
     <div class="action-header">
-      <div></div>
       <!--
       <div class="search">
         <img src="~assets/icons/search.svg" />
         <input placeholder="Search keywords" />
       </div>
       -->
-      <Button bg="primary" icon="edit" class="create-quiz" @click.native="yeet">
-        Create Quiz
-      </Button>
+      <div
+        class="select-category"
+        @click="categoryListVisible = !categoryListVisible"
+      >
+        <div>{{ currentCategory }}</div>
+        <div class="ye">
+          <img src="~/assets/icons/arrow-dropdown-black.svg" />
+        </div>
+      </div>
+      <ul v-if="categoryListVisible" class="category-list">
+        <li
+          v-for="(category, index) in categories"
+          :key="index"
+          class="category"
+          @click="
+            () => {
+              currentCategory = category;
+              categoryListVisible = !categoryListVisible;
+            }
+          "
+        >
+          {{ category }}
+        </li>
+      </ul>
+      <Button bg="primary" icon="edit" class="create-quiz">Create Quiz</Button>
     </div>
     <table class="table">
       <thead>
@@ -44,6 +65,19 @@
 export default {
   data() {
     return {
+      currentCategory: "All Categories",
+      categoryListVisible: false,
+      categories: [
+        "All Categories",
+        "Category 1",
+        "Category 2",
+        "Category 3",
+        "Category 4",
+        "Category 5",
+        "Category 6",
+        "Category 7",
+        "Category 8",
+      ],
       quizzes: [
         {
           quizId: 123,
@@ -154,11 +188,7 @@ export default {
   },
 
   methods: {
-    yeet() {
-      alert(
-        "In development --- Donate coffee to Elliot to expedite the process.",
-      );
-    },
+    toggleCategory() {},
   },
 };
 </script>
