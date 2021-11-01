@@ -27,7 +27,7 @@
       <div
         v-tooltip.bottom="
           correctRatio +
-          '% of students got the correct answer on their first try'
+          '% of students got the correct answer on their first try.'
         "
         class="correct-ratio text-center"
       >

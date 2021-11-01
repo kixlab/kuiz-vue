@@ -49,13 +49,17 @@
       padding: 12px;
       border: 1px solid $grey-ash;
       border-radius: 12px;
-      background-color: $orange-light;
+      background-color: $white-background;
       font-size: 0.9rem;
       font-weight: 500;
       font-family: "Poppins", sans-serif;
       cursor: pointer;
       width: 240px;
       height: 46px;
+      
+      &:hover {
+        background-color: $grey-silver;
+      }
 
       img {
         margin-left: 12px;

@@ -16,7 +16,15 @@
           <img src="~/assets/icons/arrow-dropdown-black.svg" />
         </div>
       </div>
-      <ul v-if="categoryListVisible" class="category-list">
+      <ul
+        v-if="categoryListVisible"
+        v-click-outside="
+          () => {
+            categoryListVisible = !categoryListVisible;
+          }
+        "
+        class="category-list"
+      >
         <li
           v-for="(category, index) in categories"
           :key="index"
@@ -62,7 +70,13 @@
 </template>
 
 <script>
+import vClickOutside from "v-click-outside";
+
 export default {
+  directives: {
+    clickOutside: vClickOutside.directive,
+  },
+
   data() {
     return {
       currentCategory: "All Categories",
@@ -185,10 +199,6 @@ export default {
         },
       ],
     };
-  },
-
-  methods: {
-    toggleCategory() {},
   },
 };
 </script>
