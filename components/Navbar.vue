@@ -1,8 +1,8 @@
 <template>
   <Wrapper class="navbar">
-    <router-link to="/" class="logo">
+    <NuxtLink to="/" class="logo">
       <img src="~/assets/images/logo.png" />
-    </router-link>
+    </NuxtLink>
     <Wrapper
       rounded
       class="row w-100 course-select"
@@ -19,9 +19,9 @@
       </div>
     </Wrapper>
     <Wrapper px="0" py="0" class="column">
-      <NavItem rounded to="/quizzes">Quizzes</NavItem>
-      <NavItem rounded to="/activity">My Activity</NavItem>
-      <NavItem rounded to="/participants">Participants</NavItem>
+      <NavItem rounded to="quizzes">Quizzes</NavItem>
+      <NavItem rounded to="activity">My Activity</NavItem>
+      <NavItem rounded to="participants">Participants</NavItem>
       <!-- <NavItem rounded to="/notifications">Notifications</NavItem> -->
       <!-- <NavItem rounded to="/settings">Settings</NavItem> -->
       <div class="divider"></div>

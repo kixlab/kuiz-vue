@@ -11,6 +11,7 @@ const state = () => {
     modalIsImage: false,
     quizModalVisible: false,
     isLoggedIn: false,
+    courseCode: 123,
   };
 
   return s;

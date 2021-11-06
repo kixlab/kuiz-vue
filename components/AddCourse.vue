@@ -105,8 +105,26 @@ export default {
     },
 
     enterCourse() {
-      this.closeModal();
-      this.$router.push("/quizzes");
+      if (
+        this.code.firstDigit === null ||
+        this.code.firstDigit.match(/^\s*$/) !== null ||
+        this.code.secondDigit === null ||
+        this.code.secondDigit.match(/^\s*$/) !== null ||
+        this.code.thirdDigit === null ||
+        this.code.thirdDigit.match(/^\s*$/) !== null ||
+        this.code.fourthDigit === null ||
+        this.code.fourthDigit.match(/^\s*$/) !== null
+      ) {
+        alert("Please enter a valid course code.");
+      } else {
+        const courseCode =
+          this.code.firstDigit.toString() +
+          this.code.secondDigit.toString() +
+          this.code.thirdDigit.toString() +
+          this.code.fourthDigit.toString();
+        this.closeModal();
+        this.$router.push("/" + courseCode);
+      }
     },
 
     ...mapMutations(["closeModal"]),

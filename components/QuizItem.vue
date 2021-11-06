@@ -2,7 +2,7 @@
   <tr
     @click="
       () => {
-        $router.push('/quizzes/' + quizId);
+        $router.push('/' + $route.params.courseCode + '/quizzes/' + quizId);
       }
     "
   >
