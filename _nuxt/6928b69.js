@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[18],{541:function(n,e,r){"use strict";r.r(e);var t={asyncData:function(n){return(0,n.redirect)("/"+n.params.courseCode+"/quizzes")}},c=r(4),component=Object(c.a)(t,undefined,undefined,!1,null,null,null);e.default=component.exports}}]);
