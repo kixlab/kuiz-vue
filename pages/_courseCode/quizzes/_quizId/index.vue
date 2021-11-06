@@ -5,7 +5,7 @@
         class="title clickable"
         @click="
           () => {
-            $router.push('/quizzes');
+            $router.push('/' + $route.params.courseCode + '/quizzes');
           }
         "
       >
