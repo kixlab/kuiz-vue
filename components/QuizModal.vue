@@ -101,20 +101,20 @@ export default {
     },
 
     async createQuiz() {
+      const self = this;
+
       try {
-        console.log("this is quizData", this.quizData);
         const quizData = this.quizData;
         const classId = this.$route.params.courseCode;
-        const rs = await this.$axios.post(
-          "http://localhost:8080/class/question/create",
-          {
+        await this.$axios
+          .post("http://localhost:8080/class/question/create", {
             quizData,
             classId,
-          },
-        );
-        console.log("rs!!", rs);
+          })
+          .then(res => {
+            self.closeQuizModal();
+          });
       } catch (e) {
-        console.log("error in createQuiz function");
         console.error(e);
       }
     },

@@ -124,23 +124,16 @@ export default {
           this.code.fourthDigit.toString();
 
         try {
-          console.log("ENTER COURSE");
-
           const info = {
             userEmail: this.$store.state.userEmail,
             joinCode: code,
             _id: this.$store.state._id,
           };
 
-          const rs = await this.$axios.post(
-            "http://localhost:8080/class/join",
-            info,
-          );
+          await this.$axios.post("http://localhost:8080/class/join", info);
 
           this.$store.commit("changeCourse", code);
-          console.log("rs.data", rs.data);
         } catch (e) {
-          console.log("Error in AddCourse.vue");
           console.error(e);
         }
 

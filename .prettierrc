@@ -7,5 +7,6 @@
   "trailingComma": "all",
   "bracketSpacing": true,
   "htmlWhitespaceSensitivity": "ignore",
-  "quoteProps": "preserve"
+  "quoteProps": "preserve",
+  "arrowParens": "avoid"
 }

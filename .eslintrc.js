@@ -28,6 +28,7 @@ module.exports = {
     "import/prefer-default-export": "off",
     "no-confusing-arrow": "off",
     "implicit-arrow-linebreak": "off",
+    "arrow-parens": ["error", "as-needed"],
     semi: [2, "always"],
     "comma-dangle": ["error", "always-multiline"],
     "space-before-function-paren": ["error", "never"],

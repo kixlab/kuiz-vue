@@ -39,6 +39,7 @@ export default {
     { src: "~/plugins/vue2-animate" },
     { src: "~/plugins/v-tooltip" },
     { src: "~/plugins/vue-google-oauth2" },
+    { src: "~/plugins/vuex-persist" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

@@ -23,8 +23,8 @@
                 />
               </div>
               <div>
-                <div class="name">Elliot Jung</div>
-                <div class="date">August 24 at 5:41 PM</div>
+                <div class="name">{{ data.author }}</div>
+                <div class="date">{{ data.createdAt }}</div>
               </div>
             </div>
             <!--
@@ -54,22 +54,18 @@
           <div class="body">
             <div class="metadata">
               <div class="tags">
-                <Tag>Magnetostatics</Tag>
+                <Tag v-for="(tag, index) in data.tags" :key="index">
+                  {{ tag }}
+                </Tag>
               </div>
               <div class="correct-ratio text-center">
                 <img src="~assets/icons/circle-check.svg" />
-                {{ correctRatio }}% of students got the correct answer on their
-                first try.
+                13% of students got the correct answer on their first try.
               </div>
             </div>
 
             <div class="question-text">
-              Shown below is a magnet on the left placed onto an electronic
-              balance that gives a reading of 115g. To the right the same magnet
-              is placed on the electronic balance but a wire carrying current
-              into the page is placed directly in between the north and south
-              ends of the magnet. To the right the balance now reads 100g. What
-              would happen if the current was increased in the wire?
+              {{ data.qStem }}
             </div>
             <div
               class="question-image"
@@ -82,7 +78,7 @@
             </div>
             <div class="answer-list">
               <div
-                v-for="(answer, index) in answers"
+                v-for="(answer, index) in data.answerOptions"
                 :key="index"
                 class="answer-item"
                 :class="colorAnswer(index)"
@@ -119,7 +115,7 @@
                   <img src="~assets/images/text-balloon.png" />
                   <div>Author's explanation</div>
                 </div>
-                <div class="exp-text">{{ explanation }}</div>
+                <div class="exp-text">{{ data.explanation }}</div>
               </Wrapper>
             </transition>
             <transition
@@ -130,7 +126,7 @@
               <div v-if="isSolved" class="row-center" style="margin-top: 32px">
                 <div class="like-text">Was this quiz helpful to you?</div>
                 <Button
-                  px="6"
+                  :px="6"
                   rounded
                   shadow
                   class="like"
@@ -146,7 +142,7 @@
                     src="~/assets/icons/like-solid-outline.svg"
                   />
                   <img v-else src="~/assets/icons/like-outline.svg" />
-                  123
+                  {{ data.likes }}
                 </Button>
               </div>
             </transition>
@@ -172,11 +168,11 @@
             <div class="title">Comments</div>
             <div class="comment-list">
               <Comment
-                v-for="(comment, index) in comments"
+                v-for="(comment, index) in data.comment"
                 :key="index"
                 :name="comment.name"
                 :date="comment.date"
-                :body="comment.body"
+                :body="comment"
                 :class="{ 'my': comment.name === 'Elliot Jung' }"
               />
             </div>
@@ -199,35 +195,9 @@ import { mapMutations } from "vuex";
 export default {
   data() {
     return {
-      correctRatio: 12,
-      answers: [
-        "The balance reading would decrease",
-        "The balance reading would increase",
-        "The balance reading would stay the same",
-        "The balance reading would increase for a few seconds and then go back to its original reading",
-      ],
-      comments: [
-        {
-          name: "Jaeryoung Ka",
-          date: "August 24 at 5:41 PM",
-          body: "Does this mean that we will be able to lift up the magnet at some point if we keep increasing the current? Also, is the wire fixed in the air?",
-        },
-        {
-          name: "Elliot Jung",
-          date: "August 24 at 5:44 PM",
-          body: "I also think we need a condition for the fixation of the wire. Assuming that it is fixed in midair, increasing the current should eventually lift up the magnet unless there's some external force.",
-        },
-        {
-          name: "Jaeryoung Ka",
-          date: "August 24 at 5:49 PM",
-          body: "I see. Thanks!",
-        },
-      ],
-      explanation:
-        "The direction of the force on the wire is given by the right-hand rule. The current is into the page and the magnetic field is to the right. By the right-hand rule, the force on the wire is then downwards. Newton's 3rd law says the force of the wire on the magnet is therefore upwards. Since the magnitude of the Lorentz force is given by F = IL x B, increasing the current will also increase the force of the wire on the magnet, directed upwards, so the balance reading would decrease.",
-      selectedAnswer: 0,
-      correctAnswer: 0,
+      data: {},
       imageURL: "https://i.ibb.co/QDpF9YV/quiz-example.png",
+      selectedAnswer: 0,
       moreActionsVisible: false,
       isSolved: false,
       isLiked: false,
@@ -235,12 +205,36 @@ export default {
     };
   },
 
+  created() {
+    this.getQuizData();
+  },
+
   methods: {
     ...mapMutations(["toggleModal"]),
 
+    async getQuizData() {
+      try {
+        const res = await this.$axios.get(
+          "http://localhost:8080/class/question/load",
+          {
+            params: {
+              code: this.$route.params.courseCode,
+            },
+          },
+        );
+
+        const quizId = this.$route.params.quizId;
+        this.data = res.data.questions.questionDatas.find(
+          obj => obj._id === quizId,
+        );
+      } catch (e) {
+        console.log(e);
+      }
+    },
+
     colorAnswer(index) {
       if (this.isSolved) {
-        if (index === this.correctAnswer) {
+        if (index === this.data.answer) {
           return "correct";
         } else if (index === this.selectedAnswer) {
           return "wrong";

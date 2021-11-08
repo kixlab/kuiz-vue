@@ -2,7 +2,7 @@
   <tr
     @click="
       () => {
-        $router.push('/' + $route.params.courseCode + '/quizzes/' + quizId);
+        $router.push('/' + $route.params.courseCode + '/quizzes/' + id);
       }
     "
   >
@@ -52,6 +52,7 @@
 <script>
 export default {
   props: {
+    id: { type: String, default: null },
     quizId: { type: Number, default: null },
     question: { type: String, default: null },
     tags: { type: Array, default: null },

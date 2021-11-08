@@ -21,7 +21,6 @@ import { mapMutations } from "vuex";
 export default {
   data() {
     return {
-      signedIn: false,
       userName: null,
       userEmail: null,
       userImage: null,
@@ -30,7 +29,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["logIn"]),
+    ...mapMutations(["changeCourse", "logIn"]),
 
     async handleLogin() {
       try {
@@ -40,36 +39,34 @@ export default {
           throw new Error("로그인에 실패했습니다.");
         }
 
-        const res = await this.$axios.post(
-          "http://localhost:8080/auth/register",
-          {
-            name: GoogleUser.getBasicProfile().getName(),
-            email: GoogleUser.getBasicProfile().getEmail(),
-          },
-        );
+        this.userName = GoogleUser.getBasicProfile().getName();
+        this.userImage = GoogleUser.getBasicProfile().getImageUrl();
+        this.userEmail = GoogleUser.getBasicProfile().getEmail();
 
-        const userInfo = {
-          uid: res.data.user._id,
-          userEmail: this.userEmail,
-          userName: this.userName,
-          userImage: this.userImage,
-          classes: res.data.user.classes,
-          currentCourse: "",
-        };
+        this.$axios
+          .post("http://localhost:8080/auth/register", {
+            name: this.userName,
+            email: this.userEmail,
+          })
+          .then(res => {
+            const userInfo = {
+              uid: res.data.user._id,
+              userEmail: this.userEmail,
+              userName: this.userName,
+              userImage: this.userImage,
+              classes: res.data.user.classes,
+            };
 
-        console.log(userInfo);
+            this.$store.commit("logIn", userInfo);
 
-        if (res.data.user.classes.length > 0) {
-          userInfo.currentCourse = res.data.user.classes[0];
-          this.$store.commit("logIn", userInfo);
-          this.$router.push("/" + res.data.user.classes[0]);
-        } else {
-          console.log("no class!");
-          this.$store.commit("logIn", userInfo);
-          this.$router.push("/AddCourse");
-        }
+            if (res.data.user.classes.length > 0) {
+              this.$store.commit("changeCourse", res.data.user.classes[0]);
+              this.$router.push("/" + res.data.user.classes[0]);
+            } else {
+              this.$router.push("/AddCourse");
+            }
+          });
       } catch (e) {
-        console.log("error in Login.vue");
         console.error(e);
       }
     },

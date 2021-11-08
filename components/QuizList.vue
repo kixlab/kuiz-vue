@@ -110,13 +110,13 @@ export default {
   },
 
   created() {
-    this.getQuiz();
+    this.getQuizList();
   },
 
   methods: {
     ...mapMutations(["toggleQuizModal"]),
 
-    async getQuiz() {
+    async getQuizList() {
       try {
         const res = await this.$axios.get(
           "http://localhost:8080/class/question/load",
