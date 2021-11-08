@@ -11,7 +11,12 @@ const state = () => {
     modalIsImage: false,
     quizModalVisible: false,
     isLoggedIn: false,
-    courseCode: 123,
+    userEmail: "",
+    userName: "",
+    userImage: "",
+    uid: "",
+    classes: [],
+    currentCourse: "",
   };
 
   return s;
@@ -56,7 +61,6 @@ const mutations = {
         state.modalIsAddCourse = false;
         state.modalIsImage = true;
         state.modalImageURL = payload.imageURL;
-        console.log(payload.imageURL);
       }
       state.modalVisible = !state.modalVisible;
     }
@@ -77,8 +81,17 @@ const mutations = {
     state.quizModalVisible = false;
   },
 
-  logIn(state) {
+  changeCourse(state, classCode) {
+    state.currentCourse = classCode;
+  },
+
+  logIn(state, userInfo) {
     state.isLoggedIn = true;
+    state.userEmail = userInfo.userEmail;
+    state.userName = userInfo.userName;
+    state.userImage = userInfo.userImage;
+    state.classes = userInfo.classes;
+    state.uid = userInfo.uid;
   },
 
   logOut(state) {

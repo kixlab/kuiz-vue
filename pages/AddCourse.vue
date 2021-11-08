@@ -4,7 +4,7 @@
       <img src="~assets/images/logo.png" style="height: 32px" />
     </Wrapper>
     <Wrapper rounded shadow py="6" style="margin-top: 28px">
-      <Login />
+      <AddCourse />
     </Wrapper>
   </div>
 </template>

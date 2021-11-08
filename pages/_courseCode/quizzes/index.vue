@@ -3,7 +3,7 @@
     <div class="content-wrapper">
       <div class="title">Quizzes</div>
       <div class="inner-wrapper">
-        <QuizList />
+        <QuizList :course-code="courseCode" />
         <ObjectiveList />
       </div>
     </div>
@@ -11,7 +11,17 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      courseCode: null,
+    };
+  },
+
+  created() {
+    this.courseCode = this.$route.params.courseCode;
+  },
+};
 </script>
 
 <style lang="scss" scoped>

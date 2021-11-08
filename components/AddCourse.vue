@@ -104,7 +104,7 @@ export default {
       }
     },
 
-    enterCourse() {
+    async enterCourse() {
       if (
         this.code.firstDigit === null ||
         this.code.firstDigit.match(/^\s*$/) !== null ||
@@ -117,13 +117,35 @@ export default {
       ) {
         alert("Please enter a valid course code.");
       } else {
-        const courseCode =
+        const code =
           this.code.firstDigit.toString() +
           this.code.secondDigit.toString() +
           this.code.thirdDigit.toString() +
           this.code.fourthDigit.toString();
+
+        try {
+          console.log("ENTER COURSE");
+
+          const info = {
+            userEmail: this.$store.state.userEmail,
+            joinCode: code,
+            _id: this.$store.state._id,
+          };
+
+          const rs = await this.$axios.post(
+            "http://localhost:8080/class/join",
+            info,
+          );
+
+          this.$store.commit("changeCourse", code);
+          console.log("rs.data", rs.data);
+        } catch (e) {
+          console.log("Error in AddCourse.vue");
+          console.error(e);
+        }
+
         this.closeModal();
-        this.$router.push("/" + courseCode);
+        this.$router.push("/" + code);
       }
     },
 
