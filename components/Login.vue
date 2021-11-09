@@ -47,6 +47,7 @@ export default {
           .post("http://localhost:8080/auth/register", {
             name: this.userName,
             email: this.userEmail,
+            image: this.userImage,
           })
           .then(res => {
             const userInfo = {

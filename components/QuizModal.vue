@@ -112,6 +112,7 @@ export default {
             classId,
           })
           .then(res => {
+            console.log("quiz ID", res.data);
             self.closeQuizModal();
           });
       } catch (e) {
