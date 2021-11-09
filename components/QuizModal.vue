@@ -68,6 +68,8 @@ export default {
     return {
       quizData: {
         author: this.$store.state.uid,
+        authorName: this.$store.state.userName,
+        authorImg: this.$store.state.userImage,
         qStem: "",
         tags: null,
         explanation: "",
