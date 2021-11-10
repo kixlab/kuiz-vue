@@ -37,8 +37,10 @@
               :question="quiz.qStem"
               :tags="quiz.tags"
               :likes="quiz.likes"
+              :comments="quiz.comment.length"
               :correct-ratio="quiz.correctRatio"
-              :author="quiz.author"
+              :author="quiz.authorName"
+              :avatar="quiz.authorImg"
               :date="quiz.createdAt"
               :explanation="quiz.explanation"
             />
