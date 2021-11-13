@@ -112,10 +112,22 @@ export default {
 
   created() {
     this.getQuizList();
+    this.getTag();
   },
 
   methods: {
     ...mapMutations(["toggleQuizModal"]),
+    async getTag() {
+      try {
+        console.log("code", this.$route.params.courseCode);
+        const res = await this.$axios.post("http://localhost:8080/class/tag", {
+          code: this.$route.params.courseCode,
+        });
+        this.categories = res.data.tags;
+      } catch (e) {
+        console.log(e);
+      }
+    },
 
     async getQuizList() {
       try {
