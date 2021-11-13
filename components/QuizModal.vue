@@ -90,6 +90,9 @@ export default {
   destroyed() {
     window.removeEventListener("keydown", this.keyDownHandler);
   },
+  created() {
+    this.getTag();
+  },
 
   methods: {
     ...mapMutations(["closeQuizModal", "toggleQuizModal"]),
@@ -99,7 +102,17 @@ export default {
         this.closeQuizModal();
       }
     },
-
+    async getTag() {
+      try {
+        console.log("code", this.$route.params.courseCode);
+        const res = await this.$axios.post("http://localhost:8080/class/tag", {
+          code: this.$route.params.courseCode,
+        });
+        this.tags = res.data.tags;
+      } catch (e) {
+        console.log(e);
+      }
+    },
     async createQuiz() {
       const self = this;
 
