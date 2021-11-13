@@ -56,7 +56,7 @@ export default {
     quizId: { type: Number, default: null },
     question: { type: String, default: null },
     tags: { type: Array, default: null },
-    likes: { type: Number, default: 0 },
+    likes: { type: Array, default: null },
     comments: { type: Number, default: 0 },
     correctRatio: { type: Number, default: 0 },
     avatar: { type: String, default: null },

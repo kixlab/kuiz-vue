@@ -69,9 +69,9 @@
           :comments="quiz.comment.length"
           :correct-ratio="quiz.correctRatio"
           :author="quiz.authorName"
-          :avatar="quiz.authorImg"
           :date="quiz.createdAt"
           :explanation="quiz.explanation"
+          :avatar="quiz.authorImg"
         />
       </tbody>
     </table>
