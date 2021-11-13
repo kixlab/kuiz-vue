@@ -17,10 +17,7 @@
           <div class="header">
             <div class="profile">
               <div class="profile-image">
-                <img
-                  class="avatar"
-                  :src="data.authorImg"
-                />
+                <img class="avatar" :src="data.authorImg" />
               </div>
               <div>
                 <div class="name">{{ data.authorName }}</div>
@@ -60,7 +57,8 @@
               </div>
               <div class="correct-ratio text-center">
                 <img src="~assets/icons/circle-check.svg" />
-                13% of students got the correct answer on their first try.
+                {{ ratio }}% of students got the correct answer on their first
+                try.
               </div>
             </div>
 
@@ -93,15 +91,7 @@
               </div>
             </div>
             <div v-if="!isSolved" class="row-center check-answer">
-              <Button
-                bg="primary"
-                @click.native="
-                  () => {
-                    isSolved = !isSolved;
-                    showComments = true;
-                  }
-                "
-              >
+              <Button bg="primary" @click.native="checkAnswer">
                 Check Answer
               </Button>
             </div>
@@ -198,6 +188,8 @@ export default {
       isSolved: false,
       isLiked: false,
       showComments: false,
+      ratio: 0,
+      solvedData: [],
     };
   },
 
@@ -209,7 +201,25 @@ export default {
   },
   methods: {
     ...mapMutations(["toggleModal"]),
-
+    async checkAnswer() {
+      try {
+        this.isSolved = !this.isSolved;
+        this.showComments = true;
+        const res = await this.$axios.post(
+          "http://localhost:8080/class/question/solve",
+          {
+            uid: this.$store.state.uid,
+            qid: this.$route.params.quizId,
+            selectedAnswer: this.selectedAnswer,
+          },
+        );
+        console.log("ratio", res.data.ratio);
+        this.ratio = Math.round(
+          ((res.data.ratio.correct * 1.0) / res.data.ratio.solved) * 100,
+        );
+        this.data.solved = res.data.solved;
+      } catch (e) {}
+    },
     async getQuizData() {
       try {
         const res = await this.$axios.get(
@@ -224,10 +234,16 @@ export default {
         this.data = res.data.questions.questionDatas.find(
           obj => obj._id === quizId,
         );
-        this.isLiked = res.data.questions.questionDatas.find(
-          obj => obj._id === quizId,
-        ).likes.includes(this.$store.state.uid);
-        console.log("quizData", this.isLiked);
+        this.isLiked = res.data.questions.questionDatas
+          .find(obj => obj._id === quizId)
+          .likes.includes(this.$store.state.uid);
+        const correct = this.data.solved.filter(
+          e => e.selected === this.data.answer,
+        );
+        console.log("solved", this.data.solved);
+        this.ratio = Math.round(
+          ((1.0 * correct.length) / this.data.solved.length) * 100,
+        );
       } catch (e) {
         console.log(e);
       }
@@ -255,7 +271,8 @@ export default {
         console.log("isLiked1", this.isLiked);
         console.log("likedData1", this.data.likes);
         const res = await this.$axios.post(
-          "http://localhost:8080/user/question/like", {
+          "http://localhost:8080/user/question/like",
+          {
             qid: this.$route.params.quizId,
             uid: this.$store.state.uid,
             liked: this.isLiked,
