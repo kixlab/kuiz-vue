@@ -60,7 +60,7 @@
               </div>
               <div class="correct-ratio text-center">
                 <img src="~assets/icons/circle-check.svg" />
-                13% of students got the correct answer on their first try.
+                {{ ratio }}% of students got the correct answer on their first try.
               </div>
             </div>
 
@@ -194,6 +194,7 @@ export default {
       isLiked: false,
       showComments: false,
       ratio: 0,
+      solvedData: [],
     };
   },
 
@@ -217,6 +218,9 @@ export default {
             selectedAnswer: this.selectedAnswer,
           },
         );
+        console.log("ratio", res.data.ratio);
+        this.ratio = Math.round((res.data.ratio.correct * 1.0) / 3 * 100);
+        this.data.solved = res.data.solved;
       } catch (e) {
 
       }
@@ -238,7 +242,6 @@ export default {
         this.isLiked = res.data.questions.questionDatas.find(
           obj => obj._id === quizId,
         ).likes.includes(this.$store.state.uid);
-        console.log("quizData", this.isLiked);
       } catch (e) {
         console.log(e);
       }
