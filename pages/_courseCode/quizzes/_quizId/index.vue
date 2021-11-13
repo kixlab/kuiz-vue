@@ -219,7 +219,7 @@ export default {
           },
         );
         console.log("ratio", res.data.ratio);
-        this.ratio = Math.round((res.data.ratio.correct * 1.0) / 3 * 100);
+        this.ratio = Math.round((res.data.ratio.correct * 1.0) / res.data.ratio.solved * 100);
         this.data.solved = res.data.solved;
       } catch (e) {
 
@@ -242,6 +242,9 @@ export default {
         this.isLiked = res.data.questions.questionDatas.find(
           obj => obj._id === quizId,
         ).likes.includes(this.$store.state.uid);
+        const correct = this.data.solved.filter(e => e.selected === this.data.answer);
+        console.log("solved", this.data.solved);
+        this.ratio = Math.round((1.0 * correct.length) / this.data.solved.length * 100);
       } catch (e) {
         console.log(e);
       }
