@@ -18,7 +18,7 @@
     <td class="reactions">
       <div class="like text-center">
         <img src="~/assets/icons/like.svg" />
-        {{ likes }}
+        {{ likes.length }}
       </div>
       <div class="comment text-center">
         <img src="~/assets/icons/comment.svg" />
@@ -27,7 +27,7 @@
       <div
         v-tooltip.bottom="
           correctRatio +
-          '% of students got the correct answer on their first try.'
+            '% of students got the correct answer on their first try.'
         "
         class="correct-ratio text-center"
       >
@@ -56,7 +56,7 @@ export default {
     quizId: { type: Number, default: null },
     question: { type: String, default: null },
     tags: { type: Array, default: null },
-    likes: { type: Number, default: 0 },
+    likes: { type: Array, default: null },
     comments: { type: Number, default: 0 },
     correctRatio: { type: Number, default: 0 },
     avatar: { type: String, default: null },
