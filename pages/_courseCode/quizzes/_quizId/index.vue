@@ -19,11 +19,11 @@
               <div class="profile-image">
                 <img
                   class="avatar"
-                  src="https://www.kixlab.org/assets/img/members/ejung.png"
+                  :src="data.authorImg"
                 />
               </div>
               <div>
-                <div class="name">{{ data.author }}</div>
+                <div class="name">{{ data.authorName }}</div>
                 <div class="date">{{ data.createdAt }}</div>
               </div>
             </div>
@@ -95,12 +95,7 @@
             <div v-if="!isSolved" class="row-center check-answer">
               <Button
                 bg="primary"
-                @click.native="
-                  () => {
-                    isSolved = !isSolved;
-                    showComments = true;
-                  }
-                "
+                @click.native="checkAnswer"
               >
                 Check Answer
               </Button>
@@ -131,18 +126,14 @@
                   shadow
                   class="like"
                   :class="{ liked: isLiked }"
-                  @click.native="
-                    () => {
-                      isLiked = !isLiked;
-                    }
-                  "
+                  @click.native="onLike"
                 >
                   <img
                     v-if="isLiked"
                     src="~/assets/icons/like-solid-outline.svg"
                   />
                   <img v-else src="~/assets/icons/like-outline.svg" />
-                  {{ data.likes }}
+                  {{ data.likes.length }}
                 </Button>
               </div>
             </transition>
@@ -202,16 +193,34 @@ export default {
       isSolved: false,
       isLiked: false,
       showComments: false,
+      ratio: 0,
     };
   },
 
   created() {
     this.getQuizData();
   },
-
+  updated() {
+    // this.getQuizData();
+  },
   methods: {
     ...mapMutations(["toggleModal"]),
+    async checkAnswer() {
+      try {
+        this.isSolved = !this.isSolved;
+        this.showComments = true;
+        const res = await this.$axios.post(
+          "http://localhost:8080/class/question/solve",
+          {
+            uid: this.$store.state.uid,
+            qid: this.$route.params.quizId,
+            selectedAnswer: this.selectedAnswer,
+          },
+        );
+      } catch (e) {
 
+      }
+    },
     async getQuizData() {
       try {
         const res = await this.$axios.get(
@@ -222,11 +231,14 @@ export default {
             },
           },
         );
-
         const quizId = this.$route.params.quizId;
         this.data = res.data.questions.questionDatas.find(
           obj => obj._id === quizId,
         );
+        this.isLiked = res.data.questions.questionDatas.find(
+          obj => obj._id === quizId,
+        ).likes.includes(this.$store.state.uid);
+        console.log("quizData", this.isLiked);
       } catch (e) {
         console.log(e);
       }
@@ -248,6 +260,39 @@ export default {
 
     onSubmit() {
       alert("onSubmit alert box for testing");
+    },
+    async onLike() {
+      try {
+        console.log("isLiked1", this.isLiked);
+        console.log("likedData1", this.data.likes);
+        const res = await this.$axios.post(
+          "http://localhost:8080/user/question/like", {
+            qid: this.$route.params.quizId,
+            uid: this.$store.state.uid,
+            liked: this.isLiked,
+          },
+        );
+        this.data.likes = res.data.likes;
+        this.isLiked = res.data.isLiked;
+        console.log("isLiked!", res.data.isLiked);
+        console.log("likedData2", res.data.likes);
+      } catch (e) {
+        console.log("error in onLike", e);
+      }
+    },
+    async getLike() {
+      try {
+        const res = await this.$axios.get(
+          "http://localhost:8080/class/question/likes",
+          {
+            qid: this.$route.params.quizId,
+          },
+        );
+        this.data.likes = res.likes;
+        this.isLiked = res.isLiked;
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
 };
