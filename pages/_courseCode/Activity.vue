@@ -30,7 +30,7 @@
           </thead>
           <tbody>
             <QuizItem
-              v-for="(quiz, index) in quizzes"
+              v-for="(quiz, index) in made"
               :id="quiz._id"
               :key="index"
               :quiz-id="index"
@@ -79,7 +79,8 @@ export default {
   data() {
     return {
       activeTab: 0,
-      quizzes: [],
+      made: [],
+      solved: [],
     };
   },
 
@@ -98,7 +99,23 @@ export default {
             },
           },
         );
-        this.quizzes = res.data.made.made;
+        this.made = res.data.made.made;
+      } catch (e) {
+        console.log(e);
+      }
+    },
+
+    async getSolvedQuizzes() {
+      try {
+        const res = await this.$axios.get(
+          "http://localhost:8080/user/history/solved",
+          {
+            params: {
+              email: this.$store.state.userEmail,
+            },
+          },
+        );
+        this.solved = res.data.solved.solved;
       } catch (e) {
         console.log(e);
       }
