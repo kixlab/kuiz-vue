@@ -37,7 +37,65 @@ export default {
           total: 5,
         },
       ],
+      target: [],
+      solved: 0,
+      made: 0,
+      comment: 0,
     };
+  },
+
+  created() {
+    this.getTarget();
+    this.getCreatedQuizzes();
+    this.getSolvedQuizzes();
+  },
+
+  methods: {
+    async getTarget() {
+      try {
+        const res = await this.$axios.get("http://localhost:8080/class/target", {
+          params: {
+            code: this.$route.params.courseCode,
+          },
+        });
+        this.target = res.data.target;
+      } catch (e) {
+        console.log(e);
+        throw e;
+      }
+    },
+
+    async getCreatedQuizzes() {
+      try {
+        const res = await this.$axios.get(
+          "http://localhost:8080/user/history/made",
+          {
+            params: {
+              email: this.$store.state.userEmail,
+            },
+          },
+        );
+        this.made = res.data.made.made.length;
+      } catch (e) {
+        console.log(e);
+      }
+    },
+
+    async getSolvedQuizzes() {
+      try {
+        const res = await this.$axios.get(
+          "http://localhost:8080/user/history/solved",
+          {
+            params: {
+              email: this.$store.state.userEmail,
+            },
+          },
+        );
+        this.solved = res.data.solved.solved.length;
+      } catch (e) {
+        console.log(e);
+      }
+    },
   },
 };
 </script>
