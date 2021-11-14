@@ -48,6 +48,7 @@ export default {
     this.getTarget();
     this.getCreatedQuizzes();
     this.getSolvedQuizzes();
+    this.getMadeComments();
   },
 
   methods: {
@@ -92,6 +93,23 @@ export default {
           },
         );
         this.solved = res.data.solved.solved.length;
+      } catch (e) {
+        console.log(e);
+      }
+    },
+
+    async getMadeComments() {
+      try {
+        const res = await this.$axios.get(
+          "http://localhost:8080/user/history/comment",
+          {
+            params: {
+              email: this.$store.state.userEmail,
+            },
+          },
+        );
+        this.comment = res.data.comment.length;
+        console.log("comment", this.comment);
       } catch (e) {
         console.log(e);
       }
