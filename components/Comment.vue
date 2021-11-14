@@ -1,7 +1,7 @@
 <template>
   <div class="comment">
     <div class="profile-image">
-      <img class="avatar" src="~/assets/images/profile-default.png" />
+      <img class="avatar" :src="img" />
     </div>
     <Wrapper rounded px="3" py="2" class="box">
       <div class="head">
@@ -21,6 +21,7 @@ export default {
     name: { type: String, default: null },
     date: { type: String, default: null },
     body: { type: String, default: null },
+    img: { type: String, default: "~assets/images/profile-default.png" },
   },
 };
 </script>

@@ -162,13 +162,14 @@
                 v-for="(comment, index) in data.comment"
                 :key="index"
                 :name="comment.name"
-                :date="comment.date"
-                :body="comment"
-                :class="{ 'my': comment.name === 'Elliot Jung' }"
+                :date="comment.createdAt"
+                :body="comment.comment"
+                :class="{ 'my': comment.name === $store.state.userName }"
+                :img="comment.imgUrl"
               />
             </div>
             <div class="row reply">
-              <textarea placeholder="Write a comment..." rows="2" />
+              <textarea v-model="newComment" placeholder="Write a comment..." rows="2" />
               <div class="submit row-center" @click="onSubmit">
                 <img src="~/assets/icons/send-white.svg" />
               </div>
@@ -195,6 +196,7 @@ export default {
       showComments: false,
       ratio: 0,
       solvedData: [],
+      newComment: "",
     };
   },
 
@@ -264,8 +266,18 @@ export default {
       }
     },
 
-    onSubmit() {
-      alert("onSubmit alert box for testing");
+    async onSubmit() {
+      try {
+        const res = await this.$axios.post("http://localhost:8080/class/question/comment", {
+          qid: this.$route.params.quizId,
+          uid: this.$store.state.uid,
+          comment: this.newComment,
+        });
+        console.log("isSuccess", res.data.msg);
+      } catch (e) {
+        console.log(e);
+        throw e;
+      }
     },
     async onLike() {
       try {
