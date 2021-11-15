@@ -102,6 +102,7 @@ export default {
         this.closeQuizModal();
       }
     },
+
     async getTag() {
       try {
         console.log("code", this.$route.params.courseCode);
@@ -113,6 +114,7 @@ export default {
         console.log(e);
       }
     },
+
     async createQuiz() {
       const self = this;
 
