@@ -169,7 +169,7 @@
                 placeholder="Write a comment..."
                 rows="2"
               />
-              <div class="submit row-center" @click="onSubmit">
+              <div class="submit row-center" @click="onCommentSubmit">
                 <img src="~/assets/icons/send-white.svg" />
               </div>
             </div>
@@ -281,7 +281,7 @@ export default {
       }
     },
 
-    async onSubmit() {
+    async onCommentSubmit() {
       try {
         await this.$axios
           .post("http://localhost:8080/class/question/comment", {
@@ -290,7 +290,7 @@ export default {
             comment: this.newComment,
           })
           .then(res => {
-            console.log("isSuccess", res.data.msg);
+            this.newComment = "";
             this.getQuizData();
           });
       } catch (e) {
@@ -301,20 +301,15 @@ export default {
 
     async onLike() {
       try {
-        console.log("isLiked1", this.isLiked);
-        console.log("likedData1", this.data.likes);
-        const res = await this.$axios.post(
-          "http://localhost:8080/user/question/like",
-          {
+        await this.$axios
+          .post("http://localhost:8080/user/question/like", {
             qid: this.$route.params.quizId,
             uid: this.$store.state.uid,
             liked: this.isLiked,
-          },
-        );
-        this.data.likes = res.data.likes;
-        this.isLiked = res.data.isLiked;
-        console.log("isLiked!", res.data.isLiked);
-        console.log("likedData2", res.data.likes);
+          })
+          .then(res => {
+            this.getQuizData();
+          });
       } catch (e) {
         console.log("error in onLike", e);
       }
