@@ -56,7 +56,7 @@
       cursor: pointer;
       width: 240px;
       height: 46px;
-      
+
       &:hover {
         background-color: $grey-silver;
       }
@@ -136,6 +136,18 @@
       &:last-child {
         min-width: 130px;
       }
+    }
+  }
+
+  .placeholder {
+    height: 100%;
+    color: $grey-primary;
+
+    span {
+      color: $blue-primary;
+      font-weight: 500;
+      font-family: "Poppins", sans-serif;
+      cursor: pointer;
     }
   }
 }

@@ -40,6 +40,7 @@ export default {
     { src: "~/plugins/v-tooltip" },
     { src: "~/plugins/vue-google-oauth2" },
     { src: "~/plugins/vuex-persist" },
+    { src: "~/plugins/dayjs-breakpoints" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -55,11 +56,22 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
+    "@nuxtjs/dayjs",
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: "localhost:8080",
+  },
+
+  dayjs: {
+    locales: ["en"],
+    defaultLocale: "en",
+    defaultTimeZone: "Asia/Tokyo",
+    plugins: [
+      "utc", // import 'dayjs/plugin/utc'
+      "timezone", // import 'dayjs/plugin/timezone'
+    ],
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

@@ -6,7 +6,7 @@
     <Wrapper rounded px="3" py="2" class="box">
       <div class="head">
         <div class="name">{{ name }}</div>
-        <div class="date">{{ date }}</div>
+        <div class="date"><Date :date="date" /></div>
       </div>
       <div class="body">
         {{ body }}
@@ -21,7 +21,21 @@ export default {
     name: { type: String, default: null },
     date: { type: String, default: null },
     body: { type: String, default: null },
-    img: { type: String, default: "~assets/images/profile-default.png" },
+    img: { type: String, default: "" },
+  },
+
+  computed: {
+    avatarUrl() {
+      if (
+        this.avatar === null ||
+        this.avatar === undefined ||
+        this.avatar === ""
+      ) {
+        return require("~/assets/images/profile-default.png");
+      } else {
+        return this.avatar;
+      }
+    },
   },
 };
 </script>

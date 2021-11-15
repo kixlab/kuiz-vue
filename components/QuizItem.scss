@@ -45,6 +45,7 @@ tr {
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+        word-break: break-all;
         font-family: "Roboto", sans-serif;
       }
 
@@ -100,8 +101,10 @@ tr {
         }
 
         &.date {
-          font-family: "Roboto", sans-serif;
-          color: $grey-primary;
+          span {
+            font-family: "Roboto", sans-serif;
+            color: $grey-primary;
+          }
         }
       }
     }

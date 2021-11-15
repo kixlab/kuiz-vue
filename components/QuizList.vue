@@ -12,7 +12,7 @@
         @click="categoryListVisible = !categoryListVisible"
       >
         <div>{{ currentCategory }}</div>
-        <div class="ye">
+        <div>
           <img src="~/assets/icons/arrow-dropdown-black.svg" />
         </div>
       </div>
@@ -62,10 +62,10 @@
           v-for="(quiz, index) in quizzes"
           :id="quiz._id"
           :key="index"
-          :quiz-id="index"
+          :quiz-id="quizzes.length - index"
           :question="quiz.qStem"
           :tags="quiz.tags"
-          :likes="quiz.likes"
+          :likes="quiz.likes.length"
           :comments="quiz.comment.length"
           :correct-ratio="quiz.correctRatio"
           :author="quiz.authorName"
@@ -75,6 +75,16 @@
         />
       </tbody>
     </table>
+    <div
+      v-if="quizzes.length === 0"
+      class="placeholder column-center text-center"
+    >
+      There are no quizzes yet.
+      <div>
+        Be the first to
+        <span @click="toggleQuizModal">create a quiz!</span>
+      </div>
+    </div>
   </Wrapper>
 </template>
 
@@ -117,9 +127,27 @@ export default {
 
   methods: {
     ...mapMutations(["toggleQuizModal"]),
+
+    async getQuizList() {
+      try {
+        await this.$axios
+          .get("http://localhost:8080/class/question/load", {
+            params: {
+              code: this.courseCode,
+            },
+          })
+          .then(res => {
+            this.quizzes = res.data.questions.questionDatas.sort(
+              this.sortByDateAscending,
+            );
+          });
+      } catch (e) {
+        console.log(e);
+      }
+    },
+
     async getTag() {
       try {
-        console.log("code", this.$route.params.courseCode);
         const res = await this.$axios.post("http://localhost:8080/class/tag", {
           code: this.$route.params.courseCode,
         });
@@ -129,20 +157,10 @@ export default {
       }
     },
 
-    async getQuizList() {
-      try {
-        const res = await this.$axios.get(
-          "http://localhost:8080/class/question/load",
-          {
-            params: {
-              code: this.courseCode,
-            },
-          },
-        );
-        this.quizzes = res.data.questions.questionDatas;
-      } catch (e) {
-        console.log(e);
-      }
+    sortByDateAscending(a, b) {
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      return dateA > dateB ? 1 : -1;
     },
   },
 };
