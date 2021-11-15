@@ -36,18 +36,10 @@
               :quiz-id="createdQuizzes.length - index"
               :question="quiz.qStem"
               :tags="quiz.tags"
-<<<<<<< HEAD
-              :likes="quiz.likes"
-              :comments="quiz.comment.length"
-              :correct-ratio="quiz.correctRatio"
-              :author="quiz.authorName"
-              :avatar="quiz.authorImg"
-=======
               :likes="quiz.likes.length"
               :comments="quiz.comment.length"
               :correct-ratio="quiz.correctRatio"
               :author="quiz.authorName"
->>>>>>> dev_ina2
               :date="quiz.createdAt"
               :explanation="quiz.explanation"
               :avatar="quiz.authorImg"
