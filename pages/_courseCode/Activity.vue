@@ -30,17 +30,19 @@
           </thead>
           <tbody>
             <QuizItem
-              v-for="(quiz, index) in made"
+              v-for="(quiz, index) in createdQuizzes"
               :id="quiz._id"
               :key="index"
-              :quiz-id="index"
+              :quiz-id="createdQuizzes.length - index"
               :question="quiz.qStem"
               :tags="quiz.tags"
-              :likes="quiz.likes"
+              :likes="quiz.likes.length"
+              :comments="quiz.comment.length"
               :correct-ratio="quiz.correctRatio"
-              :author="quiz.author"
+              :author="quiz.authorName"
               :date="quiz.createdAt"
               :explanation="quiz.explanation"
+              :avatar="quiz.authorImg"
             />
           </tbody>
         </table>
@@ -56,12 +58,12 @@
           </thead>
           <tbody>
             <QuizItem
-              v-for="(quiz, index) in quizzes"
+              v-for="(quiz, index) in solvedQuizzes"
               :key="index"
-              :quiz-id="quiz.quizId"
+              :quiz-id="solvedQuizzes.length - index"
               :question="quiz.question"
               :tags="quiz.tags"
-              :likes="quiz.likes"
+              :likes="quiz.likes.length"
               :correct-ratio="quiz.correctRatio"
               :avatar="quiz.avatar"
               :author="quiz.author"
@@ -79,27 +81,29 @@ export default {
   data() {
     return {
       activeTab: 0,
-      made: [],
-      solved: [],
+      createdQuizzes: [],
+      solvedQuizzes: [],
     };
   },
 
   created() {
     this.getCreatedQuizzes();
+    this.getSolvedQuizzes();
   },
 
   methods: {
     async getCreatedQuizzes() {
       try {
-        const res = await this.$axios.get(
-          "http://localhost:8080/user/history/made",
-          {
+        await this.$axios
+          .get("http://localhost:8080/user/history/made", {
             params: {
               email: this.$store.state.userEmail,
             },
-          },
-        );
-        this.made = res.data.made.made;
+          })
+          .then(res => {
+            this.createdQuizzes = res.data.made.made;
+            console.log(this.createdQuizzes);
+          });
       } catch (e) {
         console.log(e);
       }
@@ -107,15 +111,15 @@ export default {
 
     async getSolvedQuizzes() {
       try {
-        const res = await this.$axios.get(
-          "http://localhost:8080/user/history/solved",
-          {
+        await this.$axios
+          .get("http://localhost:8080/user/history/solved", {
             params: {
               email: this.$store.state.userEmail,
             },
-          },
-        );
-        this.solved = res.data.solved.solved;
+          })
+          .then(res => {
+            this.solvedQuizzes = res.data.solved.solved;
+          });
       } catch (e) {
         console.log(e);
       }

@@ -21,7 +21,7 @@
               </div>
               <div>
                 <div class="name">{{ data.authorName }}</div>
-                <div class="date">{{ data.createdAt }}</div>
+                <div class="date"><Date :date="data.createdAt" /></div>
               </div>
             </div>
             <!--
@@ -209,9 +209,10 @@ export default {
 
   methods: {
     ...mapMutations(["toggleModal"]),
+
     async checkAnswer() {
       try {
-        this.isSolved = !this.isSolved;
+        this.isSolved = true;
         this.showComments = true;
 
         const res = await this.$axios.post(
@@ -249,6 +250,8 @@ export default {
         this.data = res.data.questions.questionDatas.find(
           obj => obj._id === quizId,
         );
+        console.log(this.data);
+
         this.isLiked = res.data.questions.questionDatas
           .find(obj => obj._id === quizId)
           .likes.includes(this.$store.state.uid);
@@ -257,11 +260,11 @@ export default {
           e => e.selected === this.data.answer,
         );
 
-        console.log("solved", this.data.solved);
-
-        this.ratio = Math.round(
-          ((1.0 * correct.length) / this.data.solved.length) * 100,
-        );
+        if (this.data.solved.length !== 0) {
+          this.ratio = Math.round(
+            ((correct.length * 1.0) / this.data.solved.length) * 100,
+          );
+        }
       } catch (e) {
         console.log(e);
       }
@@ -602,6 +605,7 @@ export default {
                 }
 
                 .exp-text {
+                  word-break: break-all;
                   margin-top: 8px;
                 }
               }
@@ -686,7 +690,7 @@ export default {
         text-align: center;
         letter-spacing: 0.025em;
         padding: 8px 0;
-        background-color: #f2f5f8;
+        background-color: $white-background;
         margin-top: 32px;
 
         &:hover {

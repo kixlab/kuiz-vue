@@ -116,8 +116,6 @@ export default {
     },
 
     async createQuiz() {
-      const self = this;
-
       try {
         const quizData = this.quizData;
         const classId = this.$route.params.courseCode;
@@ -127,8 +125,7 @@ export default {
             classId,
           })
           .then(res => {
-            console.log("quiz ID", res.data);
-            self.closeQuizModal();
+            this.closeQuizModal();
           });
       } catch (e) {
         console.error(e);

@@ -76,7 +76,6 @@ export default {
             },
           })
           .then(res => {
-            console.log(res.data.made.made.length);
             this.objectives[0].completed = res.data.made.made.length;
           });
       } catch (e) {
@@ -93,7 +92,6 @@ export default {
             },
           })
           .then(res => {
-            console.log(res.data.solved.solved.length);
             this.objectives[1].completed = res.data.solved.solved.length;
           });
       } catch (e) {
