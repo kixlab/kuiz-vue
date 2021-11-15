@@ -10,7 +10,7 @@
         :key="index"
         :directive="objective.directive"
         :completed="objective.completed"
-        :total="objective.total"
+        :target="objective.target"
       />
     </div>
   </Wrapper>
@@ -22,44 +22,45 @@ export default {
     return {
       objectives: [
         {
-          directive: "Create 3 quizzes",
-          completed: 1,
-          total: 3,
+          directive: "Create",
+          completed: 0,
+          target: 0,
         },
         {
-          directive: "Solve 4 quizzes",
-          completed: 2,
-          total: 4,
+          directive: "Solve",
+          completed: 0,
+          target: 0,
         },
         {
-          directive: "Give feedback on 5 quizzes",
-          completed: 5,
-          total: 5,
+          directive: "Comment on",
+          completed: 0,
+          target: 0,
         },
       ],
-      target: [],
-      solved: 0,
-      made: 0,
-      comment: 0,
     };
   },
 
   created() {
-    this.getTarget();
+    this.getObjectivesTarget();
     this.getCreatedQuizzes();
     this.getSolvedQuizzes();
-    this.getMadeComments();
+    this.getCreatedComments();
   },
 
   methods: {
-    async getTarget() {
+    async getObjectivesTarget() {
       try {
-        const res = await this.$axios.get("http://localhost:8080/class/target", {
-          params: {
-            code: this.$route.params.courseCode,
-          },
-        });
-        this.target = res.data.target;
+        await this.$axios
+          .get("http://localhost:8080/class/target", {
+            params: {
+              code: this.$route.params.courseCode,
+            },
+          })
+          .then(res => {
+            for (let i = 0; i < res.data.target.length; i++) {
+              this.objectives[i].target = res.data.target[i];
+            }
+          });
       } catch (e) {
         console.log(e);
         throw e;
@@ -68,15 +69,16 @@ export default {
 
     async getCreatedQuizzes() {
       try {
-        const res = await this.$axios.get(
-          "http://localhost:8080/user/history/made",
-          {
+        await this.$axios
+          .get("http://localhost:8080/user/history/made", {
             params: {
               email: this.$store.state.userEmail,
             },
-          },
-        );
-        this.made = res.data.made.made.length;
+          })
+          .then(res => {
+            console.log(res.data.made.made.length);
+            this.objectives[0].completed = res.data.made.made.length;
+          });
       } catch (e) {
         console.log(e);
       }
@@ -84,32 +86,32 @@ export default {
 
     async getSolvedQuizzes() {
       try {
-        const res = await this.$axios.get(
-          "http://localhost:8080/user/history/solved",
-          {
+        await this.$axios
+          .get("http://localhost:8080/user/history/solved", {
             params: {
               email: this.$store.state.userEmail,
             },
-          },
-        );
-        this.solved = res.data.solved.solved.length;
+          })
+          .then(res => {
+            console.log(res.data.solved.solved.length);
+            this.objectives[1].completed = res.data.solved.solved.length;
+          });
       } catch (e) {
         console.log(e);
       }
     },
 
-    async getMadeComments() {
+    async getCreatedComments() {
       try {
-        const res = await this.$axios.get(
-          "http://localhost:8080/user/history/comment",
-          {
+        await this.$axios
+          .get("http://localhost:8080/user/history/comment", {
             params: {
               email: this.$store.state.userEmail,
             },
-          },
-        );
-        this.comment = res.data.comment.length;
-        console.log("comment", this.comment);
+          })
+          .then(res => {
+            this.objectives[2].completed = res.data.comment.length;
+          });
       } catch (e) {
         console.log(e);
       }
