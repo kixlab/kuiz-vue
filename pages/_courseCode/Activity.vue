@@ -78,15 +78,18 @@
           <tbody>
             <QuizItem
               v-for="(quiz, index) in solvedQuizzes"
+              :id="quiz._id"
               :key="index"
               :quiz-id="solvedQuizzes.length - index"
-              :question="quiz.question"
+              :question="quiz.qStem"
               :tags="quiz.tags"
               :likes="quiz.likes.length"
+              :comments="quiz.comment.length"
               :correct-ratio="quiz.correctRatio"
-              :avatar="quiz.avatar"
-              :author="quiz.author"
-              :date="quiz.date"
+              :author="quiz.authorName"
+              :date="quiz.createdAt"
+              :explanation="quiz.explanation"
+              :avatar="quiz.authorImg"
             />
           </tbody>
         </table>
@@ -156,7 +159,9 @@ export default {
             },
           })
           .then(res => {
-            this.solvedQuizzes = res.data.solved.solved;
+            this.solvedQuizzes = res.data.solved.solved.sort(
+              this.sortByDateAscending,
+            );
           });
       } catch (e) {
         console.log(e);

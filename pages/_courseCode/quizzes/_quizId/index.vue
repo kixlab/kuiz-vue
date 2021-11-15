@@ -17,11 +17,11 @@
           <div class="header">
             <div class="profile">
               <div class="profile-image">
-                <img class="avatar" :src="data.authorImg" />
+                <img class="avatar" :src="quizData.authorImg" />
               </div>
               <div>
-                <div class="name">{{ data.authorName }}</div>
-                <div class="date"><Date :date="data.createdAt" /></div>
+                <div class="name">{{ quizData.authorName }}</div>
+                <div class="date"><Date :date="quizData.createdAt" /></div>
               </div>
             </div>
             <!--
@@ -51,7 +51,7 @@
           <div class="body">
             <div class="metadata">
               <div class="tags">
-                <Tag v-for="(tag, index) in data.tags" :key="index">
+                <Tag v-for="(tag, index) in quizData.tags" :key="index">
                   {{ tag }}
                 </Tag>
               </div>
@@ -63,7 +63,7 @@
             </div>
 
             <div class="question-text">
-              {{ data.qStem }}
+              {{ quizData.qStem }}
             </div>
             <div
               class="question-image"
@@ -76,7 +76,7 @@
             </div>
             <div class="answer-list">
               <div
-                v-for="(answer, index) in data.answerOptions"
+                v-for="(answer, index) in quizData.answerOptions"
                 :key="index"
                 class="answer-item"
                 :class="colorAnswer(index)"
@@ -105,7 +105,7 @@
                   <img src="~assets/images/text-balloon.png" />
                   <div>Author's explanation</div>
                 </div>
-                <div class="exp-text">{{ data.explanation }}</div>
+                <div class="exp-text">{{ quizData.explanation }}</div>
               </Wrapper>
             </transition>
             <transition
@@ -128,7 +128,7 @@
                     src="~/assets/icons/like-solid-outline.svg"
                   />
                   <img v-else src="~/assets/icons/like-outline.svg" />
-                  {{ data.likes.length }}
+                  {{ quizData.likes.length }}
                 </Button>
               </div>
             </transition>
@@ -154,7 +154,7 @@
             <div class="title">Comments</div>
             <div class="comment-list">
               <Comment
-                v-for="(comment, index) in data.comment"
+                v-for="(comment, index) in quizData.comment"
                 :key="index"
                 :name="comment.name"
                 :date="comment.createdAt"
@@ -186,7 +186,19 @@ import { mapMutations } from "vuex";
 export default {
   data() {
     return {
-      data: {},
+      quizData: {
+        answer: null,
+        authorImg: "",
+        authorName: "",
+        answerOptions: [],
+        comment: [],
+        createdAt: "",
+        explanation: "",
+        likes: [],
+        qStem: "",
+        tags: [],
+        solved: [],
+      },
       imageURL: "https://i.ibb.co/QDpF9YV/quiz-example.png",
       selectedAnswer: 0,
       moreActionsVisible: false,
@@ -194,17 +206,12 @@ export default {
       isLiked: false,
       showComments: false,
       ratio: 0,
-      solvedData: [],
       newComment: "",
     };
   },
 
   created() {
     this.getQuizData();
-  },
-
-  updated() {
-    // this.getQuizData();
   },
 
   methods: {
@@ -228,8 +235,10 @@ export default {
           ((res.data.ratio.correct * 1.0) / res.data.ratio.solved) * 100,
         );
 
-        this.data.solved = res.data.solved;
-      } catch (e) {}
+        this.quizData.solved = res.data.solved;
+      } catch (e) {
+        console.log(e);
+      }
     },
 
     async getQuizData() {
@@ -245,7 +254,7 @@ export default {
 
         const quizId = this.$route.params.quizId;
 
-        this.data = res.data.questions.questionDatas.find(
+        this.quizData = res.data.questions.questionDatas.find(
           obj => obj._id === quizId,
         );
 
@@ -253,13 +262,13 @@ export default {
           .find(obj => obj._id === quizId)
           .likes.includes(this.$store.state.uid);
 
-        const correct = this.data.solved.filter(
-          e => e.selected === this.data.answer,
+        const correct = this.quizData.solved.filter(
+          e => e.selected === this.quizData.answer,
         );
 
-        if (this.data.solved.length !== 0) {
+        if (this.quizData.solved.length !== 0) {
           this.ratio = Math.round(
-            ((correct.length * 1.0) / this.data.solved.length) * 100,
+            ((correct.length * 1.0) / this.quizData.solved.length) * 100,
           );
         }
       } catch (e) {
@@ -269,7 +278,7 @@ export default {
 
     colorAnswer(index) {
       if (this.isSolved) {
-        if (index === this.data.answer) {
+        if (index === this.quizData.answer) {
           return "correct";
         } else if (index === this.selectedAnswer) {
           return "wrong";
@@ -323,7 +332,7 @@ export default {
             qid: this.$route.params.quizId,
           },
         );
-        this.data.likes = res.likes;
+        this.quizData.likes = res.likes;
         this.isLiked = res.isLiked;
       } catch (e) {
         console.log(e);
