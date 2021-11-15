@@ -224,8 +224,6 @@ export default {
           },
         );
 
-        console.log("ratio", res.data.ratio);
-
         this.ratio = Math.round(
           ((res.data.ratio.correct * 1.0) / res.data.ratio.solved) * 100,
         );
@@ -250,7 +248,6 @@ export default {
         this.data = res.data.questions.questionDatas.find(
           obj => obj._id === quizId,
         );
-        console.log(this.data);
 
         this.isLiked = res.data.questions.questionDatas
           .find(obj => obj._id === quizId)
@@ -503,7 +500,7 @@ export default {
 
               &.question-text {
                 font-weight: 500;
-                word-break: break-all;
+                word-break: break-word;
               }
 
               &.question-image {
@@ -605,7 +602,7 @@ export default {
                 }
 
                 .exp-text {
-                  word-break: break-all;
+                  word-break: break-word;
                   margin-top: 8px;
                 }
               }

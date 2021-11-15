@@ -16,6 +16,10 @@ export default {};
   border-radius: 6px;
   background-color: $orange-light;
   font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
 
   &:not(:first-child) {
     margin-left: 8px;

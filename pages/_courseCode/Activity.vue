@@ -19,6 +19,7 @@
             Solved Quizzes
           </div>
         </div>
+
         <table v-if="activeTab === 0" class="table">
           <thead>
             <tr>
@@ -46,6 +47,24 @@
             />
           </tbody>
         </table>
+        <div
+          v-if="activeTab === 0 && createdQuizzes.length === 0"
+          class="placeholder column-center text-center"
+        >
+          You have not created any quizzes yet.
+          <div>
+            Let's go
+            <span
+              @click="
+                () => {
+                  $router.push('/' + $route.params.courseCode + '/quizzes');
+                }
+              "
+            >
+              create a quiz!
+            </span>
+          </div>
+        </div>
 
         <table v-if="activeTab === 1" class="table">
           <thead>
@@ -71,6 +90,24 @@
             />
           </tbody>
         </table>
+        <div
+          v-if="activeTab === 1 && solvedQuizzes.length === 0"
+          class="placeholder column-center text-center"
+        >
+          You have not solved any quizzes yet.
+          <div>
+            <span
+              @click="
+                () => {
+                  $router.push('/' + $route.params.courseCode + '/quizzes');
+                }
+              "
+            >
+              Discover
+            </span>
+            and solve quizzes made by other members!
+          </div>
+        </div>
       </Wrapper>
     </div>
   </div>
@@ -101,8 +138,9 @@ export default {
             },
           })
           .then(res => {
-            this.createdQuizzes = res.data.made.made;
-            console.log(this.createdQuizzes);
+            this.createdQuizzes = res.data.made.made.sort(
+              this.sortByDateAscending,
+            );
           });
       } catch (e) {
         console.log(e);
@@ -123,6 +161,12 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    },
+
+    sortByDateAscending(a, b) {
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      return dateA > dateB ? 1 : -1;
     },
   },
 };
@@ -195,6 +239,18 @@ export default {
           &:last-child {
             border-top-right-radius: 12px;
           }
+        }
+      }
+
+      .placeholder {
+        min-height: 225px;
+        color: $grey-primary;
+
+        span {
+          color: $blue-primary;
+          font-weight: 500;
+          font-family: "Poppins", sans-serif;
+          cursor: pointer;
         }
       }
 
