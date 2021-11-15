@@ -635,6 +635,8 @@ export default {
 
         &.comments {
           padding-top: 32px;
+          border-top: 1px solid $grey-silver;
+          margin-top: 32px;
           animation-duration: 0.4s;
 
           .comment-list {
