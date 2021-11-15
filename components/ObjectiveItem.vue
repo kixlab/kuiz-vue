@@ -1,6 +1,6 @@
 <template>
   <Wrapper px="2" py="3" class="objective-item">
-    <div v-if="completed === total" class="row-center" style="padding: 3px">
+    <div v-if="completed >= target" class="row-center" style="padding: 3px">
       <img src="~assets/icons/circle-check.svg" />
     </div>
     <radial-progress-bar
@@ -9,15 +9,17 @@
       :stroke-width="5"
       :inner-stroke-width="5"
       :completed-steps="completed"
-      :total-steps="total"
+      :total-steps="target"
       :is-clockwise="false"
       start-color="#3d73dd"
       stop-color="#3d73dd"
       inner-stroke-color="#e1e9ff"
     >
-      <div class="progress-count">{{ completed }}/{{ total }}</div>
+      <div class="progress-count">{{ completed }}/{{ target }}</div>
     </radial-progress-bar>
-    <span>{{ directive }}</span>
+    <span>
+      {{ directive }} {{ target }} {{ target === 1 ? "quiz" : "quizzes" }}
+    </span>
   </Wrapper>
 </template>
 
@@ -32,7 +34,7 @@ export default {
   props: {
     directive: { type: String, default: null },
     completed: { type: Number, default: null },
-    total: { type: Number, default: null },
+    target: { type: Number, default: null },
   },
 };
 </script>

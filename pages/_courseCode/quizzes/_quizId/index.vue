@@ -157,13 +157,18 @@
                 v-for="(comment, index) in data.comment"
                 :key="index"
                 :name="comment.name"
-                :date="comment.date"
-                :body="comment"
-                :class="{ 'my': comment.name === 'Elliot Jung' }"
+                :date="comment.createdAt"
+                :body="comment.comment"
+                :class="{ 'my': comment.name === $store.state.userName }"
+                :img="comment.imgUrl"
               />
             </div>
             <div class="row reply">
-              <textarea placeholder="Write a comment..." rows="2" />
+              <textarea
+                v-model="newComment"
+                placeholder="Write a comment..."
+                rows="2"
+              />
               <div class="submit row-center" @click="onSubmit">
                 <img src="~/assets/icons/send-white.svg" />
               </div>
@@ -190,21 +195,25 @@ export default {
       showComments: false,
       ratio: 0,
       solvedData: [],
+      newComment: "",
     };
   },
 
   created() {
     this.getQuizData();
   },
+
   updated() {
     // this.getQuizData();
   },
+
   methods: {
     ...mapMutations(["toggleModal"]),
     async checkAnswer() {
       try {
         this.isSolved = !this.isSolved;
         this.showComments = true;
+
         const res = await this.$axios.post(
           "http://localhost:8080/class/question/solve",
           {
@@ -213,13 +222,17 @@ export default {
             selectedAnswer: this.selectedAnswer,
           },
         );
+
         console.log("ratio", res.data.ratio);
+
         this.ratio = Math.round(
           ((res.data.ratio.correct * 1.0) / res.data.ratio.solved) * 100,
         );
+
         this.data.solved = res.data.solved;
       } catch (e) {}
     },
+
     async getQuizData() {
       try {
         const res = await this.$axios.get(
@@ -230,17 +243,22 @@ export default {
             },
           },
         );
+
         const quizId = this.$route.params.quizId;
+
         this.data = res.data.questions.questionDatas.find(
           obj => obj._id === quizId,
         );
         this.isLiked = res.data.questions.questionDatas
           .find(obj => obj._id === quizId)
           .likes.includes(this.$store.state.uid);
+
         const correct = this.data.solved.filter(
           e => e.selected === this.data.answer,
         );
+
         console.log("solved", this.data.solved);
+
         this.ratio = Math.round(
           ((1.0 * correct.length) / this.data.solved.length) * 100,
         );
@@ -263,9 +281,24 @@ export default {
       }
     },
 
-    onSubmit() {
-      alert("onSubmit alert box for testing");
+    async onSubmit() {
+      try {
+        await this.$axios
+          .post("http://localhost:8080/class/question/comment", {
+            qid: this.$route.params.quizId,
+            uid: this.$store.state.uid,
+            comment: this.newComment,
+          })
+          .then(res => {
+            console.log("isSuccess", res.data.msg);
+            this.getQuizData();
+          });
+      } catch (e) {
+        console.log(e);
+        throw e;
+      }
     },
+
     async onLike() {
       try {
         console.log("isLiked1", this.isLiked);
@@ -286,6 +319,7 @@ export default {
         console.log("error in onLike", e);
       }
     },
+
     async getLike() {
       try {
         const res = await this.$axios.get(
@@ -354,7 +388,7 @@ export default {
           display: flex;
           flex-flow: column nowrap;
           align-items: center;
-          max-width: 720px;
+          width: 720px;
 
           .header {
             display: flex;
@@ -471,6 +505,7 @@ export default {
 
               &.question-text {
                 font-weight: 500;
+                word-break: break-all;
               }
 
               &.question-image {
@@ -600,6 +635,8 @@ export default {
 
         &.comments {
           padding-top: 32px;
+          border-top: 1px solid $grey-silver;
+          margin-top: 32px;
           animation-duration: 0.4s;
 
           .comment-list {
