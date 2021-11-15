@@ -301,20 +301,15 @@ export default {
 
     async onLike() {
       try {
-        console.log("isLiked1", this.isLiked);
-        console.log("likedData1", this.data.likes);
-        const res = await this.$axios.post(
-          "http://localhost:8080/user/question/like",
-          {
+        await this.$axios
+          .post("http://localhost:8080/user/question/like", {
             qid: this.$route.params.quizId,
             uid: this.$store.state.uid,
             liked: this.isLiked,
-          },
-        );
-        this.data.likes = res.data.likes;
-        this.isLiked = res.data.isLiked;
-        console.log("isLiked!", res.data.isLiked);
-        console.log("likedData2", res.data.likes);
+          })
+          .then(res => {
+            this.getQuizData();
+          });
       } catch (e) {
         console.log("error in onLike", e);
       }
