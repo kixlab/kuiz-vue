@@ -41,6 +41,7 @@ export default {
     { src: "~/plugins/vue-google-oauth2" },
     { src: "~/plugins/vuex-persist" },
     { src: "~/plugins/dayjs-breakpoints" },
+    { src: "~/plugins/vue-draggable" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

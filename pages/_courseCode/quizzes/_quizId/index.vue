@@ -217,25 +217,24 @@ export default {
   methods: {
     ...mapMutations(["toggleModal"]),
 
-    async checkAnswer() {
+    checkAnswer() {
       try {
         this.isSolved = true;
         this.showComments = true;
 
-        const res = await this.$axios.post(
-          "http://localhost:8080/class/question/solve",
-          {
+        this.$axios
+          .post("http://localhost:8080/class/question/solve", {
             uid: this.$store.state.uid,
             qid: this.$route.params.quizId,
             selectedAnswer: this.selectedAnswer,
-          },
-        );
+          })
+          .then(res => {
+            this.ratio = Math.round(
+              ((res.data.ratio.correct * 1.0) / res.data.ratio.solved) * 100,
+            );
 
-        this.ratio = Math.round(
-          ((res.data.ratio.correct * 1.0) / res.data.ratio.solved) * 100,
-        );
-
-        this.quizData.solved = res.data.solved;
+            this.quizData.solved = res.data.solved;
+          });
       } catch (e) {
         console.log(e);
       }

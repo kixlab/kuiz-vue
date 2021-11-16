@@ -3,7 +3,7 @@
     <div
       v-if="quizModalVisible"
       style="animation-duration: 0.3s"
-      class="modal"
+      class="quiz-modal"
       @click="closeQuizModal"
     >
       <div class="outer-wrapper" @click.stop>
@@ -50,6 +50,32 @@
                 <input v-model.number="quizData.answer" placeholder="edit me" />
                 <input type="submit" value="Submit" />
               </form>
+
+              <div class="col-6">
+                <h3>Transition</h3>
+                <draggable
+                  v-model="list"
+                  class="list-group"
+                  tag="ul"
+                  v-bind="dragOptions"
+                  @start="drag = true"
+                  @end="drag = false"
+                >
+                  <transition-group
+                    type="transition"
+                    :name="!drag ? 'flip-list' : null"
+                  >
+                    <li
+                      v-for="element in list"
+                      :key="element.order"
+                      class="list-group-item"
+                    >
+                      <img src="~/assets/icons/menu-black.svg" />
+                      {{ element.name }}
+                    </li>
+                  </transition-group>
+                </draggable>
+              </div>
             </div>
           </section>
           <section class="guide column"></section>
@@ -61,10 +87,20 @@
 
 <script>
 import { mapMutations } from "vuex";
-// import draggable from "vuedraggable";
 
 export default {
   data() {
+    const message = [
+      "vue.draggable",
+      "draggable",
+      "component",
+      "for",
+      "vue.js 2.0",
+      "based",
+      "on",
+      "Sortablejs",
+    ];
+
     return {
       quizData: {
         author: this.$store.state.uid,
@@ -76,12 +112,25 @@ export default {
         answerOptions: [],
         answer: null,
       },
+      list: message.map((name, index) => {
+        return { name, order: index + 1 };
+      }),
+      drag: false,
     };
   },
 
   computed: {
     quizModalVisible() {
       return this.$store.state.quizModalVisible;
+    },
+
+    dragOptions() {
+      return {
+        animation: 200,
+        group: "description",
+        disabled: false,
+        ghostClass: "ghost",
+      };
     },
   },
 
