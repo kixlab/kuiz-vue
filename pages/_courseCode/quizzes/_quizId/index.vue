@@ -217,25 +217,24 @@ export default {
   methods: {
     ...mapMutations(["toggleModal"]),
 
-    async checkAnswer() {
+    checkAnswer() {
       try {
         this.isSolved = true;
         this.showComments = true;
 
-        const res = await this.$axios.post(
-          "http://localhost:8080/class/question/solve",
-          {
+        this.$axios
+          .post("http://localhost:8080/class/question/solve", {
             uid: this.$store.state.uid,
             qid: this.$route.params.quizId,
             selectedAnswer: this.selectedAnswer,
-          },
-        );
+          })
+          .then(res => {
+            this.ratio = Math.round(
+              ((res.data.ratio.correct * 1.0) / res.data.ratio.solved) * 100,
+            );
 
-        this.ratio = Math.round(
-          ((res.data.ratio.correct * 1.0) / res.data.ratio.solved) * 100,
-        );
-
-        this.quizData.solved = res.data.solved;
+            this.quizData.solved = res.data.solved;
+          });
       } catch (e) {
         console.log(e);
       }
@@ -658,11 +657,12 @@ export default {
             textarea {
               width: 100%;
               border: 1px solid $grey-ash;
-              padding: 10px 12px;
+              padding: 8px 12px;
               resize: none;
               font-size: 0.9rem;
-              border-top-left-radius: 12px;
-              border-bottom-left-radius: 12px;
+              border-top-left-radius: 6px;
+              border-bottom-left-radius: 6px;
+              transition: border 0.2s ease;
 
               &:focus {
                 border: 1px solid $blue-primary;
@@ -677,8 +677,8 @@ export default {
               width: 62px;
               height: 62px;
               background-color: $blue-primary;
-              border-top-right-radius: 12px;
-              border-bottom-right-radius: 12px;
+              border-top-right-radius: 6px;
+              border-bottom-right-radius: 6px;
               cursor: pointer;
 
               img {

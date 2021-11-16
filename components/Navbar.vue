@@ -23,10 +23,10 @@
       <NavItem rounded to="activity">My Activity</NavItem>
       <NavItem rounded to="participants">Participants</NavItem>
       <!-- <NavItem rounded to="/notifications">Notifications</NavItem> -->
-      <!-- <NavItem rounded to="/settings">Settings</NavItem> -->
+      <NavItem rounded to="settings">Settings</NavItem>
       <div class="divider"></div>
       <Wrapper rounded class="logout" @click.native="logOut">
-        <img src="~/assets/icons/logout-black.svg" />
+        <img src="~/assets/icons/logout-black.png" />
         <span style="margin-left: 12px">Log Out</span>
       </Wrapper>
     </Wrapper>

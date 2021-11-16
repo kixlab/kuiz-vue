@@ -2,9 +2,11 @@
   <div class="settings">
     <div class="content-wrapper">
       <div class="profile-image">
+        <!--
         <div class="overlay">
           <img src="~assets/icons/edit-white.svg" />
         </div>
+        -->
         <img
           class="avatar"
           src="https://www.kixlab.org/assets/img/members/ejung.png"
@@ -114,7 +116,7 @@ export default {
     }
 
     .profile-info {
-      width: 80%;
+      width: 60%;
       margin-top: 32px;
 
       .info-item {

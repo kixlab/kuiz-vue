@@ -53,12 +53,13 @@
 export default {
   props: {
     id: { type: String, default: null },
+    answer: { type: Number, default: null },
+    solved: { type: Array, default: null },
     quizId: { type: Number, default: null },
     question: { type: String, default: null },
     tags: { type: Array, default: null },
     likes: { type: Number, default: 0 },
     comments: { type: Number, default: 0 },
-    correctRatio: { type: Number, default: 0 },
     avatar: { type: String, default: null },
     author: { type: String, default: null },
     authorName: { type: String, default: null },
@@ -75,6 +76,17 @@ export default {
         return require("~/assets/images/profile-default.png");
       } else {
         return this.avatar;
+      }
+    },
+
+    correctRatio() {
+      if (this.solved.length !== 0) {
+        const correct = this.solved.filter(e => e.selected === this.answer);
+        const total = this.solved.length;
+
+        return Math.round(((correct.length * 1.0) / total) * 100);
+      } else {
+        return 0;
       }
     },
   },

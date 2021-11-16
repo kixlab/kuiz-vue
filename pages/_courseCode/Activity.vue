@@ -39,7 +39,8 @@
               :tags="quiz.tags"
               :likes="quiz.likes.length"
               :comments="quiz.comment.length"
-              :correct-ratio="quiz.correctRatio"
+              :solved="quiz.solved"
+              :answer="quiz.answer"
               :author="quiz.authorName"
               :date="quiz.createdAt"
               :explanation="quiz.explanation"
@@ -85,7 +86,8 @@
               :tags="quiz.tags"
               :likes="quiz.likes.length"
               :comments="quiz.comment.length"
-              :correct-ratio="quiz.correctRatio"
+              :solved="quiz.solved"
+              :answer="quiz.answer"
               :author="quiz.authorName"
               :date="quiz.createdAt"
               :explanation="quiz.explanation"
@@ -108,7 +110,7 @@
             >
               Discover
             </span>
-            and solve quizzes made by other members!
+            and solve quizzes made by other classmates!
           </div>
         </div>
       </Wrapper>
