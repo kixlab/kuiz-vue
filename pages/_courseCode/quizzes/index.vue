@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   data() {
     return {
@@ -19,8 +21,11 @@ export default {
   },
 
   created() {
+    this.closeQuizModal();
     this.courseCode = this.$route.params.courseCode;
   },
+
+  methods: { ...mapMutations(["closeQuizModal"]) },
 };
 </script>
 
