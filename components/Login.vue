@@ -56,6 +56,7 @@ export default {
               userName: this.userName,
               userImage: this.userImage,
               classes: res.data.user.classes,
+              sid: res.data.user.sid,
             };
 
             this.$store.commit("logIn", userInfo);

@@ -17,6 +17,7 @@ const state = () => {
     uid: "",
     classes: [],
     currentCourse: "",
+    sid: "",
   };
 
   return s;
@@ -92,6 +93,7 @@ const mutations = {
     state.userImage = userInfo.userImage;
     state.classes = userInfo.classes;
     state.uid = userInfo.uid;
+    state.sid = userInfo.sid;
   },
 
   logOut(state) {

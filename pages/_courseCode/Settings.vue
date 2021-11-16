@@ -9,7 +9,7 @@
         -->
         <img
           class="avatar"
-          src="https://www.kixlab.org/assets/img/members/ejung.png"
+          :src="userImage"
         />
       </div>
       <div class="profile-info">
@@ -38,12 +38,16 @@ export default {
   data() {
     return {
       profile: {
-        name: "Elliot Jung",
-        id: "20150681",
+        name: this.$store.state.userName,
+        id: this.$store.state.sid,
       },
     };
   },
-
+  computed: {
+    userImage() {
+      return this.$store.state.userImage;
+    },
+  },
   methods: {
     saveProfile() {
       alert("Changes saved successfully");
