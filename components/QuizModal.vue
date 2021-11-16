@@ -10,9 +10,8 @@
         <Wrapper rounded shadow px="5" py="5" class="inner-wrapper">
           <section class="form-wrapper column">
             <form>
-              <p style="font-size: 11px">New Question: {{ quizData }}</p>
               <div class="stem">
-                <div class="title">Write your question text</div>
+                <div class="title">1. Compose your question</div>
                 <textarea
                   v-model="quizData.qStem"
                   placeholder="Question text goes here"
@@ -21,7 +20,7 @@
               </div>
 
               <div class="answer-list">
-                <div class="title">Answer Options</div>
+                <div class="title">2. Create answer options</div>
                 <draggable
                   v-model="quizData.answerOptions"
                   v-bind="dragOptions"
@@ -41,17 +40,20 @@
                       :key="index + 0"
                       class="answer-item"
                     >
-                      <div class="handle">
+                      <div class="handle row-center">
                         <img src="~/assets/icons/menu-black.svg" />
                       </div>
-                      <input v-model="quizData.answerOptions[index]" />
+                      <input
+                        v-model="quizData.answerOptions[index]"
+                        placeholder="Type in your answer option"
+                      />
                     </li>
                   </transition-group>
                 </draggable>
               </div>
 
               <div class="explanation">
-                <div class="title">Provide an explanation</div>
+                <div class="title">3. Provide an explanation</div>
                 <textarea
                   v-model="quizData.explanation"
                   placeholder="Explanation goes here"
@@ -99,11 +101,7 @@ export default {
         qStem: "",
         tags: [],
         explanation: "",
-        answerOptions: [
-          "Answer Option 111",
-          "Answer Option 222",
-          "Answer Option 333",
-        ],
+        answerOptions: ["Answer Option 111", "Answer Option 222"],
         answer: null,
       },
       tags: [],
@@ -160,11 +158,12 @@ export default {
       }
     },
 
-    async createQuiz() {
+    createQuiz() {
       try {
         const quizData = this.quizData;
         const classId = this.$route.params.courseCode;
-        await this.$axios
+
+        this.$axios
           .post("http://localhost:8080/class/question/create", {
             quizData,
             classId,

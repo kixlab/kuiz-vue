@@ -1,5 +1,12 @@
 <template>
-  <Wrapper rounded shadow px="6" py="6" class="quiz-list">
+  <Wrapper
+    rounded
+    shadow
+    px="6"
+    py="6"
+    class="quiz-list"
+    :style="quizzes.length === 0 ? '' : 'height: fit-content;'"
+  >
     <div class="action-header">
       <!--
       <div class="search">
@@ -59,10 +66,10 @@
       </thead>
       <tbody>
         <QuizItem
-          v-for="(quiz, index) in quizzes"
+          v-for="(quiz, index) in quizzesFiltered"
           :id="quiz._id"
           :key="index"
-          :quiz-id="quizzes.length - index"
+          :quiz-id="quizzesFiltered.length - index"
           :question="quiz.qStem"
           :tags="quiz.tags"
           :likes="quiz.likes.length"
@@ -106,24 +113,24 @@ export default {
     return {
       currentCategory: "All Categories",
       categoryListVisible: false,
-      categories: [
-        "All Categories",
-        "Category 1",
-        "Category 2",
-        "Category 3",
-        "Category 4",
-        "Category 5",
-        "Category 6",
-        "Category 7",
-        "Category 8",
-      ],
+      categories: ["All Categories"],
       quizzes: [],
     };
   },
 
+  computed: {
+    quizzesFiltered() {
+      if (this.currentCategory === "All Categories") {
+        return this.quizzes;
+      } else {
+        return this.quizzes.filter(e => e.tags[0] === this.currentCategory);
+      }
+    },
+  },
+
   created() {
     this.getQuizList();
-    this.getTag();
+    this.getTags();
   },
 
   methods: {
@@ -147,12 +154,12 @@ export default {
       }
     },
 
-    async getTag() {
+    async getTags() {
       try {
         const res = await this.$axios.post("http://localhost:8080/class/tag", {
           code: this.$route.params.courseCode,
         });
-        this.categories = res.data.tags;
+        this.categories = this.categories.concat(res.data.tags);
       } catch (e) {
         console.log(e);
       }
