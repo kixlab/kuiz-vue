@@ -1,8 +1,0 @@
-<svg id="logout_black_24dp" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <g id="그룹_25" data-name="그룹 25">
-    <path id="패스_51" data-name="패스 51" d="M0,0H32V32H0Z" fill="none"/>
-  </g>
-  <g id="그룹_26" data-name="그룹 26" transform="translate(3 3)">
-    <path id="패스_52" data-name="패스 52" d="M23.222,10.222l-2.037,2.037,2.282,2.3h-11.8v2.889h11.8l-2.282,2.282,2.037,2.051L29,16ZM5.889,5.889H16V3H5.889A2.9,2.9,0,0,0,3,5.889V26.111A2.9,2.9,0,0,0,5.889,29H16V26.111H5.889Z" transform="translate(-3 -3)" fill="#fff"/>
-  </g>
-</svg>

@@ -110,7 +110,7 @@
             >
               Discover
             </span>
-            and solve quizzes made by other members!
+            and solve quizzes made by other classmates!
           </div>
         </div>
       </Wrapper>

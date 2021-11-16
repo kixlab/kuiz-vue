@@ -657,11 +657,12 @@ export default {
             textarea {
               width: 100%;
               border: 1px solid $grey-ash;
-              padding: 10px 12px;
+              padding: 8px 12px;
               resize: none;
               font-size: 0.9rem;
-              border-top-left-radius: 12px;
-              border-bottom-left-radius: 12px;
+              border-top-left-radius: 6px;
+              border-bottom-left-radius: 6px;
+              transition: border 0.2s ease;
 
               &:focus {
                 border: 1px solid $blue-primary;
@@ -676,8 +677,8 @@ export default {
               width: 62px;
               height: 62px;
               background-color: $blue-primary;
-              border-top-right-radius: 12px;
-              border-bottom-right-radius: 12px;
+              border-top-right-radius: 6px;
+              border-bottom-right-radius: 6px;
               cursor: pointer;
 
               img {

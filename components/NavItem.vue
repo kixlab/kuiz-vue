@@ -2,9 +2,9 @@
   <NuxtLink :to="linkTo" :class="buildClass">
     <img
       v-if="$route.path.includes(to)"
-      :src="require('~/assets/icons/' + to + '-white.svg')"
+      :src="require('~/assets/icons/' + to + '-white.png')"
     />
-    <img v-else :src="require('~/assets/icons/' + to + '-black.svg')" />
+    <img v-else :src="require('~/assets/icons/' + to + '-black.png')" />
     <span style="margin-left: 12px"><slot /></span>
   </NuxtLink>
 </template>
