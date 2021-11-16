@@ -40,13 +40,17 @@ export default {
     quizSolved: { type: Number, default: 0 },
     quizCommented: { type: Number, default: 0 },
   },
-
+  data() {
+    return {
+      target: [],
+    };
+  },
   computed: {
     taskStatus() {
       if (
-        this.quizCreated === 5 &&
-        this.quizSolved === 5 &&
-        this.quizCommented === 5
+        this.quizCreated === this.target[0] &&
+        this.quizSolved === this.target[1] &&
+        this.quizCommented === this.target[2]
       ) {
         return 2;
       } else if (
@@ -57,6 +61,27 @@ export default {
         return 0;
       } else {
         return 1;
+      }
+    },
+  },
+  created() {
+    this.getObjectivesTarget();
+  },
+  methods: {
+    async getObjectivesTarget() {
+      try {
+        await this.$axios
+          .get("http://localhost:8080/class/target", {
+            params: {
+              code: this.$route.params.courseCode,
+            },
+          })
+          .then(res => {
+            this.target = res.data.target;
+          });
+      } catch (e) {
+        console.log(e);
+        throw e;
       }
     },
   },

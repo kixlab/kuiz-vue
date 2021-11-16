@@ -127,7 +127,7 @@ export default {
           const info = {
             userEmail: this.$store.state.userEmail,
             joinCode: code,
-            _id: this.$store.state._id,
+            _id: this.$store.state.uid,
           };
 
           await this.$axios.post("http://localhost:8080/class/join", info);

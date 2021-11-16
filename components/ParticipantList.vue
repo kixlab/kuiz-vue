@@ -16,13 +16,14 @@
       <tbody>
         <ParticipantItem
           v-for="(participant, index) in participants"
-          :id="participant.id"
+          :id="participant._id"
           :key="index"
-          :avatar="participant.avatar"
+          :target="targets"
+          :avatar="participant.imageUrl"
           :name="participant.name"
-          :quiz-created="participant.quizCreated"
-          :quiz-solved="participant.quizSolved"
-          :quiz-commented="participant.quizCommented"
+          :quiz-created="participant.made==null?0:participant.made.length"
+          :quiz-solved="participant.solved==null?0:participant.solved.length"
+          :quiz-commented="participant.comment==null?0:participant.comment.length"
         />
       </tbody>
     </table>
@@ -33,66 +34,49 @@
 export default {
   data() {
     return {
-      participants: [
-        {
-          avatar: "https://www.kixlab.org/assets/img/members/nicolelee.jpg",
-          id: 20123456,
-          name: "Nicole Lee",
-          quizCreated: 5,
-          quizSolved: 5,
-          quizCommented: 5,
-        },
-        {
-          avatar: "https://www.kixlab.org/assets/img/members/nebjuok.jpg",
-          id: 20123456,
-          name: "Jaeryoung Ka",
-          quizCreated: 5,
-          quizSolved: 4,
-          quizCommented: 3,
-        },
-        {
-          avatar: "https://www.kixlab.org/assets/img/members/inhwa.jpg",
-          id: 20123456,
-          name: "Inhwa Song",
-          quizCreated: 3,
-          quizSolved: 5,
-          quizCommented: 5,
-        },
-        {
-          avatar: "https://www.kixlab.org/assets/img/members/Nurlykhan.jpg",
-          id: 20123456,
-          name: "Nurlykhan Kopenov",
-          quizCreated: 2,
-          quizSolved: 5,
-          quizCommented: 4,
-        },
-        {
-          avatar: "https://juhokim.com/images/Me/juhokim-profile-2016-1.jpg",
-          id: 20123456,
-          name: "Juho Kim",
-          quizCreated: 3,
-          quizSolved: 5,
-          quizCommented: 3,
-        },
-        {
-          avatar: "https://www.kixlab.org/assets/img/members/haesoo.png",
-          id: 20123456,
-          name: "Haesoo Kim",
-          quizCreated: 4,
-          quizSolved: 3,
-          quizCommented: 5,
-        },
-        {
-          avatar: "https://www.kixlab.org/assets/img/members/ejung.png",
-          id: 20123456,
-          name: "Elliot Jung",
-          quizCreated: 0,
-          quizSolved: 0,
-          quizCommented: 0,
-        },
-      ],
+      participants: [],
+      targets: [],
     };
   },
+
+  created() {
+    this.getParticipants();
+  },
+  methods: {
+    async getParticipants() {
+      try {
+        await this.$axios
+          .get("http://localhost:8080/class/participants/status", {
+            params: {
+              code: this.$route.params.courseCode,
+            },
+          })
+          .then(res => {
+            this.participants = res.data.info;
+          });
+      } catch (e) {
+        console.log(e);
+      }
+    },
+
+    async getObjectivesTarget() {
+      try {
+        await this.$axios
+          .get("http://localhost:8080/class/target", {
+            params: {
+              code: this.$route.params.courseCode,
+            },
+          })
+          .then(res => {
+            this.targets = res.data.target;
+          });
+      } catch (e) {
+        console.log(e);
+        throw e;
+      }
+    },
+  },
+
 };
 </script>
 

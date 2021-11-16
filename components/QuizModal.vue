@@ -164,6 +164,8 @@ export default {
       try {
         const quizData = this.quizData;
         const classId = this.$route.params.courseCode;
+        console.log("quizData", this.quizData);
+        debugger;
         await this.$axios
           .post("http://localhost:8080/class/question/create", {
             quizData,

@@ -8,7 +8,52 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      participants: [],
+      targets: [],
+    };
+  },
+  created() {
+    this.getParticipants();
+  },
+  methods: {
+    async getParticipants() {
+      try {
+        await this.$axios
+          .get("http://localhost:8080/class/participants/status", {
+            params: {
+              code: this.$route.params.courseCode,
+            },
+          })
+          .then(res => {
+            this.participants = res.data.info;
+          });
+      } catch (e) {
+        console.log(e);
+      }
+    },
+  },
+
+  async getObjectivesTarget() {
+    try {
+      await this.$axios
+        .get("http://localhost:8080/class/target", {
+          params: {
+            code: this.$route.params.courseCode,
+          },
+        })
+        .then(res => {
+          this.target = res.data.target;
+        });
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  },
+
+};
 </script>
 
 <style lang="scss" scoped>
