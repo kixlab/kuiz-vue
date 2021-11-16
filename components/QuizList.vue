@@ -5,7 +5,7 @@
     px="6"
     py="6"
     class="quiz-list"
-    :style="quizzes.length === 0 ? '' : 'height: fit-content;'"
+    :style="quizzesFiltered.length === 0 ? '' : 'height: fit-content;'"
   >
     <div class="action-header">
       <!--
@@ -84,7 +84,7 @@
       </tbody>
     </table>
     <div
-      v-if="quizzes.length === 0"
+      v-if="quizzesFiltered.length === 0"
       class="placeholder column-center text-center"
     >
       There are no quizzes yet.
