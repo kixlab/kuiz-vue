@@ -87,7 +87,8 @@
       v-if="quizzesFiltered.length === 0"
       class="placeholder column-center text-center"
     >
-      There are no quizzes yet.
+      There are no quizzes
+      {{ currentCategory !== "All Categories" ? "for this category" : "" }} yet.
       <div>
         Be the first to
         <span @click="toggleQuizModal">create a quiz!</span>

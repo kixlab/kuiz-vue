@@ -284,6 +284,8 @@ export default {
         } else {
           return "";
         }
+      } else if (index === this.selectedAnswer) {
+        return "selected";
       } else {
         return "";
       }
@@ -561,17 +563,21 @@ export default {
                   padding: 6px 12px;
                   border-radius: 6px;
 
+                  &.selected {
+                    background-color: $blue-light;
+                  }
+
                   &.correct {
                     background-color: $green-light;
-                    transition: all 0.5s ease;
+                    transition: all 0.3s ease;
                   }
 
                   &.wrong {
                     background-color: $red-light;
-                    transition: all 0.5s ease;
+                    transition: all 0.3s ease;
                   }
 
-                  &:not(.correct):not(.wrong):hover {
+                  &:not(.correct):not(.wrong):not(.selected):hover {
                     background-color: $white-background;
                   }
 

@@ -24,7 +24,9 @@
     <td v-if="taskStatus === 0" class="text-center status not-started">
       Not Started
     </td>
-    <td class="text-center">{{ quizCreated }}</td>
+    <td class="text-center">
+      {{ quizCreated }}
+    </td>
     <td class="text-center">{{ quizSolved }}</td>
     <td class="text-center">{{ quizCommented }}</td>
   </tr>
@@ -34,23 +36,20 @@
 export default {
   props: {
     avatar: { type: String, default: null },
-    id: { type: Number, default: null },
+    id: { type: String, default: null },
     name: { type: String, default: null },
     quizCreated: { type: Number, default: 0 },
     quizSolved: { type: Number, default: 0 },
     quizCommented: { type: Number, default: 0 },
+    target: { type: Array, default: null },
   },
-  data() {
-    return {
-      target: [],
-    };
-  },
+
   computed: {
     taskStatus() {
       if (
-        this.quizCreated === this.target[0] &&
-        this.quizSolved === this.target[1] &&
-        this.quizCommented === this.target[2]
+        this.quizCreated >= this.target[0] &&
+        this.quizSolved >= this.target[1] &&
+        this.quizCommented >= this.target[2]
       ) {
         return 2;
       } else if (
@@ -64,26 +63,9 @@ export default {
       }
     },
   },
+
   created() {
-    this.getObjectivesTarget();
-  },
-  methods: {
-    async getObjectivesTarget() {
-      try {
-        await this.$axios
-          .get("http://localhost:8080/class/target", {
-            params: {
-              code: this.$route.params.courseCode,
-            },
-          })
-          .then(res => {
-            this.target = res.data.target;
-          });
-      } catch (e) {
-        console.log(e);
-        throw e;
-      }
-    },
+    this.$emit("status", this.taskStatus);
   },
 };
 </script>

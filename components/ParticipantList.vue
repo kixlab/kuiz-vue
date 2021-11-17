@@ -1,16 +1,40 @@
 <template>
   <Wrapper rounded shadow class="participant-list">
     <div class="title">
-      {{ participants.length }} students participating in total
+      <span>{{ participants.length }} participants in total</span>
+      <span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+      <span class="complete">
+        Complete:
+        {{ complete }}
+      </span>
+      <span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+      <span class="in-progress">
+        In Progress:
+        {{ inProgress }}
+      </span>
+      <span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+      <span class="not-started">
+        Not started:
+        {{ notStarted }}
+      </span>
     </div>
     <table class="table">
       <thead>
         <tr>
           <th>Name</th>
           <th class="text-center">Task Status</th>
-          <th class="text-center">Quizzes Created</th>
-          <th class="text-center">Quizzes Solved</th>
-          <th class="text-center">Comments</th>
+          <th class="text-center">
+            Quizzes Created
+            <div class="goal">Goal: {{ target[0] }}</div>
+          </th>
+          <th class="text-center">
+            Quizzes Solved
+            <div class="goal">Goal: {{ target[1] }}</div>
+          </th>
+          <th class="text-center">
+            Comments
+            <div class="goal">Goal: {{ target[2] }}</div>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -18,12 +42,17 @@
           v-for="(participant, index) in participants"
           :id="participant._id"
           :key="index"
-          :target="targets"
+          :target="target"
           :avatar="participant.imageUrl"
           :name="participant.name"
-          :quiz-created="participant.made==null?0:participant.made.length"
-          :quiz-solved="participant.solved==null?0:participant.solved.length"
-          :quiz-commented="participant.comment==null?0:participant.comment.length"
+          :quiz-created="participant.made == null ? 0 : participant.made.length"
+          :quiz-solved="
+            participant.solved == null ? 0 : participant.solved.length
+          "
+          :quiz-commented="
+            participant.comment == null ? 0 : participant.comment.length
+          "
+          @status="updateStatus"
         />
       </tbody>
     </table>
@@ -35,13 +64,18 @@ export default {
   data() {
     return {
       participants: [],
-      targets: [],
+      target: [],
+      complete: 0,
+      inProgress: 0,
+      notStarted: 0,
     };
   },
 
   created() {
     this.getParticipants();
+    this.getObjectivesTarget();
   },
+
   methods: {
     async getParticipants() {
       try {
@@ -68,15 +102,28 @@ export default {
             },
           })
           .then(res => {
-            this.targets = res.data.target;
+            this.target = res.data.target;
           });
       } catch (e) {
         console.log(e);
         throw e;
       }
     },
-  },
 
+    updateStatus(val) {
+      switch (val) {
+        case 2:
+          this.complete += 1;
+          break;
+        case 1:
+          this.inProgress += 1;
+          break;
+        case 3:
+          this.notStarted += 1;
+          break;
+      }
+    },
+  },
 };
 </script>
 
