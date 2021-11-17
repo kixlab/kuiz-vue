@@ -3,6 +3,7 @@
     <NuxtLink to="/" class="logo">
       <img src="~/assets/images/logo.png" />
     </NuxtLink>
+    <!--
     <Wrapper
       rounded
       class="row w-100 course-select"
@@ -18,6 +19,8 @@
         <img src="~/assets/icons/arrow-dropdown-black.svg" />
       </div>
     </Wrapper>
+    -->
+    <div style="width: 100%; height: 64px"></div>
     <Wrapper px="0" py="0" class="column">
       <NavItem rounded to="quizzes">Quizzes</NavItem>
       <NavItem rounded to="activity">My Activity</NavItem>
