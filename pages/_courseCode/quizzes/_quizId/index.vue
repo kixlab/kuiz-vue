@@ -166,7 +166,7 @@
             <div class="row reply">
               <textarea
                 v-model="newComment"
-                placeholder="Write a comment..."
+                placeholder="Is the question easy to understand? What can be improved?"
                 rows="2"
               />
               <div class="submit row-center" @click="onCommentSubmit">
@@ -565,6 +565,7 @@ export default {
 
                   &.selected {
                     background-color: $blue-light;
+                    transition: all 0.3s ease;
                   }
 
                   &.correct {

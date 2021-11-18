@@ -8,8 +8,25 @@ export default {
     date: { type: String, default: null },
   },
 
-  computed: {
-    dateFormatted() {
+  data() {
+    return {
+      dateFormatted: "",
+    };
+  },
+
+  created() {
+    this.formatDate();
+    setInterval(() => {
+      this.formatDate();
+    }, 5000);
+  },
+
+  beforeDestroy() {
+    clearInterval(this.formatDate);
+  },
+
+  methods: {
+    formatDate() {
       const createdAt = new Date(this.date);
       const now = new Date();
 
@@ -30,9 +47,10 @@ export default {
 
         const exactDate =
           mmm + " " + dd + " at " + hh + ":" + mm + " " + period;
-        return exactDate;
+
+        this.dateFormatted = exactDate;
       } else {
-        return this.$dayjs(this.date).fromNow();
+        this.dateFormatted = this.$dayjs(this.date).fromNow();
       }
     },
   },
