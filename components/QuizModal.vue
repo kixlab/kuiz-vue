@@ -101,7 +101,7 @@ export default {
         qStem: "",
         tags: [],
         explanation: "",
-        answerOptions: ["", ""],
+        answerOptions: ["", "", "", ""],
         answer: null,
       },
       tags: [],
