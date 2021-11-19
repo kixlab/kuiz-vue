@@ -7,7 +7,7 @@ export default {
 
   // Configure router settings
   router: {
-    base: process.env.NODE_ENV === "staging" ? "/" : "/kuiz-vue/",
+    // base: process.env.NODE_ENV === "staging" ? "/" : "/kuiz-vue/",
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -59,7 +59,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: "localhost:8080",
+    baseURL: "localhost:4000",
   },
 
   dayjs: {

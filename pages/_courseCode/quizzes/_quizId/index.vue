@@ -223,7 +223,7 @@ export default {
         this.showComments = true;
 
         this.$axios
-          .post("http://localhost:8080/class/question/solve", {
+          .post("http://localhost:4000/class/question/solve", {
             uid: this.$store.state.uid,
             qid: this.$route.params.quizId,
             selectedAnswer: this.selectedAnswer,
@@ -243,7 +243,7 @@ export default {
     async getQuizData() {
       try {
         const res = await this.$axios.get(
-          "http://localhost:8080/class/question/load",
+          "http://localhost:4000/class/question/load",
           {
             params: {
               code: this.$route.params.courseCode,
@@ -294,7 +294,7 @@ export default {
     async onCommentSubmit() {
       try {
         await this.$axios
-          .post("http://localhost:8080/class/question/comment", {
+          .post("http://localhost:4000/class/question/comment", {
             qid: this.$route.params.quizId,
             uid: this.$store.state.uid,
             comment: this.newComment,
@@ -312,7 +312,7 @@ export default {
     async onLike() {
       try {
         await this.$axios
-          .post("http://localhost:8080/user/question/like", {
+          .post("http://localhost:4000/user/question/like", {
             qid: this.$route.params.quizId,
             uid: this.$store.state.uid,
             liked: this.isLiked,
@@ -328,7 +328,7 @@ export default {
     async getLike() {
       try {
         const res = await this.$axios.get(
-          "http://localhost:8080/class/question/likes",
+          "http://localhost:4000/class/question/likes",
           {
             qid: this.$route.params.quizId,
           },

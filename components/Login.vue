@@ -44,7 +44,7 @@ export default {
         this.userEmail = GoogleUser.getBasicProfile().getEmail();
 
         this.$axios
-          .post("http://localhost:8080/auth/register", {
+          .post("http://localhost:4000/auth/register", {
             name: this.userName,
             email: this.userEmail,
             image: this.userImage,

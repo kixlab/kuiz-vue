@@ -145,7 +145,7 @@ export default {
     async getQuizList() {
       try {
         await this.$axios
-          .get("http://localhost:8080/class/question/load", {
+          .get("http://localhost:4000/class/question/load", {
             params: {
               code: this.courseCode,
             },
@@ -162,7 +162,7 @@ export default {
 
     async getTags() {
       try {
-        const res = await this.$axios.post("http://localhost:8080/class/tag", {
+        const res = await this.$axios.post("http://localhost:4000/class/tag", {
           code: this.$route.params.courseCode,
         });
         this.categories = this.categories.concat(res.data.tags);
