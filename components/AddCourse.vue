@@ -130,7 +130,7 @@ export default {
             _id: this.$store.state.uid,
           };
 
-          await this.$axios.post("http://localhost:4000/class/join", info);
+          await this.$axios.post(`${process.env.baseURL}/class/join`, info);
 
           this.$store.commit("changeCourse", code);
         } catch (e) {

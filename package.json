@@ -5,7 +5,7 @@
   "author": "Elliot Jung, Inhwa Song",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=staging nuxt",
+    "dev": "cross-env NODE_ENV=local nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "cross-env NODE_ENV=production nuxt generate",

@@ -95,7 +95,7 @@ export default {
     async getParticipants() {
       try {
         await this.$axios
-          .get("http://localhost:4000/class/participants/status", {
+          .get(`${process.env.baseURL}/class/participants/status`, {
             params: {
               code: this.$route.params.courseCode,
             },
@@ -111,7 +111,7 @@ export default {
     async getObjectivesTarget() {
       try {
         await this.$axios
-          .get("http://localhost:4000/class/target", {
+          .get(`${process.env.baseURL}/class/target`, {
             params: {
               code: this.$route.params.courseCode,
             },

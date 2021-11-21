@@ -148,7 +148,7 @@ export default {
     async getTags() {
       try {
         console.log("code", this.$route.params.courseCode);
-        const res = await this.$axios.post("http://localhost:4000/class/tag", {
+        const res = await this.$axios.post(`${process.env.baseURL}/class/tag`, {
           code: this.$route.params.courseCode,
         });
         this.tags = res.data.tags;
@@ -164,7 +164,7 @@ export default {
         const classId = this.$route.params.courseCode;
 
         this.$axios
-          .post("http://localhost:4000/class/question/create", {
+          .post(`${process.env.baseURL}/class/question/create`, {
             quizData,
             classId,
           })

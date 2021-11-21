@@ -51,7 +51,7 @@ export default {
     async getObjectivesTarget() {
       try {
         await this.$axios
-          .get("http://localhost:4000/class/target", {
+          .get(`${process.env.baseURL}/class/target`, {
             params: {
               code: this.$route.params.courseCode,
             },
@@ -70,7 +70,7 @@ export default {
     async getCreatedQuizzes() {
       try {
         await this.$axios
-          .get("http://localhost:4000/user/history/made", {
+          .get(`${process.env.baseURL}/user/history/made`, {
             params: {
               email: this.$store.state.userEmail,
             },
@@ -86,7 +86,7 @@ export default {
     async getSolvedQuizzes() {
       try {
         await this.$axios
-          .get("http://localhost:4000/user/history/solved", {
+          .get(`${process.env.baseURL}/user/history/solved`, {
             params: {
               email: this.$store.state.userEmail,
             },
@@ -102,7 +102,7 @@ export default {
     async getCreatedComments() {
       try {
         await this.$axios
-          .get("http://localhost:4000/user/history/comment", {
+          .get(`${process.env.baseURL}/user/history/comment`, {
             params: {
               email: this.$store.state.userEmail,
             },

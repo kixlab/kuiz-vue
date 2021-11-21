@@ -137,7 +137,7 @@ export default {
     async getCreatedQuizzes() {
       try {
         await this.$axios
-          .get("http://localhost:4000/user/history/made", {
+          .get(`${process.env.baseURL}/user/history/made`, {
             params: {
               email: this.$store.state.userEmail,
             },
@@ -155,7 +155,7 @@ export default {
     async getSolvedQuizzes() {
       try {
         await this.$axios
-          .get("http://localhost:4000/user/history/solved", {
+          .get(`${process.env.baseURL}/user/history/solved`, {
             params: {
               email: this.$store.state.userEmail,
             },
