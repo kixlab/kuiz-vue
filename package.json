@@ -5,7 +5,7 @@
   "author": "Elliot Jung, Inhwa Song",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nuxt",
+    "dev": "cross-env NODE_ENV=staging nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "deploy:staging": "cross-env NODE_ENV=development nuxt generate && aws s3 sync ./dist s3://staging.kuiz.kixlab.org && aws cloudfront create-invalidation --distribution-id E30GH6RGFO9YS --paths \"/*\"",
