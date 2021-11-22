@@ -58,12 +58,7 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    baseURL:
-      process.env.NODE_ENV === "production"
-        ? "http://13.124.178.61:5000"
-        : "http://13.124.178.61:4000",
-  },
+  axios: {},
 
   dayjs: {
     locales: ["en"],
@@ -77,4 +72,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  env: {
+    baseURL:
+      process.env.NODE_ENV === "production"
+        ? "http://13.124.178.61:5000"
+        : "http://13.124.178.61:4000",
+  },
 };
