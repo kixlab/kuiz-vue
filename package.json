@@ -5,11 +5,10 @@
   "author": "Elliot Jung, Inhwa Song",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=staging nuxt",
+    "dev": "cross-env NODE_ENV=development nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "cross-env NODE_ENV=production nuxt generate",
-    "deploy:staging": "cross-env NODE_ENV=staging nuxt generate && aws s3 sync ./dist s3://staging.kuiz.kixlab.org && aws cloudfront create-invalidation --distribution-id E30GH6RGFO9YS --paths \"/*\"",
+    "deploy:staging": "cross-env NODE_ENV=development nuxt generate && aws s3 sync ./dist s3://staging.kuiz.kixlab.org && aws cloudfront create-invalidation --distribution-id E30GH6RGFO9YS --paths \"/*\"",
     "deploy:production": "cross-env NODE_ENV=production nuxt generate && aws s3 sync ./dist s3://kuiz.kixlab.org && aws cloudfront create-invalidation --distribution-id E2E8RHO1YRN3PF --paths \"/*\"",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "yarn lint:js",
@@ -22,13 +21,19 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/dayjs": "^1.4.1",
+    "@nuxtjs/proxy": "^2.1.0",
+    "cookie": "^0.4.1",
     "core-js": "^3.15.1",
+    "js-cookie": "^3.0.1",
     "nuxt": "^2.15.7",
     "v-click-outside": "^3.1.2",
     "v-tooltip": "^2.1.3",
+    "vue-google-oauth2": "^1.5.8",
     "vue-radial-progress": "^0.3.2",
     "vue2-animate": "^2.1.4",
-    "vuedraggable": "^2.24.3"
+    "vuedraggable": "^2.24.3",
+    "vuex-persist": "^3.1.3"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",

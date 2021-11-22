@@ -7,7 +7,7 @@
       @click="closeQuizModal"
     >
       <div class="outer-wrapper" @click.stop>
-        <Wrapper rounded shadow px="5" py="5" class="inner-wrapper">
+        <Wrapper rounded shadow class="inner-wrapper">
           <section class="form-wrapper column">
             <form>
               <div class="stem">
