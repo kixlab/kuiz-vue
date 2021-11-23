@@ -5,11 +5,11 @@
   "author": "Elliot Jung, Inhwa Song",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=staging nuxt",
+    "dev": "cross-env BUILD_ENV=local NODE_ENV=development nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "deploy:staging": "cross-env NODE_ENV=development nuxt generate && aws s3 sync ./dist s3://staging.kuiz.kixlab.org && aws cloudfront create-invalidation --distribution-id E30GH6RGFO9YS --paths \"/*\"",
-    "deploy:production": "cross-env NODE_ENV=production nuxt generate && aws s3 sync ./dist s3://kuiz.kixlab.org && aws cloudfront create-invalidation --distribution-id E2E8RHO1YRN3PF --paths \"/*\"",
+    "deploy:staging": "cross-env BUILD_ENV=staging NODE_ENV=production nuxt generate && aws s3 sync ./dist s3://staging.kuiz.kixlab.org && aws cloudfront create-invalidation --distribution-id E30GH6RGFO9YS --paths \"/*\"",
+    "deploy:production": "cross-env BUILD_ENV=production NODE_ENV=production nuxt generate && aws s3 sync ./dist s3://kuiz.kixlab.org && aws cloudfront create-invalidation --distribution-id E2E8RHO1YRN3PF --paths \"/*\"",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "test": "jest"
@@ -22,6 +22,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/dayjs": "^1.4.1",
+    "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/proxy": "^2.1.0",
     "cookie": "^0.4.1",
     "core-js": "^3.15.1",

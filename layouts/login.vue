@@ -12,7 +12,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    console.log(process.env.BUILD_ENV);
+  },
+};
 </script>
 
 <style lang="scss" scoped>

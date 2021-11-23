@@ -6,9 +6,7 @@ export default {
   target: "static",
 
   // Configure router settings
-  router: {
-    // base: process.env.NODE_ENV === "staging" ? "/" : "/kuiz-vue/",
-  },
+  router: {},
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -51,11 +49,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/axios
-    "@nuxtjs/axios",
-    "@nuxtjs/dayjs",
-  ],
+  modules: ["@nuxtjs/dotenv", "@nuxtjs/axios", "@nuxtjs/dayjs"],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
@@ -74,9 +68,15 @@ export default {
   build: {},
 
   env: {
-    baseURL:
-      process.env.NODE_ENV === "production"
-        ? "http://13.124.178.61:5000"
-        : "http://13.124.178.61:4000",
+    baseURL: () => {
+      switch (process.env.BUILD_ENV) {
+        case "local":
+          return "http://localhost:4000";
+        case "staging":
+          return "http://13.124.178.61:4000";
+        case "production":
+          return "http://13.124.178.61:5000";
+      }
+    },
   },
 };
