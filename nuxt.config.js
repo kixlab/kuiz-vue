@@ -49,7 +49,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/dotenv", "@nuxtjs/axios", "@nuxtjs/dayjs"],
+  modules: ["@nuxtjs/axios", "@nuxtjs/dayjs"],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
@@ -68,7 +68,7 @@ export default {
   build: {},
 
   env: {
-    baseURL: () => {
+    baseURL: (() => {
       switch (process.env.BUILD_ENV) {
         case "local":
           return "http://localhost:4000";
@@ -77,6 +77,6 @@ export default {
         case "production":
           return "http://13.124.178.61:5000";
       }
-    },
+    })(),
   },
 };
