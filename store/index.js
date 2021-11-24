@@ -85,6 +85,9 @@ const mutations = {
   changeCourse(state, classCode) {
     state.currentCourse = classCode;
   },
+  changdSid(state, sid) {
+    state.sid = sid;
+  },
 
   logIn(state, userInfo) {
     state.isLoggedIn = true;

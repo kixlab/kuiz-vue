@@ -167,7 +167,7 @@ export default {
         });
         this.categories = this.categories.concat(res.data.tags);
       } catch (e) {
-        console.log(e);
+        console.log("err in class tag", e);
       }
     },
 

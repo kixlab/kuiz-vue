@@ -50,6 +50,7 @@ export default {
             image: this.userImage,
           })
           .then(res => {
+            console.log("SID in login", res.data.user.sid);
             const userInfo = {
               uid: res.data.user._id,
               userEmail: this.userEmail,
