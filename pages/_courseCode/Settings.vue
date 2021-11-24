@@ -40,11 +40,13 @@ export default {
       },
     };
   },
+
   computed: {
     userImage() {
       return this.$store.state.userImage;
     },
   },
+
   created() {
     this.getLog();
   },
@@ -56,11 +58,10 @@ export default {
     async saveProfile() {
       try {
         await this.$axios
-          .post(`${process.env.baseURL}/auth/set`,
-            {
-              sid: this.profile.sid,
-              uid: this.$store.state.uid,
-            })
+          .post(`${process.env.baseURL}/auth/set`, {
+            sid: this.profile.sid,
+            uid: this.$store.state.uid,
+          })
           .then(res => {
             console.log("MSG", res.data.msg);
             this.$store.commit("changdSid", res.data.sid);
@@ -72,6 +73,7 @@ export default {
         throw e;
       }
     },
+
     getLog() {
       console.log("SID", this.$store.state.sid);
     },
