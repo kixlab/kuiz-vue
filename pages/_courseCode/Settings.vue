@@ -7,10 +7,7 @@
           <img src="~assets/icons/edit-white.svg" />
         </div>
         -->
-        <img
-          class="avatar"
-          :src="userImage"
-        />
+        <img class="avatar" :src="userImage" />
       </div>
       <div class="profile-info">
         <div class="info-item">
@@ -141,6 +138,7 @@ export default {
           padding: 8px 16px;
           margin-top: 4px;
           font-size: 1.2rem;
+          transition: border 0.3s ease;
 
           &:focus {
             border: 2px solid $blue-primary;
