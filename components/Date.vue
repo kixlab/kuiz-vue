@@ -17,7 +17,7 @@ export default {
 
   created() {
     this.formatDate();
-    this.intervalHandle = setInterval(this.formatDate, 5000);
+    this.intervalHandle = setInterval(this.formatDate, 3000);
   },
 
   beforeDestroy() {

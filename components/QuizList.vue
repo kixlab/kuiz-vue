@@ -133,7 +133,7 @@ export default {
   created() {
     this.getQuizList();
     this.getTags();
-    this.intervalHandle = setInterval(this.getQuizList, 5000);
+    this.intervalHandle = setInterval(this.getQuizList, 3000);
   },
 
   beforeDestroy() {

@@ -11,12 +11,12 @@
       </div>
       <div class="profile-info">
         <div class="info-item">
-          <div class="title">Name</div>
-          <input v-model="profile.name" type="text" maxlength="25" />
-        </div>
-        <div class="info-item">
           <div class="title">Student ID</div>
           <input v-model="profile.sid" type="text" maxlength="8" />
+        </div>
+        <div class="info-item">
+          <div class="title">Name</div>
+          <input v-model="profile.name" type="text" maxlength="25" />
         </div>
       </div>
       <Button
@@ -207,7 +207,7 @@ export default {
 
     .save {
       width: 152px;
-      margin: 48px 0 0 0 !important;
+      margin: 40px 0 0 0 !important;
       transition: background-color 0.7s ease;
 
       &.saved {
