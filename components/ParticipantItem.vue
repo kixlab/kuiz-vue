@@ -10,12 +10,12 @@
         <img v-else class="avatar" :src="avatar" />
       </div>
       <div>
-        <div class="student-id">{{ id }}</div>
+        <!-- <div class="student-id">{{ id }}</div> -->
         <div class="student-name">{{ name }}</div>
       </div>
     </td>
     <td v-if="taskStatus === 2" class="text-center status complete">
-      <img src="~/assets/icons/circle-check.svg" />
+      <img src="~/assets/icons/check-circle.svg" />
       Complete
     </td>
     <td v-if="taskStatus === 1" class="text-center status in-progress">

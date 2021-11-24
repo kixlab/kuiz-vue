@@ -73,11 +73,9 @@ export default {
         case "local":
           return "http://localhost:4000";
         case "staging":
-          // http://13.124.178.61:4000
-          return "https://KuizApp-ALB-643357058.ap-northeast-2.elb.amazonaws.com:4000";
+          return "http://13.124.178.61:4000";
         case "production":
-          // http://13.124.178.61:5000
-          return "https://KuizApp-ALB-643357058.ap-northeast-2.elb.amazonaws.com:5000";
+          return "http://13.124.178.61:5000";
       }
     })(),
   },

@@ -56,7 +56,7 @@
                 </Tag>
               </div>
               <div class="correct-ratio text-center">
-                <img src="~assets/icons/circle-check.svg" />
+                <img src="~assets/icons/check-circle.svg" />
                 {{ ratio }}% of students got the correct answer on their first
                 try.
               </div>

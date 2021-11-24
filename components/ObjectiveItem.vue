@@ -1,7 +1,7 @@
 <template>
   <Wrapper px="2" py="3" class="objective-item">
     <div v-if="completed >= target" class="row-center" style="padding: 3px">
-      <img src="~assets/icons/circle-check.svg" />
+      <img src="~assets/icons/check-circle.svg" />
     </div>
     <radial-progress-bar
       v-else

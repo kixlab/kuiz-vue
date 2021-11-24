@@ -4,7 +4,7 @@
       <img src="~/assets/images/small-screen-cover.png" />
       <div class="text-center">
         Sorry, Kuiz is only available on your computer at the moment. An update
-        is on its way to provide you with the best mobile experience!
+        is on its way to provide you with a seamless mobile experience!
       </div>
     </div>
     <Modal />

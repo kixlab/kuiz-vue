@@ -85,8 +85,13 @@ const mutations = {
   changeCourse(state, classCode) {
     state.currentCourse = classCode;
   },
-  changdSid(state, sid) {
+
+  changeSid(state, sid) {
     state.sid = sid;
+  },
+
+  changeUsername(state, name) {
+    state.userName = name;
   },
 
   logIn(state, userInfo) {

@@ -7,75 +7,100 @@
           <img src="~assets/icons/edit-white.svg" />
         </div>
         -->
-        <img class="avatar" :src="userImage" />
+        <img class="avatar" :src="profile.avatar" />
       </div>
       <div class="profile-info">
         <div class="info-item">
           <div class="title">Name</div>
-          <input v-model="profile.name" />
+          <input v-model="profile.name" type="text" maxlength="25" />
         </div>
         <div class="info-item">
           <div class="title">Student ID</div>
-          <input v-model="profile.sid" />
+          <input v-model="profile.sid" type="text" maxlength="8" />
         </div>
       </div>
       <Button
         bg="primary"
-        style="margin: 48px 0 0 0 !important"
-        @click.native="saveProfile"
+        class="save row-center"
+        :class="{ saved: saved }"
+        @click.native="
+          () => {
+            if (!loading && !saved) {
+              loading = true;
+              saved = false;
+              saveProfile();
+            }
+          }
+        "
       >
-        Save Changes
+        <div v-show="loading && !saved" class="loader">
+          <beat-loader size="12px" color="#ffffff" margin="3px"></beat-loader>
+        </div>
+        <div v-show="!loading && !saved">Save Changes</div>
+        <div v-show="saved">Saved!</div>
       </Button>
     </div>
   </div>
 </template>
 
 <script>
+import BeatLoader from "vue-spinner/src/BeatLoader.vue";
+
 export default {
+  components: { BeatLoader },
+
   data() {
     return {
+      loading: false,
+      saved: false,
       profile: {
+        avatar: this.$store.state.userImage,
         name: this.$store.state.userName,
         sid: this.$store.state.sid,
+        uid: this.$store.state.uid,
       },
     };
   },
 
-  computed: {
-    userImage() {
-      return this.$store.state.userImage;
-    },
-  },
-
-  created() {
-    this.getLog();
-  },
-
   methods: {
-    // saveProfile() {
-    //   alert("Changes saved successfully");
-    // },
-    async saveProfile() {
+    saveProfile() {
+      if (this.profile.name.match(/^\s*$/) !== null) {
+        alert("Please enter your name");
+      }
+      if (!(this.profile.sid.match(/^\d+$/) !== null)) {
+        alert("Please enter a valid student ID");
+      }
+
       try {
-        await this.$axios
+        this.$axios
           .post(`${process.env.baseURL}/auth/set`, {
+            uid: this.profile.uid,
+            name: this.profile.name,
             sid: this.profile.sid,
-            uid: this.$store.state.uid,
           })
           .then(res => {
-            console.log("MSG", res.data.msg);
-            this.$store.commit("changdSid", res.data.sid);
-            this.sid = res.data.sid;
-            console.log("Saved", this.$store.state.sid);
+            this.$store.commit("changeUsername", res.data.name);
+            this.$store.commit("changeSid", res.data.sid);
+            this.profile.name = res.data.name;
+            this.profile.sid = res.data.sid;
+            setTimeout(
+              () => {
+                setTimeout(() => {
+                  this.loading = false;
+                  this.saved = false;
+                }, 1000);
+              },
+              400,
+              setTimeout(() => {
+                this.loading = false;
+                this.saved = true;
+              }, 400),
+            );
           });
       } catch (e) {
         console.log(e);
         throw e;
       }
-    },
-
-    getLog() {
-      console.log("SID", this.$store.state.sid);
     },
   },
 };
@@ -141,6 +166,7 @@ export default {
         height: 100%;
         border-radius: 50%;
         object-fit: cover;
+        border: 6px solid $grey-silver;
       }
     }
 
@@ -163,7 +189,7 @@ export default {
           width: 100%;
           border: 2px solid $grey-ash;
           border-radius: 12px;
-          padding: 8px 16px;
+          padding: 8px 12px;
           margin-top: 4px;
           font-size: 1.2rem;
           transition: border 0.3s ease;
@@ -171,6 +197,29 @@ export default {
           &:focus {
             border: 2px solid $blue-primary;
           }
+
+          &:disabled {
+            background-color: $grey-silver;
+          }
+        }
+      }
+    }
+
+    .save {
+      width: 152px;
+      margin: 48px 0 0 0 !important;
+      transition: background-color 0.7s ease;
+
+      &.saved {
+        background-color: $green-primary;
+        color: $white-flat;
+        transition: background-color 0.3s ease;
+      }
+
+      .loader {
+        .v-spinner {
+          display: flex;
+          padding: 4.5px 0;
         }
       }
     }
