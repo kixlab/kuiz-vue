@@ -19,7 +19,7 @@
         </div>
         <div class="info-item">
           <div class="title">Student ID</div>
-          <input v-model="profile.id" />
+          <input v-model="profile.sid" />
         </div>
       </div>
       <Button
@@ -39,7 +39,7 @@ export default {
     return {
       profile: {
         name: this.$store.state.userName,
-        id: this.$store.state.sid,
+        sid: this.$store.state.sid,
       },
     };
   },
@@ -48,9 +48,35 @@ export default {
       return this.$store.state.userImage;
     },
   },
+  created() {
+    this.getLog();
+  },
+
   methods: {
-    saveProfile() {
-      alert("Changes saved successfully");
+    // saveProfile() {
+    //   alert("Changes saved successfully");
+    // },
+    async saveProfile() {
+      try {
+        await this.$axios
+          .post(`${process.env.baseURL}/auth/set`,
+            {
+              sid: this.profile.sid,
+              uid: this.$store.state.uid,
+            })
+          .then(res => {
+            console.log("MSG", res.data.msg);
+            this.$store.commit("changdSid", res.data.sid);
+            this.sid = res.data.sid;
+            console.log("Saved", this.$store.state.sid);
+          });
+      } catch (e) {
+        console.log(e);
+        throw e;
+      }
+    },
+    getLog() {
+      console.log("SID", this.$store.state.sid);
     },
   },
 };
