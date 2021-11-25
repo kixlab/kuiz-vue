@@ -16,6 +16,8 @@
   transition: all 0.3s ease;
 
   .outer-wrapper {
+    height: 100%;
+
     .inner-wrapper {
       padding: 32px !important;
 
@@ -76,6 +78,12 @@
               background-color: $white-flat;
               border: 1px solid $grey-ash;
 
+              &:hover {
+                .action {
+                  opacity: 0.3;
+                }
+              }
+
               &:first-child {
                 border-top-left-radius: 0.25rem;
                 border-top-right-radius: 0.25rem;
@@ -109,6 +117,50 @@
                 border: none;
                 font-family: "Poppins", sans-serif;
                 font-size: 0.9rem;
+              }
+
+              .action {
+                width: 20px;
+                opacity: 0;
+                cursor: pointer;
+
+                &.marked {
+                  opacity: 1 !important;
+                }
+
+                &.hidden {
+                  opacity: 0 !important;
+                }
+
+                &:not(:first-child) {
+                  margin-left: 12px;
+                }
+
+                &:hover {
+                  opacity: 1;
+                }
+
+                img {
+                  width: 20px;
+                  height: 20px;
+                }
+              }
+            }
+
+            .add-option {
+              display: inline-block;
+              font-family: "Poppins", sans-serif;
+              font-size: 0.8rem;
+              font-weight: 500;
+              color: $blue-primary;
+              padding: 4px 10px;
+              border-radius: 6px;
+              background-color: $white-background;
+              margin: 8px 0 0 0 !important;
+              cursor: pointer;
+
+              &:hover {
+                background-color: $grey-silver;
               }
             }
           }

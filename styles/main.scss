@@ -184,14 +184,14 @@ button {
   }
 
   &[x-placement^="right"] {
-    margin-left: 5px;
+    margin-left: 6px;
 
     .tooltip-arrow {
       border-width: 5px 5px 5px 0;
       border-left-color: transparent !important;
       border-top-color: transparent !important;
       border-bottom-color: transparent !important;
-      left: -5px;
+      left: -4px;
       top: calc(50% - 5px);
       margin-left: 0;
       margin-right: 0;
