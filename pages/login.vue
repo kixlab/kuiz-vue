@@ -1,9 +1,9 @@
 <template>
   <div class="content-wrapper">
     <Wrapper py="0" bg="transparent">
-      <img src="~assets/images/logo.png" style="height: 32px" />
+      <img src="~assets/images/logo.png" style="height: 24px" />
     </Wrapper>
-    <Wrapper rounded shadow py="6" style="margin-top: 28px">
+    <Wrapper rounded shadow py="6" style="margin-top: 32px">
       <Login />
     </Wrapper>
   </div>
