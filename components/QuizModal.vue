@@ -268,7 +268,7 @@ export default {
         obj => obj.text === "",
       );
       if (blankAnswerOptionExists !== undefined) {
-        alert("Please fill in any blank answer choices and try again.");
+        alert("Please fill in any blank answer options.");
         return "e";
       }
       if (correctAnswerMarked === undefined) {
