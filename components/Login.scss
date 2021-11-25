@@ -18,18 +18,37 @@
   align-items: center;
   transition: all 0.3s ease;
 
+  &.loading {
+    background-color: $blue-primary;
+    cursor: pointer;
+  }
+
   &:hover {
     background-color: $blue-primary;
     color: $white-flat;
     cursor: pointer;
   }
 
-  .text {
-    font-size: 1.2rem;
-    font-weight: 500;
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-    letter-spacing: -0.02em;
+  .loader {
+    .v-spinner {
+      display: flex;
+      padding: 7px 0;
+    }
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
     width: 100%;
+    height: 100%;
+
+    .text {
+      font-size: 1.2rem;
+      font-weight: 500;
+      font-family: "Poppins", sans-serif;
+      text-align: center;
+      letter-spacing: -0.02em;
+      width: 100%;
+    }
   }
 }

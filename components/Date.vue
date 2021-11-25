@@ -11,18 +11,17 @@ export default {
   data() {
     return {
       dateFormatted: "",
+      intervalHandle: null,
     };
   },
 
   created() {
     this.formatDate();
-    setInterval(() => {
-      this.formatDate();
-    }, 5000);
+    this.intervalHandle = setInterval(this.formatDate, 3000);
   },
 
   beforeDestroy() {
-    clearInterval(this.formatDate);
+    clearInterval(this.intervalHandle);
   },
 
   methods: {

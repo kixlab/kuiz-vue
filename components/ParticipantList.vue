@@ -40,7 +40,7 @@
       <tbody>
         <ParticipantItem
           v-for="(participant, index) in participantsFiltered"
-          :id="participant._id"
+          :id="participant.sid"
           :key="index"
           :target="target"
           :avatar="participant.imageUrl"
@@ -74,14 +74,11 @@ export default {
   computed: {
     participantsFiltered() {
       const newList = this.participants;
-
       newList.sort((a, b) => {
         const aSum = a.made.length + a.solved.length + a.comment.length;
         const bSum = b.made.length + b.solved.length + b.comment.length;
-
         return bSum - aSum;
       });
-
       return newList;
     },
   },

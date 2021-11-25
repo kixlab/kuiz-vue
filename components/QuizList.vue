@@ -116,6 +116,7 @@ export default {
       categoryListVisible: false,
       categories: ["All Categories"],
       quizzes: [],
+      intervalHandle: null,
     };
   },
 
@@ -132,11 +133,11 @@ export default {
   created() {
     this.getQuizList();
     this.getTags();
-    setInterval(this.getQuizList, 5000);
+    this.intervalHandle = setInterval(this.getQuizList, 3000);
   },
 
   beforeDestroy() {
-    clearInterval(this.getQuizList);
+    clearInterval(this.intervalHandle);
   },
 
   methods: {

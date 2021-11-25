@@ -16,6 +16,7 @@ tr {
 
     .profile-image {
       width: 48px;
+      min-width: 48px;
       height: 48px;
       margin-right: 24px;
 
@@ -28,7 +29,7 @@ tr {
     }
 
     &.status {
-      font-weight: 600;
+      font-weight: 500;
 
       &.complete {
         color: $green-primary;
@@ -52,6 +53,10 @@ tr {
       font-family: "Roboto", sans-serif;
       font-size: 0.9rem;
       color: $grey-primary;
+    }
+
+    .student-name {
+      font-weight: 500;
     }
   }
 }

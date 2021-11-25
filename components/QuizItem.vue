@@ -31,7 +31,7 @@
         "
         class="correct-ratio text-center"
       >
-        <img src="~assets/icons/circle-check.svg" />
+        <img src="~assets/icons/check-circle.svg" />
         {{ correctRatio }}%
       </div>
     </td>

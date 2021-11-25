@@ -14,13 +14,19 @@
                 <div class="title">1. Compose your question</div>
                 <textarea
                   v-model="quizData.qStem"
-                  placeholder="Question text goes here"
+                  placeholder="Create a question using specific expressions with a clear definition."
                   rows="4"
                 />
               </div>
 
               <div class="answer-list">
-                <div class="title">2. Create answer options</div>
+                <div class="title">
+                  2. Create answer choices
+                  <span class="instruction">
+                    *You can create 2-5 answer choices.
+                  </span>
+                </div>
+
                 <draggable
                   v-model="quizData.answerOptions"
                   v-bind="dragOptions"
