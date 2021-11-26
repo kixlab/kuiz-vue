@@ -6,23 +6,30 @@
   left: 0;
   width: 100vw;
   height: 100%;
-  padding: 60px;
+  padding: 32px;
   z-index: 2000;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.7);
+  overflow: auto;
   transition: all 0.3s ease;
 
   .outer-wrapper {
+    width: 600px;
     height: 100%;
+    padding: 32px 0 !important;
+    overflow: hidden;
 
     .inner-wrapper {
-      padding: 32px !important;
+      width: 100%;
+      height: 100%;
+      padding: 0 32px;
+      overflow: auto;
 
       .form-wrapper {
-        width: 600px;
+        width: 100%;
 
         form {
           width: 100%;

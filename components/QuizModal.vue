@@ -6,8 +6,8 @@
       class="quiz-modal"
       @click="closeQuizModal"
     >
-      <div class="outer-wrapper" @click.stop>
-        <Wrapper rounded shadow class="inner-wrapper">
+      <Wrapper rounded shadow class="outer-wrapper" @click.native.stop>
+        <div class="inner-wrapper">
           <section class="form-wrapper column">
             <form>
               <div class="stem">
@@ -115,8 +115,9 @@
               </div>
             </form>
           </section>
-        </Wrapper>
-      </div>
+        </div>
+      </Wrapper>
+    </div>
     </div>
   </transition>
 </template>
