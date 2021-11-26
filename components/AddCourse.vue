@@ -141,17 +141,19 @@ export default {
         } catch (e) {
           console.error(e);
         }
-        if (this.success) {
-          this.closeModal();
-          this.$router.push("/" + code);
-        } else {
-          console.log("Oops, try again");
-          this.code.firstDigit = null;
-          this.code.secondDigit = null;
-          this.code.thirdDigit = null;
-          this.code.fourthDigit = null;
-          alert("The course code you entered does not exist. Please ask the instructor for a valid code.");
-        }
+        this.closeModal();
+        this.$router.push("/" + code);
+        // if (this.success) {
+        //   this.closeModal();
+        //   this.$router.push("/" + code);
+        // } else {
+        //   console.log("Oops, try again");
+        //   this.code.firstDigit = null;
+        //   this.code.secondDigit = null;
+        //   this.code.thirdDigit = null;
+        //   this.code.fourthDigit = null;
+        //   alert("The course code you entered does not exist. Please ask the instructor for a valid code.");
+        // }
       }
     },
 
