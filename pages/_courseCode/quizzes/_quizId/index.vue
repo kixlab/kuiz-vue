@@ -65,6 +65,7 @@
             <div class="question-text">
               {{ quizData.qStem }}
             </div>
+            <!--
             <div
               class="question-image"
               @click="toggleModal({ mode: 'image', imageURL: imageURL })"
@@ -74,6 +75,7 @@
               </div>
               <img :src="imageURL" />
             </div>
+            -->
             <div class="answer-list">
               <div
                 v-for="(answer, index) in quizData.answerOptions"
@@ -482,6 +484,8 @@ export default {
           }
 
           .body {
+            width: 100%;
+
             > div {
               margin-top: 20px;
 

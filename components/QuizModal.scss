@@ -6,21 +6,30 @@
   left: 0;
   width: 100vw;
   height: 100%;
-  padding: 60px;
+  padding: 32px;
   z-index: 2000;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.7);
+  overflow: auto;
   transition: all 0.3s ease;
 
   .outer-wrapper {
+    width: 600px;
+    height: 100%;
+    padding: 32px 0 !important;
+    overflow: hidden;
+
     .inner-wrapper {
-      padding: 32px !important;
+      width: 100%;
+      height: 100%;
+      padding: 0 32px;
+      overflow: auto;
 
       .form-wrapper {
-        width: 600px;
+        width: 100%;
 
         form {
           width: 100%;
@@ -76,6 +85,12 @@
               background-color: $white-flat;
               border: 1px solid $grey-ash;
 
+              &:hover {
+                .action {
+                  opacity: 0.3;
+                }
+              }
+
               &:first-child {
                 border-top-left-radius: 0.25rem;
                 border-top-right-radius: 0.25rem;
@@ -109,6 +124,50 @@
                 border: none;
                 font-family: "Poppins", sans-serif;
                 font-size: 0.9rem;
+              }
+
+              .action {
+                width: 20px;
+                opacity: 0;
+                cursor: pointer;
+
+                &.marked {
+                  opacity: 1 !important;
+                }
+
+                &.hidden {
+                  opacity: 0 !important;
+                }
+
+                &:not(:first-child) {
+                  margin-left: 12px;
+                }
+
+                &:hover {
+                  opacity: 1;
+                }
+
+                img {
+                  width: 20px;
+                  height: 20px;
+                }
+              }
+            }
+
+            .add-option {
+              display: inline-block;
+              font-family: "Poppins", sans-serif;
+              font-size: 0.8rem;
+              font-weight: 500;
+              color: $blue-primary;
+              padding: 4px 10px;
+              border-radius: 6px;
+              background-color: $white-background;
+              margin: 8px 0 0 0 !important;
+              cursor: pointer;
+
+              &:hover {
+                background-color: $grey-silver;
               }
             }
           }

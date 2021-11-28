@@ -6,8 +6,8 @@
       class="quiz-modal"
       @click="closeQuizModal"
     >
-      <div class="outer-wrapper" @click.stop>
-        <Wrapper rounded shadow class="inner-wrapper">
+      <Wrapper rounded shadow class="outer-wrapper" @click.native.stop>
+        <div class="inner-wrapper">
           <section class="form-wrapper column">
             <form>
               <div class="stem">
@@ -23,7 +23,7 @@
                 <div class="title">
                   2. Create answer choices
                   <span class="instruction">
-                    *You can create 2-5 answer choices.
+                    You can create up to 5 answer choices.
                   </span>
                 </div>
 
@@ -50,25 +50,57 @@
                         <img src="~/assets/icons/menu-black.svg" />
                       </div>
                       <input
-                        v-model="quizData.answerOptions[index]"
-                        placeholder="Type in your answer option"
+                        v-model="quizData.answerOptions[index].text"
+                        placeholder="Provide an answer option"
                       />
+                      <div
+                        v-if="quizData.answerOptions.length > 2"
+                        :class="{
+                          hidden: drag === true,
+                        }"
+                        class="action delete-option"
+                        @click="deleteOption(index)"
+                      >
+                        <img src="~/assets/icons/delete.svg" />
+                      </div>
+                      <div
+                        v-tooltip.right="
+                          `${
+                            answer.correct === true ? 'Marked' : 'Mark'
+                          } as correct answer`
+                        "
+                        class="action mark-answer"
+                        :class="{
+                          marked: answer.correct === true,
+                          hidden: drag === true && answer.correct === false,
+                        }"
+                        @click="markAnswer(index)"
+                      >
+                        <img src="~/assets/icons/check-circle.svg" />
+                      </div>
                     </li>
                   </transition-group>
                 </draggable>
+                <div
+                  v-if="quizData.answerOptions.length < 5"
+                  class="add-option"
+                  @click="addOption"
+                >
+                  + Add Option
+                </div>
               </div>
 
               <div class="explanation">
                 <div class="title">3. Provide an explanation</div>
                 <textarea
                   v-model="quizData.explanation"
-                  placeholder="Explanation goes here"
+                  placeholder="Explain why the chosen option is the correct answer."
                   rows="4"
                 />
               </div>
 
               <div class="tags">
-                <div class="title">Select a category</div>
+                <div class="title">4. Select a category</div>
                 <select v-model="quizData.tags">
                   <option v-for="(tag, index) in tags" :key="index">
                     {{ tag }}
@@ -76,20 +108,16 @@
                 </select>
               </div>
 
-              <input
-                v-model.number="quizData.answer"
-                placeholder="right answer number"
-              />
-
               <div class="row-center">
-                <Button bg="primary" @click.native="createQuiz">
+                <Button bg="primary" @click.native.prevent="createQuiz">
                   Create Quiz
                 </Button>
               </div>
             </form>
           </section>
-        </Wrapper>
-      </div>
+        </div>
+      </Wrapper>
+    </div>
     </div>
   </transition>
 </template>
@@ -107,7 +135,12 @@ export default {
         qStem: "",
         tags: [],
         explanation: "",
-        answerOptions: ["", "", "", ""],
+        answerOptions: [
+          { text: "", correct: false },
+          { text: "", correct: false },
+          { text: "", correct: false },
+          { text: "", correct: false },
+        ],
         answer: null,
       },
       tags: [],
@@ -165,20 +198,93 @@ export default {
     },
 
     createQuiz() {
-      try {
-        const quizData = this.quizData;
-        const classId = this.$route.params.courseCode;
+      const e = this.checkForm();
+      if (e !== "e") {
+        try {
+          this.quizData.answer = this.quizData.answerOptions.findIndex(
+            obj => obj.correct === true,
+          );
 
-        this.$axios
-          .post(`${process.env.baseURL}/class/question/create`, {
-            quizData,
-            classId,
-          })
-          .then(res => {
-            this.closeQuizModal();
-          });
-      } catch (e) {
-        console.error(e);
+          const newAnswerOptions = [];
+          for (let i = 0; i < this.quizData.answerOptions.length; i++) {
+            newAnswerOptions.push(this.quizData.answerOptions[i].text);
+          }
+          this.quizData.answerOptions = newAnswerOptions;
+
+          const quizData = this.quizData;
+          const classId = this.$route.params.courseCode;
+
+          this.$axios
+            .post(`${process.env.baseURL}/class/question/create`, {
+              quizData,
+              classId,
+            })
+            .then(res => {
+              this.closeQuizModal();
+            });
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    },
+
+    addOption() {
+      if (this.quizData.answerOptions.length >= 5) {
+        alert("You can only create up to 5 answer options.");
+      } else {
+        this.quizData.answerOptions.push({ text: "", correct: false });
+      }
+    },
+
+    deleteOption(index) {
+      if (this.quizData.answerOptions.length <= 2) {
+        alert("You must provide at least two answer options.");
+      } else {
+        this.quizData.answerOptions.splice(index, 1);
+      }
+    },
+
+    markAnswer(index) {
+      for (let i = 0; i < this.quizData.answerOptions.length; i++) {
+        this.quizData.answerOptions[i].correct = false;
+      }
+
+      this.quizData.answerOptions[index].correct = true;
+      console.log(this.quizData.answerOptions);
+    },
+
+    checkForm() {
+      if (
+        this.quizData.qStem === null ||
+        this.quizData.qStem.match(/^\s*$/) !== null
+      ) {
+        alert("Please fill in the question text.");
+        return "e";
+      }
+
+      const correctAnswerMarked = this.quizData.answerOptions.find(
+        obj => obj.correct === true,
+      );
+      const blankAnswerOptionExists = this.quizData.answerOptions.find(
+        obj => obj.text === "",
+      );
+      if (blankAnswerOptionExists !== undefined) {
+        alert("Please fill in any blank answer options.");
+        return "e";
+      }
+      if (correctAnswerMarked === undefined) {
+        alert("Please mark the correct answer among the options.");
+        return "e";
+      }
+
+      if (
+        this.quizData.explanation === null ||
+        this.quizData.explanation.match(/^\s*$/) !== null
+      ) {
+        alert(
+          "Please add an explanation about why the chosen option is the correct answer.",
+        );
+        return "e";
       }
     },
   },
