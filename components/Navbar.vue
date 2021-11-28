@@ -1,6 +1,6 @@
 <template>
   <Wrapper class="navbar">
-    <NuxtLink to="/" class="logo">
+    <NuxtLink :to="'/' + $route.params.courseCode" class="logo">
       <img src="~/assets/images/logo.png" />
     </NuxtLink>
     <!--
