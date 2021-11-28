@@ -41,31 +41,8 @@ export default {
     quizCreated: { type: Number, default: 0 },
     quizSolved: { type: Number, default: 0 },
     quizCommented: { type: Number, default: 0 },
+    taskStatus: { type: Number, default: 0 },
     target: { type: Array, default: null },
-  },
-
-  computed: {
-    taskStatus() {
-      if (
-        this.quizCreated >= this.target[0] &&
-        this.quizSolved >= this.target[1] &&
-        this.quizCommented >= this.target[2]
-      ) {
-        return 2;
-      } else if (
-        this.quizCreated === 0 &&
-        this.quizSolved === 0 &&
-        this.quizCommented === 0
-      ) {
-        return 0;
-      } else {
-        return 1;
-      }
-    },
-  },
-
-  created() {
-    this.$emit("status", this.taskStatus);
   },
 };
 </script>

@@ -5,17 +5,17 @@
       <span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
       <span class="complete">
         Complete:
-        {{ complete }}
+        {{ participantsFiltered.filter(p => p.taskStatus == 2).length }}
       </span>
       <span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
       <span class="in-progress">
         In Progress:
-        {{ inProgress }}
+        {{ participantsFiltered.filter(p => p.taskStatus == 1).length }}
       </span>
       <span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
       <span class="not-started">
         Not started:
-        {{ notStarted }}
+        {{ participantsFiltered.filter(p => p.taskStatus == 0).length }}
       </span>
     </div>
     <table class="table">
@@ -45,6 +45,9 @@
           :target="target"
           :avatar="participant.imageUrl"
           :name="participant.name"
+          :task-status="
+            participant.taskStatus == null ? 0 : participant.taskStatus
+          "
           :quiz-created="participant.made == null ? 0 : participant.made.length"
           :quiz-solved="
             participant.solved == null ? 0 : participant.solved.length
@@ -52,7 +55,6 @@
           :quiz-commented="
             participant.comment == null ? 0 : participant.comment.length
           "
-          @status="updateStatus"
         />
       </tbody>
     </table>
@@ -65,9 +67,6 @@ export default {
     return {
       participants: [],
       target: [],
-      complete: 0,
-      inProgress: 0,
-      notStarted: 0,
     };
   },
 
@@ -75,9 +74,10 @@ export default {
     participantsFiltered() {
       const newList = this.participants;
       newList.sort((a, b) => {
-        const aSum = a.made.length + a.solved.length + a.comment.length;
-        const bSum = b.made.length + b.solved.length + b.comment.length;
-        return bSum - aSum;
+        if (a.taskStatus === b.taskStatus) {
+          return b.made.length - a.made.length;
+        }
+        return b.taskStatus - a.taskStatus;
       });
       return newList;
     },
@@ -99,6 +99,7 @@ export default {
           })
           .then(res => {
             this.participants = res.data.info;
+            this.participants.map(this.getTaskStatus);
           });
       } catch (e) {
         console.log(e);
@@ -122,17 +123,27 @@ export default {
       }
     },
 
-    updateStatus(val) {
-      switch (val) {
-        case 2:
-          this.complete += 1;
-          break;
-        case 1:
-          this.inProgress += 1;
-          break;
-        case 3:
-          this.notStarted += 1;
-          break;
+    getTaskStatus(p) {
+      if (
+        p.made.length >= this.target[0] &&
+        p.solved.length >= this.target[1] &&
+        p.comment.length >= this.target[2]
+      ) {
+        // Complete
+        p.taskStatus = 2;
+        return p;
+      } else if (
+        p.made.length === 0 &&
+        p.solved.length === 0 &&
+        p.comment.length === 0
+      ) {
+        // In Progress
+        p.taskStatus = 1;
+        return p;
+      } else {
+        // Not Started
+        p.taskStatus = 0;
+        return p;
       }
     },
   },
