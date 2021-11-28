@@ -133,27 +133,26 @@ export default {
 
           await this.$axios.post(`${process.env.baseURL}/class/join`, info).then(
             res => {
-              this.success = res.data().success;
+              this.success = res.data.success;
+              if (res.data.success) {
+                this.closeModal();
+                this.$router.push("/" + code);
+                this.$store.commit("changeCourse", code);
+              } else {
+                console.log("Oops, try again");
+                this.code.firstDigit = null;
+                this.code.secondDigit = null;
+                this.code.thirdDigit = null;
+                this.code.fourthDigit = null;
+                alert("The course code you entered does not exist. Check if you entered a valid code.");
+              }
             },
           );
-
-          this.$store.commit("changeCourse", code);
         } catch (e) {
           console.error(e);
         }
-        this.closeModal();
-        this.$router.push("/" + code);
-        // if (this.success) {
-        //   this.closeModal();
-        //   this.$router.push("/" + code);
-        // } else {
-        //   console.log("Oops, try again");
-        //   this.code.firstDigit = null;
-        //   this.code.secondDigit = null;
-        //   this.code.thirdDigit = null;
-        //   this.code.fourthDigit = null;
-        //   alert("The course code you entered does not exist. Please ask the instructor for a valid code.");
-        // }
+        // this.closeModal();
+        // this.$router.push("/" + code);
       }
     },
 
