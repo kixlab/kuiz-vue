@@ -250,7 +250,6 @@ export default {
       }
 
       this.quizData.answerOptions[index].correct = true;
-      console.log(this.quizData.answerOptions);
     },
 
     checkForm() {

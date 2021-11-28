@@ -131,8 +131,9 @@ export default {
             _id: this.$store.state.uid,
           };
 
-          await this.$axios.post(`${process.env.baseURL}/class/join`, info).then(
-            res => {
+          await this.$axios
+            .post(`${process.env.baseURL}/class/join`, info)
+            .then(res => {
               this.success = res.data.success;
               if (res.data.success) {
                 this.closeModal();
@@ -144,10 +145,11 @@ export default {
                 this.code.secondDigit = null;
                 this.code.thirdDigit = null;
                 this.code.fourthDigit = null;
-                alert("The course code you entered does not exist. Check if you entered a valid code.");
+                alert(
+                  "The course code you entered does not exist. Check if you entered a valid code.",
+                );
               }
-            },
-          );
+            });
         } catch (e) {
           console.error(e);
         }
