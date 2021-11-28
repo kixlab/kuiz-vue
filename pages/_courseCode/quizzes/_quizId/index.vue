@@ -244,34 +244,33 @@ export default {
 
     async getQuizData() {
       try {
-        const res = await this.$axios.get(
-          `${process.env.baseURL}/class/question/load`,
-          {
+        await this.$axios
+          .get(`${process.env.baseURL}/class/question/load`, {
             params: {
               code: this.$route.params.courseCode,
             },
-          },
-        );
+          })
+          .then(res => {
+            const quizId = this.$route.params.quizId;
 
-        const quizId = this.$route.params.quizId;
+            this.quizData = res.data.questions.questionDatas.find(
+              obj => obj._id === quizId,
+            );
 
-        this.quizData = res.data.questions.questionDatas.find(
-          obj => obj._id === quizId,
-        );
+            this.isLiked = res.data.questions.questionDatas
+              .find(obj => obj._id === quizId)
+              .likes.includes(this.$store.state.uid);
 
-        this.isLiked = res.data.questions.questionDatas
-          .find(obj => obj._id === quizId)
-          .likes.includes(this.$store.state.uid);
+            const correct = this.quizData.solved.filter(
+              e => e.selected === this.quizData.answer,
+            );
 
-        const correct = this.quizData.solved.filter(
-          e => e.selected === this.quizData.answer,
-        );
-
-        if (this.quizData.solved.length !== 0) {
-          this.ratio = Math.round(
-            ((correct.length * 1.0) / this.quizData.solved.length) * 100,
-          );
-        }
+            if (this.quizData.solved.length !== 0) {
+              this.ratio = Math.round(
+                ((correct.length * 1.0) / this.quizData.solved.length) * 100,
+              );
+            }
+          });
       } catch (e) {
         console.log(e);
       }
