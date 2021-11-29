@@ -138,11 +138,11 @@ export default {
         p.comment.length === 0
       ) {
         // In Progress
-        p.taskStatus = 1;
+        p.taskStatus = 0;
         return p;
       } else {
         // Not Started
-        p.taskStatus = 0;
+        p.taskStatus = 1;
         return p;
       }
     },
