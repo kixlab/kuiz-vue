@@ -168,6 +168,7 @@
             <div class="row reply">
               <textarea
                 v-model="newComment"
+                maxlength="1000"
                 placeholder="Is the question easy to understand? What can be improved?"
                 rows="2"
               />
@@ -293,20 +294,24 @@ export default {
     },
 
     async onCommentSubmit() {
-      try {
-        await this.$axios
-          .post(`${process.env.baseURL}/class/question/comment`, {
-            qid: this.$route.params.quizId,
-            uid: this.$store.state.uid,
-            comment: this.newComment,
-          })
-          .then(res => {
-            this.newComment = "";
-            this.getQuizData();
-          });
-      } catch (e) {
-        console.log(e);
-        throw e;
+      if (this.newComment === null || this.newComment.match(/^\s*$/) !== null) {
+        alert("Please enter your comment.");
+      } else {
+        try {
+          await this.$axios
+            .post(`${process.env.baseURL}/class/question/comment`, {
+              qid: this.$route.params.quizId,
+              uid: this.$store.state.uid,
+              comment: this.newComment,
+            })
+            .then(res => {
+              this.newComment = "";
+              this.getQuizData();
+            });
+        } catch (e) {
+          console.log(e);
+          throw e;
+        }
       }
     },
 
