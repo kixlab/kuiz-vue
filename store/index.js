@@ -105,7 +105,21 @@ const mutations = {
   },
 
   logOut(state) {
+    // Initialize state
+    state.modalImageURL = "";
+    state.modalVisible = false;
+    state.modalIsSelectCourse = true;
+    state.modalIsAddCourse = false;
+    state.modalIsImage = false;
+    state.quizModalVisible = false;
     state.isLoggedIn = false;
+    state.userEmail = "";
+    state.userName = "";
+    state.userImage = "";
+    state.uid = "";
+    state.classes = [];
+    state.currentCourse = "";
+    state.sid = "";
   },
 };
 
