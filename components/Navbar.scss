@@ -21,6 +21,48 @@
     }
   }
 
+  .material {
+    width: 100%;
+    height: 64px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    border: 1px dashed #ff2116;
+
+    &:hover {
+      background-color: #fff5f5;
+    }
+
+    img {
+      height: 100%;
+    }
+
+    .text {
+      display: column;
+      align-items: flex-start;
+      margin-left: 16px;
+      font-family: "Poppins", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+
+      > div:first-child {
+        color: $grey-primary;
+      }
+
+      .title {
+        font-weight: 500;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        max-width: 100%;
+        line-height: 1.3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+      }
+    }
+  }
+
   .course-select {
     justify-content: space-between;
 

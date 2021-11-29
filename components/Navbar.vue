@@ -20,7 +20,21 @@
       </div>
     </Wrapper>
     -->
-    <div style="width: 100%; height: 64px"></div>
+    <a
+      href="https://s3.ap-northeast-2.amazonaws.com/static.kuiz.kixlab.org/external/docs/20211129-MSB408.pdf"
+      target="_blank"
+      style="display: block; width: 100%"
+    >
+      <Wrapper px="4" rounded class="material">
+        <div style="height: 100%">
+          <img src="~/assets/images/adobe-acrobat.svg" />
+        </div>
+        <div class="text">
+          <div>Lecture Material</div>
+          <div class="title">Promises and Perils of Crowds, Data, and AI</div>
+        </div>
+      </Wrapper>
+    </a>
     <Wrapper px="0" py="0" class="column">
       <NavItem rounded to="quizzes">Quizzes</NavItem>
       <NavItem rounded to="activity">My Activity</NavItem>
