@@ -12,6 +12,15 @@
 <script>
 export default {
   layout: "login",
+
+  created() {
+    if (
+      this.$store.state.isLoggedIn &&
+      this.$store.state.currentCourse !== ""
+    ) {
+      this.$router.push("/" + this.$store.state.currentCourse);
+    }
+  },
 };
 </script>
 

@@ -64,7 +64,7 @@
                         <img src="~/assets/icons/delete.svg" />
                       </div>
                       <div
-                        v-tooltip.right="
+                        v-tooltip.top="
                           `${
                             answer.correct === true ? 'Marked' : 'Mark'
                           } as correct answer`
@@ -186,7 +186,6 @@ export default {
 
     async getTags() {
       try {
-        console.log("code", this.$route.params.courseCode);
         const res = await this.$axios.post(`${process.env.baseURL}/class/tag`, {
           code: this.$route.params.courseCode,
         });

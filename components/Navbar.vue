@@ -1,6 +1,6 @@
 <template>
   <Wrapper class="navbar">
-    <NuxtLink :to="'/' + $route.params.courseCode" class="logo">
+    <NuxtLink :to="'/' + courseCode" class="logo">
       <img src="~/assets/images/logo.png" />
     </NuxtLink>
     <!--
@@ -54,6 +54,12 @@
 import { mapMutations } from "vuex";
 
 export default {
+  computed: {
+    courseCode() {
+      return this.$store.state.currentCourse;
+    },
+  },
+
   methods: {
     logOut() {
       this.$store.commit("logOut");
