@@ -203,7 +203,7 @@ export default {
         solved: [],
       },
       imageURL: "https://i.ibb.co/QDpF9YV/quiz-example.png",
-      selectedAnswer: 0,
+      selectedAnswer: null,
       moreActionsVisible: false,
       isSolved: false,
       isLiked: false,
@@ -221,25 +221,29 @@ export default {
     ...mapMutations(["toggleModal"]),
 
     checkAnswer() {
-      try {
-        this.isSolved = true;
-        this.showComments = true;
+      if (this.selectedAnswer === null) {
+        alert("Please mark your answer.");
+      } else {
+        try {
+          this.isSolved = true;
+          this.showComments = true;
 
-        this.$axios
-          .post(`${process.env.baseURL}/class/question/solve`, {
-            uid: this.$store.state.uid,
-            qid: this.$route.params.quizId,
-            selectedAnswer: this.selectedAnswer,
-          })
-          .then(res => {
-            this.ratio = Math.round(
-              ((res.data.ratio.correct * 1.0) / res.data.ratio.solved) * 100,
-            );
+          this.$axios
+            .post(`${process.env.baseURL}/class/question/solve`, {
+              uid: this.$store.state.uid,
+              qid: this.$route.params.quizId,
+              selectedAnswer: this.selectedAnswer,
+            })
+            .then(res => {
+              this.ratio = Math.round(
+                ((res.data.ratio.correct * 1.0) / res.data.ratio.solved) * 100,
+              );
 
-            this.quizData.solved = res.data.solved;
-          });
-      } catch (e) {
-        console.log(e);
+              this.quizData.solved = res.data.solved;
+            });
+        } catch (e) {
+          console.log(e);
+        }
       }
     },
 
@@ -261,6 +265,15 @@ export default {
             this.isLiked = res.data.questions.questionDatas
               .find(obj => obj._id === quizId)
               .likes.includes(this.$store.state.uid);
+
+            if (
+              res.data.questions.questionDatas
+                .find(obj => obj._id === quizId)
+                .solved.find(obj => obj.user === this.$store.state.uid) !==
+              undefined
+            ) {
+              this.showComments = true;
+            }
 
             const correct = this.quizData.solved.filter(
               e => e.selected === this.quizData.answer,
